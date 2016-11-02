@@ -3,50 +3,55 @@ package tp.pr1.mv;
 
 
 public class CPU {
-	Memory memoria;
-	Integer variable;
-	OperandStack pila;
-	ENUM_BYTECODE enumerado;
-	int paramIntr, aux, aux2;
-	boolean end;
+	static Memory memoria;
+	static Integer variable;
+	static OperandStack pila;
+	//ENUM_BYTECODE enumerado;
+	static int paramIntr, aux, aux2;
+	static boolean end;
 	
-	public boolean execute(ByteCode instr){
+	public CPU(){
+		pila = new OperandStack();
+		memoria = new Memory();
+	}
+	
+	public static boolean execute(ByteCode instr){
 		if(end){
 			if(instr.getName() == ENUM_BYTECODE.PUSH){
-				this.paramIntr = instr.getParam();
-				this.pila.Store(paramIntr);
+				paramIntr = instr.getParam();
+				pila.Store(paramIntr);
 			}
 			
 			else if (instr.getName() == ENUM_BYTECODE.LOAD){
-				this.paramIntr = instr.getParam();
-				this.variable = this.memoria.read(paramIntr);
-				this.pila.Store(this.variable.intValue()); 			//revisar
+				paramIntr = instr.getParam();
+				variable = memoria.read(paramIntr);
+				pila.Store(variable.intValue()); 			//revisar
 			}
 			
 			else if (instr.getName() == ENUM_BYTECODE.STORE){
-				this.paramIntr = instr.getParam();
-				this.memoria.write(this.paramIntr, this.pila.Load());
+				paramIntr = instr.getParam();
+				memoria.write(paramIntr, pila.Load());
 			}
 			
 			else if (instr.getName() == ENUM_BYTECODE.ADD){
-				this.aux = this.pila.Load() + this.pila.Load();
-				this.pila.Store(this.aux);
+				aux = pila.Load() + pila.Load();
+				pila.Store(aux);
 			}
 			
 			else if (instr.getName() == ENUM_BYTECODE.SUB){
-				this.aux = -this.pila.Load() + this.pila.Load();	//revisar
-				this.pila.Store(this.aux);
+				aux = -pila.Load() + pila.Load();	//revisar
+				pila.Store(aux);
 			}
 			
 			else if (instr.getName() == ENUM_BYTECODE.MUL){
-				this.aux = this.pila.Load() * this.pila.Load();
-				this.pila.Store(this.aux);	
+				aux = pila.Load() * pila.Load();
+				pila.Store(aux);	
 			}
 			
 			else if (instr.getName() == ENUM_BYTECODE.DIV){
-				this.aux = this.pila.Load();
-				this.aux2 = this.pila.Load();
-				this.pila.Store(this.aux2/this.aux);
+				aux = pila.Load();
+				aux2 = pila.Load();
+				pila.Store(aux2/aux);
 			}
 			
 			else if (instr.getName() == ENUM_BYTECODE.OUT){
@@ -54,7 +59,7 @@ public class CPU {
 			}
 			
 			else if (instr.getName() == ENUM_BYTECODE.HALT){
-				this.end = true;
+				end = true;
 			}
 		}
 		return end;	

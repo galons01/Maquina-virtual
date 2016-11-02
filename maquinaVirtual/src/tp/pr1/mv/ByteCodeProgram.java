@@ -58,7 +58,9 @@ public class ByteCodeProgram {
 	
 	// Inicia/ejecuta un programa.
 	public void iniciarPrograma(){
-		
+		for(int i = 0; i < contador; i++){
+			CPU.execute(program[i]);
+		}
 	}
 	
 	
