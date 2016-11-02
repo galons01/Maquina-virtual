@@ -5,8 +5,10 @@ public class Command {
 	private ByteCode instruction;
 	private int replace;
 	
-	public Command(ENUM_COMMAND command){
-		
+	public Command(ENUM_COMMAND command, ByteCode instruction, int replace){
+		this.command = command;
+		this.instruction = instruction;
+		this.replace = replace;
 	}
 	
 	

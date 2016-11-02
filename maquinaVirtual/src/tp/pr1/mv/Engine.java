@@ -1,12 +1,18 @@
 package tp.pr1.mv;
 
+import java.util.Scanner;
+
 public class Engine {
 
-	CommandParser commandParser;
 	Command command;
 	
+	Scanner capt = new Scanner(System.in);
+	
 	public void start(){
-		while(command!=quit){
+		
+		String linea = capt.next();
+		command = CommandParser.parse(linea);
+		while(command. != ENUM_COMMAND.QUIT){
 			
 		}
 	}
