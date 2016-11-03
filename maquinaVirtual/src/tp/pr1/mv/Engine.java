@@ -15,11 +15,14 @@ public class Engine {
 		String linea = capt.next();
 		command = CommandParser.parse(linea);
 		while(command.getType() != ENUM_COMMAND.QUIT){
-			
-			
+			this.command.execute(this);
 			linea = capt.next();
 			command = CommandParser.parse(linea);
 		}
+	}
+	
+	public boolean AñadirPrograma(ByteCode programa){
+		return program.addInstruccion(programa);
 	}
 }
 
