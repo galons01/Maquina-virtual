@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Engine {
 
+	private ByteCodeProgram program;
+	private boolean end;
 	Command command;
 	
 	Scanner capt = new Scanner(System.in);
@@ -12,8 +14,11 @@ public class Engine {
 		
 		String linea = capt.next();
 		command = CommandParser.parse(linea);
-		while(command. != ENUM_COMMAND.QUIT){
+		while(command.getType() != ENUM_COMMAND.QUIT){
 			
+			
+			linea = capt.next();
+			command = CommandParser.parse(linea);
 		}
 	}
 }

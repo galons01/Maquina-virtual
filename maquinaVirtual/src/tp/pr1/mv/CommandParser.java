@@ -8,17 +8,17 @@ public class CommandParser {
 		command = null;
 		String[] aux = line.split(" ");
 		switch (aux[0]) {
-		case "HELP":  		command = new Command(enumComands.HELP, null, -1);
+		case "HELP":  		command = new Command(enumComands.HELP);
         					break;
-		case "QUIT":  		command = new Command(enumComands.QUIT, null, -1);
+		case "QUIT":  		command = new Command(enumComands.QUIT);
 							break;
 		case "NEWINST":  	command = new Command(enumComands.NEWINST, ByteCodeParser.parse(aux[1]), Integer.parseInt(aux[2]));
 							break;
-		case "RUN":  		command = new Command(enumComands.RUN, null, -1);
+		case "RUN":  		command = new Command(enumComands.RUN);
 							break;
-		case "RESET":  		command = new Command(enumComands.RESET, null, -1);
+		case "RESET":  		command = new Command(enumComands.RESET);
 							break;
-		case "REPLACE":  	command = new Command(enumComands.REPLACE, null, Integer.parseInt(aux[1]));
+		case "REPLACE":  	command = new Command(enumComands.REPLACE, Integer.parseInt(aux[1]));
 							break;
 		}
 		return command;
