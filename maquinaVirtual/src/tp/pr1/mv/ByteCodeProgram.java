@@ -72,4 +72,10 @@ public class ByteCodeProgram {
 		}
 		contador = 0;
 	}
+	
+	public void mostrarPrograma(){
+		for (int i=0; i<contador; i++){
+			System.out.println(program[i]);
+		}
+	}
 }

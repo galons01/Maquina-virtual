@@ -5,12 +5,13 @@ public class ByteCodeParser {
 	
 	
 	public static ByteCode parse(String line){
-		switch (line) {
-		case "PUSH":  		byteCode = new ByteCode(ENUM_BYTECODE.PUSH);
+		String[] aux = line.split(" ");
+		switch (aux[0]) {
+		case "PUSH":  		byteCode = new ByteCode(ENUM_BYTECODE.PUSH, Integer.parseInt(aux[1]));
         					break;
-		case "LOAD":  		byteCode = new ByteCode(ENUM_BYTECODE.LOAD);
+		case "LOAD":  		byteCode = new ByteCode(ENUM_BYTECODE.LOAD, Integer.parseInt(aux[1]));
 							break;
-		case "STORE": 	 	byteCode = new ByteCode(ENUM_BYTECODE.STORE);
+		case "STORE": 	 	byteCode = new ByteCode(ENUM_BYTECODE.STORE, Integer.parseInt(aux[1]));
 							break;
 		case "ADD":  		byteCode = new ByteCode(ENUM_BYTECODE.ADD);
 							break;
