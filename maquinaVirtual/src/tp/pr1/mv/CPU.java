@@ -65,6 +65,6 @@ public class CPU {
 	}
 	
 	public void on(){
-		this.end = false;
+		CPU.end = false;
 	}
 }

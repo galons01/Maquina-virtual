@@ -11,6 +11,7 @@ public class Engine {
 	Scanner capt = new Scanner(System.in);
 	
 	public void start(){
+		end = false;
 		do{
 			System.out.print("> ");
 			String linea = capt.next();
@@ -18,9 +19,12 @@ public class Engine {
 			command = CommandParser.parse(linea);
 			if(command == null)
 				System.out.println("Error: Comando desconocido");
-			else if(!this.command.execute(this))
+			else if(!this.command.execute(this)){
 				System.out.println("Error: Ejecucion incorrecta del comando");
-		}while(command == null || command.getType() != ENUM_COMMAND.QUIT);
+				if (command.getType() != ENUM_COMMAND.QUIT)
+					end = true;
+			}
+		}while(command == null || !end);
 	}
 	
 	public boolean AñadirPrograma(ByteCode programa){
