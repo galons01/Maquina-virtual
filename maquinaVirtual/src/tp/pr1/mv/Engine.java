@@ -14,6 +14,7 @@ public class Engine {
 		do{
 			System.out.print("> ");
 			String linea = capt.next();
+			linea = linea.toUpperCase();
 			command = CommandParser.parse(linea);
 			if(command == null)
 				System.out.println("Error: Comando desconocido");
