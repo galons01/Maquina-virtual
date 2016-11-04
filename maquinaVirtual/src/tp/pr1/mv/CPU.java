@@ -6,7 +6,6 @@ public class CPU {
 	static Memory memoria;
 	static Integer variable;
 	static OperandStack pila;
-	//ENUM_BYTECODE enumerado;
 	static int paramIntr, aux, aux2;
 	static boolean end;
 	
