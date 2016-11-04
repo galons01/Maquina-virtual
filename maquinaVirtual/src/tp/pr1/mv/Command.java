@@ -74,6 +74,9 @@ public class Command {
 		case REPLACE:	System.out.println("Comienza la ejecución de " + command + this.replace);
 						ejecutado = true;
 						break;
+						
+		default:		ejecutado = false;
+						break;
 		
 		}
 		return ejecutado;
