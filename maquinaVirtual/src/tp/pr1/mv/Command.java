@@ -43,35 +43,35 @@ public class Command {
 		boolean ejecutado = false;
 		switch (command) {
 		
-		case HELP:		System.out.println("Comienza la ejecución de" + command);
-						System.out.println("HELP: Muestra esta ayuda");
-						System.out.println("QUIT: Cierra la aplicacion");
-						System.out.println("RUN: Ejecuta el programa");
-						System.out.println("NEWINST BYTECODE: Introduce una nueva instrucción al programa");
-						System.out.println("RESET: Vacia el programa actual");
-						System.out.println("REPLACE N: Reemplaza la instruccion N por la solicitada al usuario");
+		case HELP:		System.out.println("Comienza la ejecución de " + command);
+						System.out.println("	HELP: Muestra esta ayuda");
+						System.out.println("	QUIT: Cierra la aplicacion");
+						System.out.println("	RUN: Ejecuta el programa");
+						System.out.println("	NEWINST BYTECODE: Introduce una nueva instrucción al programa");
+						System.out.println("	RESET: Vacia el programa actual");
+						System.out.println("	REPLACE N: Reemplaza la instruccion N por la solicitada al usuario");
 						ejecutado = true;
 						break;
 		
-		case QUIT:		System.out.println("Comienza la ejecución de" + command);
+		case QUIT:		System.out.println("Comienza la ejecución de " + command);
 						ejecutado = true;
 						break;
 		
-		case NEWINST:	System.out.print("Comienza la ejecución de" + command + this.instruction);
+		case NEWINST:	System.out.print("Comienza la ejecución de " + command + this.instruction);
 						if(replace>-1)
 							System.out.println(replace);
 						ejecutado = engine.AñadirPrograma(this.instruction);
 						break;
 		
-		case RUN:		System.out.println("Comienza la ejecución de" + command);
+		case RUN:		System.out.println("Comienza la ejecución de " + command);
 						ejecutado = true;
 						break;
 		
-		case RESET:		System.out.println("Comienza la ejecución de" + command);
+		case RESET:		System.out.println("Comienza la ejecución de " + command);
 						ejecutado = true;
 						break;
 		
-		case REPLACE:	System.out.println("Comienza la ejecución de" + command + this.replace);
+		case REPLACE:	System.out.println("Comienza la ejecución de " + command + this.replace);
 						ejecutado = true;
 						break;
 		
