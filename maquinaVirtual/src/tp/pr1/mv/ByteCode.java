@@ -20,4 +20,9 @@ public class ByteCode {
 	public int getParam(){
 		return this.param;
 	}
+	public String toString(){
+		String resultado;
+		resultado = name + " " + param;
+		return resultado;
+	}
 }
