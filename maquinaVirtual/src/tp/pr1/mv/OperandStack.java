@@ -13,7 +13,11 @@ public class OperandStack {
 	}
 	
 	void Store(int valor){
-		if(contador-1<n) {
+		if(contador ==0){
+			stack[0] = valor;
+			contador++;
+		}
+		else if(contador-1<n) {
 			for(int i=contador-1; i>=0; i--){
 				stack[i] = stack[i+1];
 			}
@@ -30,6 +34,14 @@ public class OperandStack {
 		}
 		contador--;
 		return resultado;
+	}
+	
+	boolean vacia(){
+		return contador == 0;
+	}
+	
+	int cima(){
+		return stack[0];
 	}
 	
 }
