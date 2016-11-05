@@ -11,7 +11,7 @@ public class CommandParser {
         					break;
 		case "QUIT":  		command = new Command(ENUM_COMMAND.QUIT);
 							break;
-		case "NEWINST":  	command = new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(aux[1]+ aux[2]));
+		case "NEWINST":  	command = new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(aux[1] + " " + aux[2]));
 							break;
 		case "RUN":  		command = new Command(ENUM_COMMAND.RUN);
 							break;
