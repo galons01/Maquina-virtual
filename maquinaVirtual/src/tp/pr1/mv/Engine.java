@@ -40,5 +40,8 @@ public class Engine {
 		System.out.println("Programa almacenado: ");
 		program.mostrarPrograma();
 	}
+	public void iniciar(){
+		 program.iniciarPrograma();
+	}
 }
 
