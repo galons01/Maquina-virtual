@@ -18,7 +18,7 @@ public class ByteCodeProgram {
 	
 	// Añade una instruccion.           //revisar, tal vez nunca se use
 	public boolean addInstruccion(ByteCode instruccion){
-		boolean entraEnElPrograma = contador < this.tamaño;		//comprueba si entra en el array
+		boolean entraEnElPrograma = contador < 20;		//comprueba si entra en el array
 		if(entraEnElPrograma){
 			program[contador] = instruccion;
 			contador ++;
@@ -75,7 +75,7 @@ public class ByteCodeProgram {
 	
 	public void mostrarPrograma(){
 		for (int i=0; i<contador; i++){
-			System.out.println(program[i]);
+			System.out.println(i + ": " + program[i].getName() + " " + program[i].getParam());
 		}
 	}
 }
