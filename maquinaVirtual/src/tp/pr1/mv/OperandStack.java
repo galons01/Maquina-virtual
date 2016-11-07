@@ -19,7 +19,7 @@ public class OperandStack {
 		}
 		else if(contador-1<n) {
 			for(int i=contador-1; i>=0; i--){
-				stack[i] = stack[i+1];
+				stack[i+1] = stack[i];
 			}
 			stack[0]=valor;
 			contador++;

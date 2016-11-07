@@ -45,9 +45,10 @@ public class Memory {
 		boolean vacio = true;
 		for (int i = 0; i < n; i++){
 			if(memory[i] != null){
-				resp += " [" + i +"]:" + memory[i].intValue() + System.lineSeparator();
+				resp += " [" + i +"]:" + memory[i].intValue();
 				vacio = false;
 			}
+			resp += System.lineSeparator();
 		}
 		if(vacio)
 			resp += " <vacia>" + System.lineSeparator();
