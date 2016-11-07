@@ -48,10 +48,11 @@ public class Memory {
 				resp += " [" + i +"]:" + memory[i].intValue();
 				vacio = false;
 			}
-			resp += System.lineSeparator();
 		}
 		if(vacio)
 			resp += " <vacia>" + System.lineSeparator();
+		else
+			resp += System.lineSeparator();
 		return resp;
 	}
 }
