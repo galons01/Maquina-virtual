@@ -3,65 +3,75 @@ package tp.pr1.mv;
 
 
 public class CPU {
-	static Memory memoria;
-	static Integer variable;
-	static OperandStack pila;
-	static int paramIntr, aux, aux2;
-	static boolean end;
+	private Memory memoria;
+	private Integer variable;
+	private OperandStack pila;
+	private int aux, aux2;
+	private static boolean end;
+	private static String resp;
 	
 	public CPU(){
 		pila = new OperandStack();
 		memoria = new Memory();
 	}
 	
-	public static boolean execute(ByteCode instr){
-		if(end){
-			if(instr.getName() == ENUM_BYTECODE.PUSH){
-				paramIntr = instr.getParam();
-				pila.Store(paramIntr);
+	public boolean execute(ByteCode instr){
+		ENUM_BYTECODE instruccion=instr.getName();
+		int n = instr.getParam();
+		if(!end){
+			if(instruccion == ENUM_BYTECODE.PUSH){
+				pila.Store(n);
 			}
 			
-			else if (instr.getName() == ENUM_BYTECODE.LOAD){
-				paramIntr = instr.getParam();
-				variable = memoria.read(paramIntr);
-				pila.Store(variable.intValue()); 			//revisar
+			else if (instruccion == ENUM_BYTECODE.LOAD){
+				variable = memoria.read(n);
+				if(variable != null)
+					pila.Store(variable.intValue());
+				else
+					return false;
 			}
 			
-			else if (instr.getName() == ENUM_BYTECODE.STORE){
-				paramIntr = instr.getParam();
-				memoria.write(paramIntr, pila.Load());
+			else if (instruccion == ENUM_BYTECODE.STORE){
+				memoria.write(n, pila.Load());
 			}
 			
-			else if (instr.getName() == ENUM_BYTECODE.ADD){
+			else if (instruccion == ENUM_BYTECODE.ADD){
 				aux = pila.Load() + pila.Load();
 				pila.Store(aux);
 			}
 			
-			else if (instr.getName() == ENUM_BYTECODE.SUB){
+			else if (instruccion == ENUM_BYTECODE.SUB){
 				aux = -pila.Load() + pila.Load();	//revisar
 				pila.Store(aux);
 			}
 			
-			else if (instr.getName() == ENUM_BYTECODE.MUL){
+			else if (instruccion == ENUM_BYTECODE.MUL){
 				aux = pila.Load() * pila.Load();
 				pila.Store(aux);	
 			}
 			
-			else if (instr.getName() == ENUM_BYTECODE.DIV){
+			else if (instruccion == ENUM_BYTECODE.DIV){
 				aux = pila.Load();
 				aux2 = pila.Load();
 				pila.Store(aux2/aux);
 			}
 			
-			else if (instr.getName() == ENUM_BYTECODE.OUT){
+			else if (instruccion == ENUM_BYTECODE.OUT){
 				
 			}
 			
-			else if (instr.getName() == ENUM_BYTECODE.HALT){
+			else if (instruccion == ENUM_BYTECODE.HALT){
 				end = true;
 			}
 		}
 		return end;	
+	}
+	
+	public String toString() {
+		resp = "Estado de la CPU: " + System.lineSeparator();
+		resp+=memoria.toString();
+		resp+=pila.toString();
+		return resp;
 	}
 	
 	public void on(){

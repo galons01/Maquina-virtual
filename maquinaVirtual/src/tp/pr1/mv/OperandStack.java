@@ -44,4 +44,13 @@ public class OperandStack {
 		return stack[0];
 	}
 	
+	public String toString() {
+		String resp="  Pila: ";
+		if (contador==0) resp+=" <vacia>" + System.lineSeparator();
+		else {
+		 for (int i=0; i<contador; i++) resp=resp+stack[i]+" ";
+		 resp+=System.lineSeparator();
+		}
+		return resp;
+	}
 }

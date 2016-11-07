@@ -7,12 +7,14 @@ public class Engine {
 	private ByteCodeProgram program;
 	private boolean end;
 	Command command;
+	private CPU cpu;
 	
-	Scanner capt = new Scanner(System.in);
+	private static Scanner capt = new Scanner(System.in);
 	
 	public Engine (){
 		this.program = new ByteCodeProgram();				//el tamaño del programa se puede ajustar aqui.
 		this.end = true;
+		this.cpu = new CPU();
 	}
 	
 	public void start(){
@@ -49,7 +51,14 @@ public class Engine {
 	}
 	
 	public void iniciar(){
-		 program.iniciarPrograma();
+		int contador = program.getContador();
+		for(int i = 0; i < contador; i++){
+			cpu.execute(program.devolverInstruccion(i));
+			System.out.println("El estado de la maquina tras ejecutar el bytecode " + program.devolverInstruccion(i) + " es:");
+			System.out.println(" ");
+			System.out.println(cpu.toString());
+			System.out.println();
+		}
 	}
 	
 	public void resetProgram() {

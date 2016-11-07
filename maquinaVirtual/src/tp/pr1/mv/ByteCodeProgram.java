@@ -56,12 +56,13 @@ public class ByteCodeProgram {
 		return instruccion;
 	}
 	
-	// Inicia/ejecuta un programa.
-	public void iniciarPrograma(){
-		for(int i = 0; i < contador; i++){
-			CPU.execute(program[i]);
-		}
-	}
+	/*	for(int i = 0; i < contador; i++){
+	execute(program[i]);
+	System.out.println("El estado de la maquina tras ejecutar el bytecode " + program[i] + " es:");
+	System.out.println(" ");
+	CPU.toString();
+	System.out.println();
+}*/
 	
 	// Borra todas las instrucciones del programa.
 	public void resetProgram(){
@@ -75,5 +76,9 @@ public class ByteCodeProgram {
 		for (int i=0; i<contador; i++){
 			System.out.println(i + ": " + program[i].getName() + " " + program[i].getParam());
 		}
+	}
+	
+	public int getContador(){
+		return this.contador;
 	}
 }

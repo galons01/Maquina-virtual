@@ -39,4 +39,18 @@ public class Memory {
 	public Integer read(int pos){
 		return memory[pos];
 	}
+	
+	public String toString(){
+		String resp = "  Memoria: ";
+		boolean vacio = true;
+		for (int i = 0; i < n; i++){
+			if(memory[i] != null){
+				resp += " [" + i +"]:" + memory[i].intValue() + System.lineSeparator();
+				vacio = false;
+			}
+		}
+		if(vacio)
+			resp += " <vacia>" + System.lineSeparator();
+		return resp;
+	}
 }
