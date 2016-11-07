@@ -74,7 +74,7 @@ public class ByteCodeProgram {
 	
 	public void mostrarPrograma(){
 		for (int i=0; i<contador; i++){
-			System.out.println(i + ": " + program[i].getName() + " " + program[i].getParam());
+			System.out.println(i + " " + program[i].toString());
 		}
 	}
 	

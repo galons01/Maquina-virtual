@@ -11,6 +11,7 @@ public class ByteCode {
 	
 	public ByteCode(ENUM_BYTECODE name){
 		this.name=name;
+		this.param = -1;
 	}
 	
 	public ENUM_BYTECODE getName(){
@@ -22,7 +23,10 @@ public class ByteCode {
 	}
 	public String toString(){
 		String resultado;
-		resultado = name + " " + param;
+		if(this.param != -1)
+			resultado = name + " " + param;
+		else 
+			resultado = name + " ";
 		return resultado;
 	}
 }
