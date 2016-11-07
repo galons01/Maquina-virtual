@@ -40,8 +40,20 @@ public class Engine {
 		System.out.println("Programa almacenado: ");
 		program.mostrarPrograma();
 	}
+	
+	public boolean remplazarInstruccion(int pos){
+		System.out.print("Nueva instruccion: ");
+		String linea = capt.nextLine();
+		linea = linea.toUpperCase();
+		return program.addInstruccion(linea, pos);
+	}
+	
 	public void iniciar(){
 		 program.iniciarPrograma();
+	}
+	
+	public void resetProgram() {
+		program.resetProgram();
 	}
 }
 

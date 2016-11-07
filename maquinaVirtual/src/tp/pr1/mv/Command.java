@@ -54,6 +54,7 @@ public class Command {
 						break;
 		
 		case QUIT:		System.out.println("Comienza la ejecución de " + command);
+						engine.mostrarPrograma();
 						ejecutado = true;
 						break;
 		
@@ -71,11 +72,13 @@ public class Command {
 						break;
 		
 		case RESET:		System.out.println("Comienza la ejecución de " + command);
+						engine.resetProgram();
 						ejecutado = true;
 						break;
 		
 		case REPLACE:	System.out.println("Comienza la ejecución de " + command + this.replace);
-						ejecutado = true;
+						if (engine.remplazarInstruccion(this.replace))
+							ejecutado = true;
 						break;
 						
 		default:		ejecutado = false;

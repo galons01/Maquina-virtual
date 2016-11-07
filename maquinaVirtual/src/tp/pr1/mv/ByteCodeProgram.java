@@ -6,19 +6,20 @@ public class ByteCodeProgram {
 	private int tamaño;
 	
 	public ByteCodeProgram (){
-		program = new ByteCode[20];
+		program = new ByteCode[20];				//por defecto el tamaño es 20
 		contador = 0;
+		this.tamaño = 20;
 	}
 	
 	public ByteCodeProgram (int tamaño){
 		this.tamaño = tamaño;
-		program = new ByteCode[this.tamaño];
+		program = new ByteCode[this.tamaño];	//el tamaño del programa puede ser personalizado
 		contador = 0;
 	}
 	
 	// Añade una instruccion.           //revisar, tal vez nunca se use
 	public boolean addInstruccion(ByteCode instruccion){
-		boolean entraEnElPrograma = contador < 20;		//comprueba si entra en el array
+		boolean entraEnElPrograma = contador < this.tamaño;		//comprueba si entra en el array
 		if(entraEnElPrograma){
 			program[contador] = instruccion;
 			contador ++;
@@ -39,11 +40,10 @@ public class ByteCodeProgram {
 	
 	// Añade una instruccion, parseandola y poniendola en una posicion determinada.
 	public boolean addInstruccion(String linea, int pos){
-		boolean entraEnElPrograma = pos < this.tamaño;		//comprueba si entra en el array
+		boolean entraEnElPrograma = pos < this.contador;		//comprueba si existe
 		if(entraEnElPrograma){
 			ByteCode instruccion = ByteCodeParser.parse(linea);
-			program[contador] = instruccion;
-			contador = pos;
+			program[pos] = instruccion;
 		}
 		return entraEnElPrograma;
 	}
@@ -62,8 +62,6 @@ public class ByteCodeProgram {
 			CPU.execute(program[i]);
 		}
 	}
-	
-	
 	
 	// Borra todas las instrucciones del programa.
 	public void resetProgram(){
