@@ -5,7 +5,7 @@ public class Memory {
 	int n;							//tamaño array
 	
 	public Memory(){	//creacion de memoria por defecto sin parametros.
-		n=20;
+		n=2;
 		memory = new Integer[n];	
 	}
 	
@@ -15,9 +15,12 @@ public class Memory {
 	}
 	
 	public Memory(int n, Memory memoriaAnt){	//ampliacion de memoria. REVISAR
-		this.n=n;
-		this.memory = new Integer[n];
-		this.memory = memoriaAnt.memory;
+		this.n=2*n;
+		this.memory = new Integer[this.n];
+		for(int i=0; i<memoriaAnt.getN(); i++){
+			this.memory[i] = memoriaAnt.memory[i];
+		}
+//		this.memory = memoriaAnt.memory;
 	}
 	
 	public void redimensionar(int n){			// CAMBIO alternativa al constructor
@@ -35,14 +38,18 @@ public class Memory {
 	}
 	
 	public boolean write(int pos, int value){
-		boolean resultado = memory[pos]==null || pos<0;
-		if(resultado)
+		boolean escribe = pos>=0 && pos<n;		//si entra
+		if(escribe)
 			memory[pos]=value;
-		return resultado;
+		return escribe;
 	}
 	
 	public Integer read(int pos){
 		return memory[pos];
+	}
+	
+	public int getN(){
+		return n;
 	}
 	
 	public String toString(){

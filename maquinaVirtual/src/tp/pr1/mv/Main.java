@@ -12,5 +12,6 @@ public class Main {
  * error en la ejecucion de add con un unico parametro no controlado
  * igual con replace
  * falta de control en la instruccion div, ej: 2/0
+ * falta el bytecode out
  * */
  

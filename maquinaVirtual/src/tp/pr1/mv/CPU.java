@@ -15,13 +15,43 @@ public class CPU {
 		memoria = new Memory();
 	}
 	
+/*	private void redimensionaPila(){
+		OperandStack pilaAux;
+		pilaAux = new OperandStack(pila.getContador()*2);
+		pilaAux = pila;
+	}*/
+	
+	private void redimensionaMemoria(int n){
+		Memory memoriaAux;
+		int tamaño = memoria.getN();
+		if(n<tamaño)									
+			memoriaAux = new Memory(tamaño ,memoria);
+		else
+			memoriaAux = new Memory(n ,memoria);			//si el tamaño es superior se amplia a dicho tamaño.
+		memoria.vaciarMemoria();
+		this.memoria = memoriaAux;
+}
+	
 	public boolean execute(ByteCode instr){
 		boolean ejecucionCorrecta = true;
 		ENUM_BYTECODE instruccion=instr.getName();
 		int n = instr.getParam();
 		if(!end){
+			
+			// intrucciones que no necesitan al menos una variable en pila
+			
 			if(instruccion == ENUM_BYTECODE.PUSH){
-				pila.Store(n);
+				if(!pila.Store(n)){						//si no entra en la pila, da error.
+					ejecucionCorrecta = false;
+				}
+			}
+			
+			else if (instruccion == ENUM_BYTECODE.OUT){
+
+			}
+			
+			else if (instruccion == ENUM_BYTECODE.HALT){
+				end = true;
 			}
 			
 			else if (instruccion == ENUM_BYTECODE.LOAD){
@@ -32,42 +62,46 @@ public class CPU {
 					ejecucionCorrecta = false;
 			}
 			
-			else if (instruccion == ENUM_BYTECODE.STORE){
-				memoria.write(n, pila.Load());
-			}
-			
-			else if (instruccion == ENUM_BYTECODE.ADD){
-				if(pila.getContador()>1){
-					aux = pila.Load() + pila.Load();
-					pila.Store(aux);
+			else if(pila.getContador()>0){						// intrucciones que necesitan al menos una variable en pila
+				
+				if (instruccion == ENUM_BYTECODE.STORE){
+						if(n>=0){
+							aux = pila.Load();
+							if(!memoria.write(n, aux)){				//si no entra en la memoria
+								redimensionaMemoria(n);
+								memoria.write(n, aux);
+							}
+						}
+				}
+				
+				else if(pila.getContador()>1){					// intrucciones que necesitan al menos dos variables en pila
+					
+					if (instruccion == ENUM_BYTECODE.ADD){
+						aux = pila.Load() + pila.Load();
+						pila.Store(aux);
+					}
+					
+					else if (instruccion == ENUM_BYTECODE.SUB){
+						aux = -pila.Load() + pila.Load();		//revisar
+						pila.Store(aux);
+					}
+					
+					else if (instruccion == ENUM_BYTECODE.MUL){
+						aux = pila.Load() * pila.Load();
+						pila.Store(aux);
+					}
+					
+					else if (instruccion == ENUM_BYTECODE.DIV){
+						aux = pila.Load();
+						aux2 = pila.Load();
+						pila.Store(aux2/aux);
+					}
 				}
 				else
 					ejecucionCorrecta = false;
 			}
-			
-			else if (instruccion == ENUM_BYTECODE.SUB){
-				aux = -pila.Load() + pila.Load();	//revisar
-				pila.Store(aux);
-			}
-			
-			else if (instruccion == ENUM_BYTECODE.MUL){
-				aux = pila.Load() * pila.Load();
-				pila.Store(aux);	
-			}
-			
-			else if (instruccion == ENUM_BYTECODE.DIV){
-				aux = pila.Load();
-				aux2 = pila.Load();
-				pila.Store(aux2/aux);
-			}
-			
-			else if (instruccion == ENUM_BYTECODE.OUT){
-				
-			}
-			
-			else if (instruccion == ENUM_BYTECODE.HALT){
-				end = true;
-			}
+			else
+				ejecucionCorrecta = false;
 		}
 		return ejecucionCorrecta;	
 	}

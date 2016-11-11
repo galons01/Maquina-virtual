@@ -12,18 +12,28 @@ public class OperandStack {
 		stack = new int[n];
 	}
 	
-	void Store(int valor){
-		if(contador ==0){
-			stack[0] = valor;
-			contador++;
-		}
-		else if(contador-1<n) {
-			for(int i=contador-1; i>=0; i--){
-				stack[i+1] = stack[i];
+	public OperandStack(int n){
+		this.n = n;
+		contador=0;
+		stack = new int[n];
+	}
+	
+	boolean Store(int valor){
+		boolean entra = contador<n;
+		if(entra){
+			if(contador ==0){
+				stack[0] = valor;
+				contador++;
 			}
-			stack[0]=valor;
-			contador++;
+			else if(contador-1<n) {
+				for(int i=contador-1; i>=0; i--){
+					stack[i+1] = stack[i];
+				}
+				stack[0]=valor;
+				contador++;
+			}
 		}
+		return entra;
 	}
 	
 	int Load(){
