@@ -48,6 +48,10 @@ public class OperandStack {
 		contador = 0;
 	}
 	
+	int getContador(){
+		return this.contador;
+	}
+	
 	public String toString() {
 		String resp="  Pila: ";
 		if (contador==0) resp+=" <vacia>" + System.lineSeparator();

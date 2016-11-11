@@ -70,9 +70,10 @@ public class Command {
 						break;
 		
 		case RUN:		System.out.println("Comienza la ejecución de " + command);
-						engine.iniciar();
-						engine.mostrarPrograma();
+						if(engine.iniciar())
+							System.out.println("Error: Ejecucion incorrecta del comando");
 						ejecutado = true;
+						engine.mostrarPrograma();
 						break;
 		
 		case RESET:		System.out.println("Comienza la ejecución de " + command);

@@ -50,16 +50,21 @@ public class Engine {
 		return program.addInstruccion(linea, pos);
 	}
 	
-	public void iniciar(){
+	public boolean iniciar(){
+		boolean error = false;
 		int contador = program.getContador();
 		for(int i = 0; i < contador; i++){
-			cpu.execute(program.devolverInstruccion(i));
-			System.out.println("El estado de la maquina tras ejecutar el bytecode " + program.devolverInstruccion(i) + " es:");
-			System.out.println(" ");
-			System.out.println(cpu.toString());
-			System.out.println();
+			if(cpu.execute(program.devolverInstruccion(i)) && !error){
+				System.out.println("El estado de la maquina tras ejecutar el bytecode " + program.devolverInstruccion(i) + " es:");
+				System.out.println(" ");
+				System.out.println(cpu.toString());
+				System.out.println();
+			}
+			else
+				error = true;
 		}
 		cpu.finPrograma();
+		return error;
 	}
 	
 	public void resetProgram() {

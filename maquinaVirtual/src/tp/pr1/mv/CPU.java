@@ -16,6 +16,7 @@ public class CPU {
 	}
 	
 	public boolean execute(ByteCode instr){
+		boolean ejecucionCorrecta = true;
 		ENUM_BYTECODE instruccion=instr.getName();
 		int n = instr.getParam();
 		if(!end){
@@ -28,7 +29,7 @@ public class CPU {
 				if(variable != null)
 					pila.Store(variable.intValue());
 				else
-					return false;
+					ejecucionCorrecta = false;
 			}
 			
 			else if (instruccion == ENUM_BYTECODE.STORE){
@@ -36,8 +37,12 @@ public class CPU {
 			}
 			
 			else if (instruccion == ENUM_BYTECODE.ADD){
-				aux = pila.Load() + pila.Load();
-				pila.Store(aux);
+				if(pila.getContador()>1){
+					aux = pila.Load() + pila.Load();
+					pila.Store(aux);
+				}
+				else
+					ejecucionCorrecta = false;
 			}
 			
 			else if (instruccion == ENUM_BYTECODE.SUB){
@@ -64,7 +69,7 @@ public class CPU {
 				end = true;
 			}
 		}
-		return end;	
+		return ejecucionCorrecta;	
 	}
 	
 	public String toString() {
