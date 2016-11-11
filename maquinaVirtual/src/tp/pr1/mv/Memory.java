@@ -27,7 +27,12 @@ public class Memory {
 		this.memory = memoriaAux;
 	}
 	
-	//falta un destructor de memoria?
+	//destructor de memoria
+	public void vaciarMemoria(){
+		for(int i = 0; i < n; i++){
+			this.memory[i] = null;
+		}
+	}
 	
 	public boolean write(int pos, int value){
 		boolean resultado = memory[pos]==null || pos<0;

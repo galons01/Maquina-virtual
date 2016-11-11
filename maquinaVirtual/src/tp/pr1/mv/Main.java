@@ -10,9 +10,7 @@ public class Main {
 
 /* Errores:
  * cambios en la funcionalidad de la pila (se muestran en orden contrario)
- * reseteo de la pila por instruccion
  * mostrar programa almacenado en replace
- * reseteo de la memoria por instruccion
  * error en el comando newinst push
  * error en la ejecucion de add con un unico parametro no controlado
  * igual con replace

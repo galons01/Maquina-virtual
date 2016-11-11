@@ -59,6 +59,7 @@ public class Engine {
 			System.out.println(cpu.toString());
 			System.out.println();
 		}
+		cpu.finPrograma();
 	}
 	
 	public void resetProgram() {

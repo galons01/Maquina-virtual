@@ -8,7 +8,7 @@ public class CPU {
 	private OperandStack pila;
 	private int aux, aux2;
 	private static boolean end;
-	private static String resp;
+	private String resp;
 	
 	public CPU(){
 		pila = new OperandStack();
@@ -76,5 +76,11 @@ public class CPU {
 	
 	public void on(){
 		CPU.end = false;
+	}
+	
+	//vacia memoria y pila
+	public void finPrograma(){
+		this.pila.vaciarPila();
+		this.memoria.vaciarMemoria();
 	}
 }

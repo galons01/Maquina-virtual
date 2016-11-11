@@ -44,6 +44,10 @@ public class OperandStack {
 		return stack[0];
 	}
 	
+	void vaciarPila(){
+		contador = 0;
+	}
+	
 	public String toString() {
 		String resp="  Pila: ";
 		if (contador==0) resp+=" <vacia>" + System.lineSeparator();
