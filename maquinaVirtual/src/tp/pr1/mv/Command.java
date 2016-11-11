@@ -86,6 +86,7 @@ public class Command {
 						break;
 		
 		}
+		System.out.println(" ");
 		return ejecutado;
 	}
 	
