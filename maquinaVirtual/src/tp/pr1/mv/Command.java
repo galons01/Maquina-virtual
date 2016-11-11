@@ -76,9 +76,10 @@ public class Command {
 						ejecutado = true;
 						break;
 		
-		case REPLACE:	System.out.println("Comienza la ejecución de " + command + this.replace);
+		case REPLACE:	System.out.println("Comienza la ejecución de " + command);
 						if (engine.remplazarInstruccion(this.replace))
 							ejecutado = true;
+						engine.mostrarPrograma();
 						break;
 						
 		default:		ejecutado = false;
