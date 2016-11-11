@@ -7,7 +7,8 @@ public class ByteCodeParser {
 	public static ByteCode parse(String line){
 		String[] aux = line.split(" ");
 		switch (aux[0]) {
-		case "PUSH":  		byteCode = new ByteCode(ENUM_BYTECODE.PUSH, Integer.parseInt(aux[1]));
+		case "PUSH":  		if(aux.length>1)
+								byteCode = new ByteCode(ENUM_BYTECODE.PUSH, Integer.parseInt(aux[1]));
         					break;
 		case "LOAD":  		byteCode = new ByteCode(ENUM_BYTECODE.LOAD, Integer.parseInt(aux[1]));
 							break;

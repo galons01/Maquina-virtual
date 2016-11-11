@@ -58,11 +58,15 @@ public class Command {
 						ejecutado = true;
 						break;
 		
-		case NEWINST:	System.out.print("Comienza la ejecución de " + command + " " + this.instruction.toString() + System.lineSeparator());
-						if(replace>-1)
-							System.out.println(replace);
-						ejecutado = engine.añadirPrograma(this.instruction);
-						engine.mostrarPrograma();
+		case NEWINST:	if(instruction!=null){
+							System.out.print("Comienza la ejecución de " + command + " " + this.instruction.toString() + System.lineSeparator());
+							if(replace>-1)
+								System.out.println(replace);
+							ejecutado = engine.añadirPrograma(this.instruction);
+							engine.mostrarPrograma();
+						}
+						else
+							System.out.print("Comienza la ejecución de " + command);
 						break;
 		
 		case RUN:		System.out.println("Comienza la ejecución de " + command);
