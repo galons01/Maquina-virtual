@@ -48,7 +48,8 @@ public class CPU {
 			
 			else if (instruccion == ENUM_BYTECODE.OUT){ //No se como sacarlo por pantalla al hacer el run
 				if(!pila.vacia()){
-					pila.intChar(pila.cima());
+					System.out.println("caracter de la cima: " + pila.intChar(pila.cima()));
+					System.out.println();
 				}
 				else
 					ejecucionCorrecta = false;
