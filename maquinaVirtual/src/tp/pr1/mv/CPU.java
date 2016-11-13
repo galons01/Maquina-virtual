@@ -46,8 +46,12 @@ public class CPU {
 				}
 			}
 			
-			else if (instruccion == ENUM_BYTECODE.OUT){
-
+			else if (instruccion == ENUM_BYTECODE.OUT){ //No se como sacarlo por pantalla al hacer el run
+				if(!pila.vacia()){
+					pila.intChar(pila.cima());
+				}
+				else
+					ejecucionCorrecta = false;
 			}
 			
 			else if (instruccion == ENUM_BYTECODE.HALT){
@@ -82,7 +86,7 @@ public class CPU {
 					}
 					
 					else if (instruccion == ENUM_BYTECODE.SUB){
-						aux = -pila.Load() + pila.Load();		//revisar
+						aux = -pila.Load() + pila.Load();	
 						pila.Store(aux);
 					}
 					
@@ -94,7 +98,10 @@ public class CPU {
 					else if (instruccion == ENUM_BYTECODE.DIV){
 						aux = pila.Load();
 						aux2 = pila.Load();
-						pila.Store(aux2/aux);
+						if(aux != 0)
+							pila.Store(aux2/aux);
+						else
+							ejecucionCorrecta = false;
 					}
 				}
 				else

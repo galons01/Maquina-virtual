@@ -7,25 +7,67 @@ public class ByteCodeParser {
 	public static ByteCode parse(String line){
 		String[] aux = line.split(" ");
 		switch (aux[0]) {
-		case "PUSH":  		if(aux.length>1)
-								byteCode = new ByteCode(ENUM_BYTECODE.PUSH, Integer.parseInt(aux[1]));
+		case "PUSH":  		if(aux.length>1 && aux.length<3){
+								try {
+									Integer.parseInt(aux[1]);
+									byteCode = new ByteCode(ENUM_BYTECODE.PUSH, Integer.parseInt(aux[1]));
+								} catch (NumberFormatException nfe){
+								}
+							}
+							else
+								byteCode = null;
         					break;
-		case "LOAD":  		byteCode = new ByteCode(ENUM_BYTECODE.LOAD, Integer.parseInt(aux[1]));
+		case "LOAD":  		if(aux.length>1 && aux.length <3){
+								try {
+									Integer.parseInt(aux[1]);
+										byteCode = new ByteCode(ENUM_BYTECODE.LOAD, Integer.parseInt(aux[1]));
+								} catch (NumberFormatException nfe){
+								}
+							}	
+							else
+								byteCode = null;
 							break;
-		case "STORE": 	 	byteCode = new ByteCode(ENUM_BYTECODE.STORE, Integer.parseInt(aux[1]));
+		case "STORE": 	 	if(aux.length>1 && aux.length<3){
+								try {
+									Integer.parseInt(aux[1]);
+									byteCode = new ByteCode(ENUM_BYTECODE.STORE, Integer.parseInt(aux[1]));
+								} catch (NumberFormatException nfe){
+								}
+							}
+							else
+								byteCode = null;
 							break;
-		case "ADD":  		byteCode = new ByteCode(ENUM_BYTECODE.ADD);
+		case "ADD":  		if(aux.length ==1)
+								byteCode = new ByteCode(ENUM_BYTECODE.ADD);
+							else 
+								byteCode = null;
 							break;
-		case "SUB":  		byteCode = new ByteCode(ENUM_BYTECODE.SUB);
+		case "SUB":  		if(aux.length ==1)
+								byteCode = new ByteCode(ENUM_BYTECODE.SUB);
+							else 
+								byteCode = null;
 							break;
-		case "MUL": 	 	byteCode = new ByteCode(ENUM_BYTECODE.MUL);
+		case "MUL": 	 	if(aux.length ==1)
+								byteCode = new ByteCode(ENUM_BYTECODE.MUL);
+							else
+								byteCode = null;
 							break;
-		case "DIV": 	 	byteCode = new ByteCode(ENUM_BYTECODE.DIV);
+		case "DIV": 	 	if(aux.length ==1)
+								byteCode = new ByteCode(ENUM_BYTECODE.DIV);
+							else 
+								byteCode = null;
 							break;
-		case "OUT": 	 	byteCode = new ByteCode(ENUM_BYTECODE.OUT);
+		case "OUT": 	 	if(aux.length == 1)
+								byteCode = new ByteCode(ENUM_BYTECODE.OUT);
+							else
+								byteCode = null;
 							break;
-		case "HALT": 	 	byteCode = new ByteCode(ENUM_BYTECODE.HALT);
+		case "HALT": 	 	if(aux.length == 1)
+								byteCode = new ByteCode(ENUM_BYTECODE.HALT);
+							else
+								byteCode = null;
 							break;
+		default:		 byteCode = null;
 		}
 		return byteCode;
 	}

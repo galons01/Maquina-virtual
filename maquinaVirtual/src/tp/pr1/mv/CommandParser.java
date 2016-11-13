@@ -7,20 +7,30 @@ public class CommandParser {
 		command = null;
 		String[] aux = line.split(" ");
 		switch (aux[0]) {
-		case "HELP":  		command = new Command(ENUM_COMMAND.HELP);
+		case "HELP":  	if(aux.length==1)
+							command = new Command(ENUM_COMMAND.HELP);
         					break;
-		case "QUIT":  		command = new Command(ENUM_COMMAND.QUIT);
-							break;
+		case "QUIT":  	if(aux.length==1)
+							command = new Command(ENUM_COMMAND.QUIT);
+						break;
 		case "NEWINST":  	if(aux.length==3) 
 								command = new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(aux[1] + " " + aux[2]));
-							else
+							else if(aux.length == 2) 
 								command = new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(aux[1]));
 							break;
-		case "RUN":  		command = new Command(ENUM_COMMAND.RUN);
+		case "RUN":  		if(aux.length==1)
+								command = new Command(ENUM_COMMAND.RUN);
 							break;
-		case "RESET":  		command = new Command(ENUM_COMMAND.RESET);
+		case "RESET":  		if(aux.length==1)
+								command = new Command(ENUM_COMMAND.RESET);
 							break;
-		case "REPLACE":  	command = new Command(ENUM_COMMAND.REPLACE, Integer.parseInt(aux[1]));
+		case "REPLACE":  	if(aux.length == 2){
+								try{
+									Integer.parseInt(aux[1]);
+								command = new Command(ENUM_COMMAND.REPLACE, Integer.parseInt(aux[1]));
+								}catch (NumberFormatException nfe){
+								}
+							}
 							break;
 		}
 		return command;

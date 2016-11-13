@@ -43,7 +43,10 @@ public class ByteCodeProgram {
 		boolean entraEnElPrograma = pos < this.contador;		//comprueba si existe
 		if(entraEnElPrograma){
 			ByteCode instruccion = ByteCodeParser.parse(linea);
-			program[pos] = instruccion;
+			if(instruccion != null)
+				program[pos] = instruccion;
+			else
+				entraEnElPrograma = false;
 		}
 		return entraEnElPrograma;
 	}

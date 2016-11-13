@@ -45,7 +45,10 @@ public class Memory {
 	}
 	
 	public Integer read(int pos){
-		return memory[pos];
+		if(memory[pos]!= null)
+			return memory[pos];
+		else 
+			return null;
 	}
 	
 	public int getN(){

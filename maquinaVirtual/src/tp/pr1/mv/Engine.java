@@ -44,10 +44,15 @@ public class Engine {
 	}
 	
 	public boolean remplazarInstruccion(int pos){
-		System.out.print("Nueva instruccion: ");
-		String linea = capt.nextLine();
-		linea = linea.toUpperCase();
-		return program.addInstruccion(linea, pos);
+		if(pos < program.getContador()){
+			System.out.print("Nueva instruccion: ");
+			String linea = capt.nextLine();
+			linea = linea.toUpperCase();
+			return program.addInstruccion(linea, pos);
+		}
+		else 
+			System.out.print("Error: Ejecucion incorrecta del comando " + System.lineSeparator());
+			return true;
 	}
 	
 	public boolean iniciar(){
