@@ -40,59 +40,26 @@ public class Command {
 		En otro caso devuelve true.
 	*/
 	public boolean execute(Engine engine){
-		boolean ejecutado = false;
 		switch (command) {
 		
-		case HELP:		System.out.println("Comienza la ejecución de " + command);
-						System.out.println("	HELP: Muestra esta ayuda");
-						System.out.println("	QUIT: Cierra la aplicacion");
-						System.out.println("	RUN: Ejecuta el programa");
-						System.out.println("	NEWINST BYTECODE: Introduce una nueva instrucción al programa");
-						System.out.println("	RESET: Vacia el programa actual");
-						System.out.println("	REPLACE N: Reemplaza la instruccion N por la solicitada al usuario");
-						ejecutado = true;
-						break;
+		case HELP:		return engine.executeHelp();
 		
-		case QUIT:		System.out.println("Comienza la ejecución de " + command);
-						engine.mostrarPrograma();
-						ejecutado = true;
-						break;
+		case QUIT:		return engine.executeQuit();
 		
-		case NEWINST:	if(instruction!=null){
-							System.out.print("Comienza la ejecución de " + command + " " + this.instruction.toString() + System.lineSeparator());
-							if(replace>-1)
-								System.out.println(replace);
-							ejecutado = engine.añadirPrograma(this.instruction);
-							engine.mostrarPrograma();
-						}
-						else
-							System.out.print("Comienza la ejecución de " + command);
-						break;
+		case NEWINST:	return engine.executeNewInst(instruction);
 		
-		case RUN:		System.out.println("Comienza la ejecución de " + command);
-						if(engine.iniciar())
-							System.out.println("Error: Ejecucion incorrecta del comando");
-						ejecutado = true;
-						engine.mostrarPrograma();
-						break;
+		case RUN:		return engine.executeRun();
 		
-		case RESET:		System.out.println("Comienza la ejecución de " + command);
-						engine.resetProgram();
-						ejecutado = true;
-						break;
+		case RESET:		return engine.executeReset();
 		
-		case REPLACE:	System.out.println("Comienza la ejecución de " + command);
-						if (engine.remplazarInstruccion(this.replace))
-							ejecutado = true;
-						engine.mostrarPrograma();
-						break;
+		case REPLACE:	return engine.executeReplace(replace);
 						
-		default:		ejecutado = false;
-						break;
+		default:		return false;
 		
 		}
-		System.out.println(" ");
-		return ejecutado;
+	}
+	public String toString(){
+		return "Comienza la ejecucion de " + this.command + System.lineSeparator();
 	}
 	
 }

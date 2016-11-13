@@ -5,7 +5,7 @@ public class Memory {
 	int n;							//tamaño array
 	
 	public Memory(){	//creacion de memoria por defecto sin parametros.
-		n=2;
+		n=10;
 		memory = new Integer[n];	
 	}
 	
@@ -45,8 +45,11 @@ public class Memory {
 	}
 	
 	public Integer read(int pos){
-		if(memory[pos]!= null)
-			return memory[pos];
+		if(pos <= this.n)
+			if(memory[pos]!= null)
+				return memory[pos];
+			else 
+				return null;
 		else 
 			return null;
 	}
