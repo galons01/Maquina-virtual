@@ -6,7 +6,7 @@ public class CPU {
 	private Memory memoria;
 	private Integer variable;
 	private OperandStack pila;
-	private int aux, aux2;
+	private int aux;
 	private static boolean end;
 	private String resp;
 	
@@ -67,7 +67,7 @@ public class CPU {
 					ejecucionCorrecta = false;
 			}
 			
-			else if(pila.getContador()>0){						// intrucciones que necesitan al menos una variable en pila
+			else if(!pila.vacia()){						// intrucciones que necesitan al menos una variable en pila
 				
 				if (instruccion == ENUM_BYTECODE.STORE){
 						if(n>=0){
@@ -79,30 +79,54 @@ public class CPU {
 						}
 				}
 				
-				else if(pila.getContador()>1){					// intrucciones que necesitan al menos dos variables en pila
+				else if(!pila.vacia()){					/*pila.getContador()>1*/// intrucciones que necesitan al menos dos variables en pila
 					
 					if (instruccion == ENUM_BYTECODE.ADD){
-						aux = pila.Load() + pila.Load();
-						pila.Store(aux);
+						aux = pila.Load();
+						if(!pila.vacia()){
+							aux = aux + pila.Load();
+							pila.Store(aux);
+						}
+						else{
+							pila.Store(aux);
+							ejecucionCorrecta = false;
+						}
 					}
 					
 					else if (instruccion == ENUM_BYTECODE.SUB){
-						aux = -pila.Load() + pila.Load();	
-						pila.Store(aux);
+						aux = - pila.Load();
+						if(!pila.vacia()){
+							aux = aux + pila.Load();
+							pila.Store(aux);
+						}
+						else{
+							pila.Store( - aux);
+							ejecucionCorrecta = false;
+						}
 					}
 					
 					else if (instruccion == ENUM_BYTECODE.MUL){
-						aux = pila.Load() * pila.Load();
-						pila.Store(aux);
+						aux = pila.Load();
+						if(!pila.vacia()){
+							aux = aux * pila.Load();
+							pila.Store(aux);
+						}
+						else{
+							pila.Store(aux);
+							ejecucionCorrecta = false;
+						}
 					}
 					
 					else if (instruccion == ENUM_BYTECODE.DIV){
 						aux = pila.Load();
-						aux2 = pila.Load();
-						if(aux != 0)
-							pila.Store(aux2/aux);
-						else
+						if(!pila.vacia()){
+							aux = pila.Load() / aux;
+							pila.Store(aux);
+						}
+						else{
+							pila.Store(aux);
 							ejecucionCorrecta = false;
+						}
 					}
 				}
 				else

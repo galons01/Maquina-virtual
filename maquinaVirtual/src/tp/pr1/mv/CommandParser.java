@@ -5,7 +5,8 @@ public class CommandParser {
 	
 	public static Command parse(String line){
 		command = null;
-		String[] aux = line.split(" ");
+		line  = line.trim();
+		String[] aux = line.split(" +");
 		switch (aux[0]) {
 		case "HELP":  	if(aux.length==1)
 							command = new Command(ENUM_COMMAND.HELP);

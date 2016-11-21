@@ -21,6 +21,10 @@ public class OperandStack {
 	boolean Store(int valor){
 		boolean entra = contador<n;
 		if(entra){
+			stack[contador] = valor;
+			contador++;
+		}
+		/*if(entra){
 			if(contador ==0){
 				stack[0] = valor;
 				contador++;
@@ -33,15 +37,18 @@ public class OperandStack {
 				contador++;
 			}
 		}
+		*/
 		return entra;
 	}
 	
 	int Load(){
 		int resultado=0;
-		resultado = stack[0];
+		resultado = stack[contador-1];
+		/*
 		for(int i=0; i<contador-1; i++){
 			stack[i] = stack[i+1];
 		}
+		*/
 		contador--;
 		return resultado;
 	}
@@ -51,22 +58,18 @@ public class OperandStack {
 	}
 	
 	int cima(){
-		return stack[0];
+		return stack[contador-1];
 	}
 	
 	void vaciarPila(){
 		contador = 0;
 	}
 	
-	int getContador(){
-		return this.contador;
-	}
-	
 	public String toString() {
 		String resp="  Pila: ";
 		if (contador==0) resp+=" <vacia>" + System.lineSeparator();
 		else {
-		 for (int i=contador-1; i>=0; i--) resp=resp+stack[i]+" ";
+		 for (int i=0; i<contador; i++) resp=resp+stack[i]+" ";
 		 resp+=System.lineSeparator();
 		}
 		return resp;

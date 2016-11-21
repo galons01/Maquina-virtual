@@ -59,7 +59,7 @@ public class Engine {
 	public boolean iniciar(){
 		boolean error = false;
 		int contador = program.getContador();
-		for(int i = 0; i < contador; i++){
+		for(int i = 0; i < contador && !error; i++){
 			if(cpu.execute(program.devolverInstruccion(i)) && !error){
 				System.out.println("El estado de la maquina tras ejecutar el bytecode " + program.devolverInstruccion(i) + " es:");
 				System.out.println(" ");
