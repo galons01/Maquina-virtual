@@ -1,4 +1,4 @@
-package tp.pr1.mv;
+package tp.pr1.mv.comandos;
 
 public enum ENUM_COMMAND {
 	HELP, 

@@ -1,6 +1,5 @@
 package tp.pr1.mv.bitecode;
 
-import tp.pr1.mv.ENUM_BYTECODE;
 
 public class ByteCode {
 	private int param;

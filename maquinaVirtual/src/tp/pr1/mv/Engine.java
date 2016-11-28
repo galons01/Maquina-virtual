@@ -7,6 +7,7 @@ import tp.pr1.mv.bitecode.ByteCodeParser;
 import tp.pr1.mv.bitecode.ByteCodeProgram;
 import tp.pr1.mv.comandos.Command;
 import tp.pr1.mv.comandos.CommandParser;
+import tp.pr1.mv.comandos.ENUM_COMMAND;
 
 public class Engine {
 
@@ -60,23 +61,6 @@ public class Engine {
 		else 
 			System.out.print("Error: Ejecucion incorrecta del comando " + System.lineSeparator());
 			return true;
-	}
-	
-	public boolean iniciar(){
-		boolean error = false;
-		int contador = program.getContador();
-		for(int i = 0; i < contador && !error; i++){
-			if(cpu.execute(program.devolverInstruccion(i)) && !error){
-				System.out.println("El estado de la maquina tras ejecutar el bytecode " + program.devolverInstruccion(i) + " es:");
-				System.out.println(" ");
-				System.out.println(cpu.toString());
-				System.out.println();
-			}
-			else
-				error = true;
-		}
-		cpu.finPrograma();
-		return error;
 	}
 	
 	public void resetProgram() {
@@ -135,9 +119,9 @@ public class Engine {
 		return ejecutado;
 	}
 	public boolean executeRun() {
-		cpu = new CPU();
+		cpu = new CPU(program);
 		System.out.print(command.toString());
-		if(iniciar())
+		if(cpu.run())
 			System.out.println("Error: Ejecucion incorrecta del comando");
 		ejecutado = true;
 		mostrarPrograma();

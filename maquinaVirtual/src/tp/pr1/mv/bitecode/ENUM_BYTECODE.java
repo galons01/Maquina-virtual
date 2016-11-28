@@ -1,4 +1,4 @@
-package tp.pr1.mv;
+package tp.pr1.mv.bitecode;
 
 public enum ENUM_BYTECODE {
 	PUSH(1),

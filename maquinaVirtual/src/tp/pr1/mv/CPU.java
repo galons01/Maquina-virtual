@@ -1,6 +1,8 @@
 package tp.pr1.mv;
 
 import tp.pr1.mv.bitecode.ByteCode;
+import tp.pr1.mv.bitecode.ByteCodeProgram;
+import tp.pr1.mv.bitecode.ENUM_BYTECODE;
 
 
 
@@ -11,17 +13,15 @@ public class CPU {
 	private int aux;
 	private static boolean end;
 	private String resp;
+	private int programCounter;
+	private ByteCodeProgram bcProgram;
 	
-	public CPU(){
+	public CPU(ByteCodeProgram program){
 		pila = new OperandStack();
 		memoria = new Memory();
+		bcProgram = program;
+		programCounter = 0;
 	}
-	
-/*	private void redimensionaPila(){
-		OperandStack pilaAux;
-		pilaAux = new OperandStack(pila.getContador()*2);
-		pilaAux = pila;
-	}*/
 	
 	private void redimensionaMemoria(int n){
 		Memory memoriaAux;
@@ -32,7 +32,7 @@ public class CPU {
 			memoriaAux = new Memory(n ,memoria);			//si el tamaño es superior se amplia a dicho tamaño.
 		memoria.vaciarMemoria();
 		this.memoria = memoriaAux;
-}
+	}
 	
 	public boolean execute(ByteCode instr){
 		boolean ejecucionCorrecta = true;
@@ -155,5 +155,22 @@ public class CPU {
 	public void finPrograma(){
 		this.pila.vaciarPila();
 		this.memoria.vaciarMemoria();
+	}
+	
+	public boolean run(){
+		boolean error = false;
+		int contador = this.bcProgram.getContador();
+		for(programCounter = 0; programCounter < contador && !error; programCounter++){
+			if(execute(bcProgram.devolverInstruccion(programCounter)) && !error){
+				System.out.println("El estado de la maquina tras ejecutar el bytecode " + bcProgram.devolverInstruccion(programCounter) + " es:");
+				System.out.println(" ");
+				System.out.println(toString());
+				System.out.println();
+			}
+			else
+				error = true;
+		}
+		finPrograma();
+		return error;
 	}
 }
