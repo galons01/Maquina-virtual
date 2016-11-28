@@ -5,11 +5,9 @@ import tp.pr1.mv.Engine;
 
 public abstract class Command {
 	private ENUM_COMMAND command;
-//	private int replace;
 	
 	public Command(ENUM_COMMAND command){
 		this.command = command;
-//		this.replace = -1;
 	}
 	
 	// Contructor para el comando replace
@@ -28,7 +26,7 @@ public abstract class Command {
 	y en caso de que se ajuste a la sintaxis del comando en cuestión, lo devuelve.
 	En otro caso devuelve null.
 	 */
-	public abstract Command parse(String[ ] s);
+	public abstract Command parse(String[] s);
 	
 	/*Devuelve, en forma de String, la información
 	de ayuda correspondiente al comando.*/
