@@ -1,4 +1,6 @@
-package tp.pr1.mv;
+package tp.pr1.mv.comandos;
+
+import tp.pr1.mv.ENUM_COMMAND;
 
 public class CommandParser {
 	private static Command command;
@@ -15,12 +17,6 @@ public class CommandParser {
 		case "QUIT":  		if(aux.length==1)
 								command = new Command(ENUM_COMMAND.QUIT);
 							break;
-							
-/*		case "NEWINST":  	if(aux.length==3) 
-								command = new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(aux[1] + " " + aux[2]));
-							else if(aux.length == 2) 
-								command = new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(aux[1]));
-							break;*/
 							
 		case "BYTECODE":	if(aux.length==1)
 								command = new Command(ENUM_COMMAND.BYTECODE);

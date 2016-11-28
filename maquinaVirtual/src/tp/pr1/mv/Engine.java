@@ -2,6 +2,9 @@ package tp.pr1.mv;
 
 import java.util.Scanner;
 
+import tp.pr1.mv.comandos.Command;
+import tp.pr1.mv.comandos.CommandParser;
+
 public class Engine {
 
 	private ByteCodeProgram program;
