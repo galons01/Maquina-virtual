@@ -1,5 +1,7 @@
 package tp.pr1.mv;
 
+import tp.pr1.mv.bitecode.ByteCode;
+
 
 
 public class CPU {

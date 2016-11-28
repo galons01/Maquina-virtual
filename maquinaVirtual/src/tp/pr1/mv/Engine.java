@@ -2,6 +2,9 @@ package tp.pr1.mv;
 
 import java.util.Scanner;
 
+import tp.pr1.mv.bitecode.ByteCode;
+import tp.pr1.mv.bitecode.ByteCodeParser;
+import tp.pr1.mv.bitecode.ByteCodeProgram;
 import tp.pr1.mv.comandos.Command;
 import tp.pr1.mv.comandos.CommandParser;
 
@@ -81,13 +84,7 @@ public class Engine {
 		
 	}
 	public boolean executeHelp() {
-		System.out.print(command.toString());
-		System.out.println("	HELP: Muestra esta ayuda.");
-		System.out.println("	QUIT: Cierra la aplicacion.");
-		System.out.println("	RUN: Ejecuta el programa.");
-		System.out.println("	BYTECODE: Introduce nuevas instrucciónes al programa, una por linea.");
-		System.out.println("	RESET: Vacia el programa actual.");
-		System.out.println("	REPLACE N: Reemplaza la instruccion N por la solicitada al usuario.");
+		CommandParser.showHelp();
 		ejecutado = true;
 		return ejecutado;
 }

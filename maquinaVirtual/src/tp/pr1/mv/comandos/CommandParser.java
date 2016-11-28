@@ -1,13 +1,11 @@
 package tp.pr1.mv.comandos;
 
 public class CommandParser {
-	private static Command command;
 	private final static Command[] commands = {
 		new Help(), new Quit(), new Reset(),
 		new Replace(), new Run(), new AddByteCodeProgram() };
 	
 	public static Command parse(String line){
-		command = null;
 		line  = line.trim();
 		String[] aux = line.split(" +");
 		for(int i=0; i<commands.length; i++){
@@ -15,10 +13,12 @@ public class CommandParser {
 				return commands[i].parse(aux);
 			}
 		}
-		return command;
+		return null;
 	}
 	
 	public static void showHelp(){
-		command.textHelp();
+		for(int i=0; i<commands.length; i++){
+			System.out.println(commands[i].textHelp());
+		}
 	}
 }

@@ -1,4 +1,4 @@
-package tp.pr1.mv;
+package tp.pr1.mv.bitecode;
 
 public class ByteCodeProgram {
 	private ByteCode[] program;
