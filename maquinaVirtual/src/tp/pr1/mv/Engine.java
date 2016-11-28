@@ -79,12 +79,12 @@ public class Engine {
 	}
 	public boolean executeHelp() {
 		System.out.print(command.toString());
-		System.out.println("	HELP: Muestra esta ayuda");
-		System.out.println("	QUIT: Cierra la aplicacion");
-		System.out.println("	RUN: Ejecuta el programa");
-		System.out.println("	NEWINST BYTECODE: Introduce una nueva instrucción al programa");
-		System.out.println("	RESET: Vacia el programa actual");
-		System.out.println("	REPLACE N: Reemplaza la instruccion N por la solicitada al usuario");
+		System.out.println("	HELP: Muestra esta ayuda.");
+		System.out.println("	QUIT: Cierra la aplicacion.");
+		System.out.println("	RUN: Ejecuta el programa.");
+		System.out.println("	BYTECODE: Introduce nuevas instrucciónes al programa, una por linea.");
+		System.out.println("	RESET: Vacia el programa actual.");
+		System.out.println("	REPLACE N: Reemplaza la instruccion N por la solicitada al usuario.");
 		ejecutado = true;
 		return ejecutado;
 }
@@ -94,17 +94,33 @@ public class Engine {
 		ejecutado = true;
 		return ejecutado;
 	}
-	public boolean executeNewInst(ByteCode instruccion) {
-		if(instruccion != null){
-			System.out.print(command.toString());
-			ejecutado = añadirPrograma(instruccion);
-			mostrarPrograma();
-		}
-		else
-			System.out.print(command.toString());
-		return ejecutado;
+	
+	public boolean readByteCodeProgram(){
 		
+		System.out.print(command.toString());
+		System.out.println("Introduce el bytecode. Una instruccion por línea:");
+		System.out.println("");
+		
+		ByteCode byteCode;
+		String lineaByte = capt.nextLine();
+		lineaByte = lineaByte.toUpperCase();
+		resetProgram();
+		while (!lineaByte.equals("END")){
+			
+			byteCode = ByteCodeParser.parse(lineaByte);
+			
+			if(byteCode != null){
+				ejecutado = añadirPrograma(byteCode);
+			}
+			else
+				System.out.println("Bytecode erroneo, intentelo de nuevo:");
+			lineaByte = capt.nextLine();
+			lineaByte = lineaByte.toUpperCase();
+		}
+		mostrarPrograma();
+		return ejecutado;
 	}
+	
 	public boolean executeReplace(int pos) {
 		System.out.print(command.toString());
 		if(remplazarInstruccion(pos))

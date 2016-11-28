@@ -3,7 +3,8 @@ package tp.pr1.mv;
 public enum ENUM_COMMAND {
 	HELP, 
 	QUIT, 
-	NEWINST, 
+//	NEWINST, 
+	BYTECODE,
 	RUN, 
 	RESET, 
 	REPLACE;
