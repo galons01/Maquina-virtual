@@ -1,6 +1,6 @@
 package cpu;
 
-import tp.pr1.mv.bitecode.ByteCode;
+import tp.pr1.bitecode.ByteCode;
 
 
 

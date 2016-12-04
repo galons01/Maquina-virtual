@@ -1,14 +1,14 @@
-package tp.pr1.mv.bitecode;
+package tp.pr1.bitecode;
 
-import tp.pr1.mv.bitecode.arithmetics.Add;
-import tp.pr1.mv.bitecode.arithmetics.Div;
-import tp.pr1.mv.bitecode.arithmetics.Mul;
-import tp.pr1.mv.bitecode.arithmetics.Sub;
-import tp.pr1.mv.bitecode.jumps.Goto;
-import tp.pr1.mv.bitecode.jumps.IfEq;
-import tp.pr1.mv.bitecode.jumps.IfLe;
-import tp.pr1.mv.bitecode.jumps.IfLeq;
-import tp.pr1.mv.bitecode.jumps.IfNeq;
+import tp.pr1.bitecode.arithmetics.Add;
+import tp.pr1.bitecode.arithmetics.Div;
+import tp.pr1.bitecode.arithmetics.Mul;
+import tp.pr1.bitecode.arithmetics.Sub;
+import tp.pr1.bitecode.jumps.Goto;
+import tp.pr1.bitecode.jumps.IfEq;
+import tp.pr1.bitecode.jumps.IfLe;
+import tp.pr1.bitecode.jumps.IfLeq;
+import tp.pr1.bitecode.jumps.IfNeq;
 
 
 public class ByteCodeParser {

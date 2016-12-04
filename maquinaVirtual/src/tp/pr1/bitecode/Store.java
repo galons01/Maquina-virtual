@@ -1,4 +1,4 @@
-package tp.pr1.mv.bitecode;
+package tp.pr1.bitecode;
 
 import cpu.CPU;
 

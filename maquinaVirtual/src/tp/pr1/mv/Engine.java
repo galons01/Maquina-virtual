@@ -4,11 +4,10 @@ import java.util.Scanner;
 
 import cpu.ByteCodeProgram;
 import cpu.CPU;
-import tp.pr1.mv.bitecode.ByteCode;
-import tp.pr1.mv.bitecode.ByteCodeParser;
-import tp.pr1.mv.comandos.Command;
-import tp.pr1.mv.comandos.CommandParser;
-//import tp.pr1.mv.comandos.ENUM_COMMAND;
+import tp.pr1.bitecode.ByteCode;
+import tp.pr1.bitecode.ByteCodeParser;
+import tp.pr1.comandos.Command;
+import tp.pr1.comandos.CommandParser;
 
 public class Engine {
 

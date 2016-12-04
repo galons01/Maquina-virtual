@@ -1,4 +1,4 @@
-package tp.pr1.mv.comandos;
+package tp.pr1.comandos;
 
 public class CommandParser {
 	private final static Command[] commands = {

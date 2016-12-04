@@ -1,6 +1,6 @@
-package tp.pr1.mv.bitecode.arithmetics;
+package tp.pr1.bitecode.arithmetics;
 
-import tp.pr1.mv.bitecode.ByteCode;
+import tp.pr1.bitecode.ByteCode;
 import cpu.CPU;
 
 public class Sub extends Arithmetics{

@@ -1,7 +1,6 @@
-package tp.pr1.mv.bitecode.jumps;
+package tp.pr1.bitecode.jumps;
 
-import tp.pr1.mv.bitecode.ByteCode;
-//import tp.pr1.mv.bitecode.Store;
+import tp.pr1.bitecode.ByteCode;
 
 public abstract class Jump extends ByteCode{
 	//private int n;

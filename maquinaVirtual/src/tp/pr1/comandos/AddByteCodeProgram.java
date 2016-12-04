@@ -1,4 +1,4 @@
-package tp.pr1.mv.comandos;
+package tp.pr1.comandos;
 
 import tp.pr1.mv.Engine;
 

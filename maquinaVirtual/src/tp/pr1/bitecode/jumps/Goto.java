@@ -1,6 +1,6 @@
-package tp.pr1.mv.bitecode.jumps;
+package tp.pr1.bitecode.jumps;
 
-import tp.pr1.mv.bitecode.ByteCode;
+import tp.pr1.bitecode.ByteCode;
 import cpu.CPU;
 
 public class Goto extends Jump{

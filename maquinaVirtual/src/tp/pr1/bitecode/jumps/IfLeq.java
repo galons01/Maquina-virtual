@@ -1,11 +1,11 @@
-package tp.pr1.mv.bitecode.jumps;
+package tp.pr1.bitecode.jumps;
 
-import tp.pr1.mv.bitecode.ByteCode;
+import tp.pr1.bitecode.ByteCode;
 import cpu.CPU;
 
-public class IfLe extends ConditionalJumps{
+public class IfLeq extends ConditionalJumps{
 	private int n;
-	public IfLe(int n) {
+	public IfLeq(int n) {
 		super(n);
 		this.n = n;
 		// TODO Auto-generated constructor stub
@@ -14,7 +14,7 @@ public class IfLe extends ConditionalJumps{
 	@Override
 	protected boolean compares(int c, int sc, CPU cpu) {
 		// TODO Auto-generated method stub
-		if(sc < c){
+		if(sc <= c){
 			if(!cpu.Termina()){
 				cpu.next();
 				return true;
@@ -35,14 +35,14 @@ public class IfLe extends ConditionalJumps{
 	@Override
 	protected ByteCode parseJump(String s, int n) {
 		// TODO Auto-generated method stub
-		if(s.equalsIgnoreCase("IFLE")){
-			return new IfLe(n);
+		if(s.equalsIgnoreCase("IFLEQ")){
+			return new IfLeq(n);
 		}
 		else
 			return null;
 	}
 	public String toString(){
-		return "IFLE " + n;
+		return "IFLEQ " + n;
 	}
 
 }
