@@ -5,7 +5,7 @@ import tp.pr1.mv.Engine;
 public class Help extends Command{
 
 	public Help() {
-		super(ENUM_COMMAND.HELP);
+		super();
 	}
 
 	@Override

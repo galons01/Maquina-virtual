@@ -1,12 +1,38 @@
 package tp.pr1.mv.bitecode;
 
+import tp.pr1.mv.bitecode.arithmetics.Add;
+import tp.pr1.mv.bitecode.arithmetics.Div;
+import tp.pr1.mv.bitecode.arithmetics.Mul;
+import tp.pr1.mv.bitecode.arithmetics.Sub;
+import tp.pr1.mv.bitecode.jumps.Goto;
+import tp.pr1.mv.bitecode.jumps.IfEq;
+import tp.pr1.mv.bitecode.jumps.IfLe;
+import tp.pr1.mv.bitecode.jumps.IfLeq;
+import tp.pr1.mv.bitecode.jumps.IfNeq;
+
 
 public class ByteCodeParser {
-	private static ByteCode byteCode;
+	//private static ByteCode byteCode;
+	 private final static ByteCode[] bytecodes= {new Add(), new Sub(),  
+		 				new Mul(), new Div(),     
+		 				new Push(0), new Store(0), 
+		 				new Load(0), new Halt(), 
+		 				new Out(), new Goto(0),    
+		 				new IfEq(0), new IfNeq(0),    
+		 				new IfLe(0), new IfLeq(0)};
 	
 	
 	public static ByteCode parse(String line){
-		String[] aux = line.split(" ");
+		line  = line.trim();
+		String[] aux = line.split(" +");
+		for(int i=0; i<bytecodes.length; i++){
+			if(bytecodes[i].parse(aux)!=null){
+				return bytecodes[i].parse(aux);
+			}
+		}
+		return null;
+	}
+	/*	String[] aux = line.split(" ");
 		switch (aux[0]) {
 		case "PUSH":  		if(aux.length>1 && aux.length<3){
 								try {
@@ -71,5 +97,6 @@ public class ByteCodeParser {
 		default:		 byteCode = null;
 		}
 		return byteCode;
-	}
+		*/
 }
+

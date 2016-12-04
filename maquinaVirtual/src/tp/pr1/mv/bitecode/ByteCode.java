@@ -1,24 +1,27 @@
 package tp.pr1.mv.bitecode;
 
+import cpu.CPU;
 
-public class ByteCode {
-	private int param;
-	private ENUM_BYTECODE name;
+public abstract class ByteCode {
+	//private int param;
+	//private ENUM_BYTECODE name;
 	
-	public ByteCode(ENUM_BYTECODE name, int param){
-		this.param=param;
-		this.name=name;
+	public ByteCode(){
 	}
 	
-	public ByteCode(ENUM_BYTECODE name){
+	public abstract boolean execute(CPU cpu);
+	
+	public abstract ByteCode parse(String[]s);
+	
+	/*public ByteCode(ENUM_BYTECODE name){
 		this.name=name;
 		this.param = -1;
-	}
+	}*/
 	
-	public ENUM_BYTECODE getName(){
+	/*public ENUM_BYTECODE getName(){
 		return this.name;
-	}
-	
+	}*/
+	/*
 	public int getParam(){
 		return this.param;
 	}
@@ -30,4 +33,5 @@ public class ByteCode {
 			resultado = name + " ";
 		return resultado;
 	}
+	*/
 }

@@ -3,10 +3,9 @@ package tp.pr1.mv.comandos;
 import tp.pr1.mv.Engine;
 
 public abstract class Command {
-	private ENUM_COMMAND command;
+	//private ENUM_COMMAND command;
 	
-	public Command(ENUM_COMMAND command){
-		this.command = command;
+	public Command(){
 	}
 
 	/* 	Es el encargado de ejecutar el comando, dando la orden correspodiente a engine.
@@ -25,13 +24,13 @@ public abstract class Command {
 	de ayuda correspondiente al comando.*/
 	public abstract String textHelp();
 	
-	public ENUM_COMMAND getType(){
+	/*public ENUM_COMMAND getType(){
 		return this.command;
-	}
+	}*/
 	
 	
-	public String toString(){
+	/*public String toString(){
 		return "Comienza la ejecucion de " + this.command + System.lineSeparator();
-	}
+	}*/
 	
 }

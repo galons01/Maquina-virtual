@@ -5,7 +5,7 @@ import tp.pr1.mv.Engine;
 public class Quit extends Command {
 
 	public Quit() {
-		super(ENUM_COMMAND.QUIT);
+		super();
 	}
 
 	@Override
@@ -25,5 +25,9 @@ public class Quit extends Command {
 	public String textHelp() {
 		return "QUIT: Cierra la aplicacion.";
 	}
+	public String toString(){
+		return "Comienza la ejecución de quit " + System.lineSeparator();
+	}
+	
 
 }

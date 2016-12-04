@@ -1,4 +1,7 @@
-package tp.pr1.mv.bitecode;
+package cpu;
+
+import tp.pr1.mv.bitecode.ByteCode;
+import tp.pr1.mv.bitecode.ByteCodeParser;
 
 public class ByteCodeProgram {
 	private ByteCode[] program;
@@ -83,5 +86,9 @@ public class ByteCodeProgram {
 	
 	public int getContador(){
 		return this.contador;
+	}
+
+	public ByteCode getByteCode(int num){
+		return program[num];
 	}
 }

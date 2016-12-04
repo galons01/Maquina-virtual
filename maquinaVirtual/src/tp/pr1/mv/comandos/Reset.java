@@ -5,7 +5,7 @@ import tp.pr1.mv.Engine;
 public class Reset extends Command {
 
 	public Reset() {
-		super(ENUM_COMMAND.RESET);
+		super();
 	}
 
 	@Override
@@ -24,6 +24,9 @@ public class Reset extends Command {
 	@Override
 	public String textHelp() {
 		return "RESET: Vacia el programa actual.";
+	}
+	public String toString(){
+		return "Comienza la ejecución de reset" + System.lineSeparator();
 	}
 
 }

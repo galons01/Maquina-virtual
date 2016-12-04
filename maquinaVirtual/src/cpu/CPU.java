@@ -1,8 +1,6 @@
-package tp.pr1.mv;
+package cpu;
 
 import tp.pr1.mv.bitecode.ByteCode;
-import tp.pr1.mv.bitecode.ByteCodeProgram;
-import tp.pr1.mv.bitecode.ENUM_BYTECODE;
 
 
 
@@ -10,16 +8,16 @@ public class CPU {
 	private Memory memoria;
 	private Integer variable;
 	private OperandStack pila;
-	private int aux;
-	private static boolean end;
+	//private int aux;
+	private static boolean end = false;
 	private String resp;
 	private int programCounter;
-	private ByteCodeProgram bcProgram;
+	private ByteCodeProgram bcProgram = new ByteCodeProgram();
 	
 	public CPU(ByteCodeProgram program){
 		pila = new OperandStack();
 		memoria = new Memory();
-		bcProgram = program;
+		this.bcProgram = program;
 		programCounter = 0;
 	}
 	
@@ -34,7 +32,7 @@ public class CPU {
 		this.memoria = memoriaAux;
 	}
 	
-	public boolean execute(ByteCode instr){
+	/*public boolean execute(ByteCode instr){
 		boolean ejecucionCorrecta = true;
 		ENUM_BYTECODE instruccion=instr.getName();
 		int n = instr.getParam();
@@ -82,8 +80,8 @@ public class CPU {
 				}
 				
 				else if(!pila.vacia()){					/*pila.getContador()>1*/// intrucciones que necesitan al menos dos variables en pila
-					
-					if (instruccion == ENUM_BYTECODE.ADD){
+			
+				/*	if (instruccion == ENUM_BYTECODE.ADD){
 						aux = pila.Load();
 						if(!pila.vacia()){
 							aux = aux + pila.Load();
@@ -138,6 +136,26 @@ public class CPU {
 				ejecucionCorrecta = false;
 		}
 		return ejecucionCorrecta;	
+	}*/
+	/*public boolean añadirInstruccion(ByteCode bc, int pos){
+		
+	}*/
+	public void halt(){// no esta
+		end = true;
+	}
+	
+	public boolean emptyStack(){
+		if(!pila.vacia())
+			return false;
+		else
+			return true;
+	}
+	
+	public boolean Termina(){
+		if(bcProgram.getContador() > programCounter+1)
+			return false;
+		else
+			return true;
 	}
 	
 	public String toString() {
@@ -147,25 +165,89 @@ public class CPU {
 		return resp;
 	}
 	
+	public int out(){
+		return pila.intChar(pila.cima());
+	}
+	
+	public int pop(){
+		return pila.Load();
+	}
+	
+	public boolean push(int i){
+		if(!pila.Store(i))					//si no entra en la pila, da error.
+			return false;
+		else 
+			return true;
+	}
+	public void meterPila(int i){
+		pila.Store(i);
+	}
+	
+	public boolean read(int param){
+		variable = memoria.read(param);
+		if(variable != null){
+			pila.Store(variable.intValue());
+			return true;
+		}
+		else
+			return false;
+		
+	}
+	
+	public void write(int param, int value){
+		if(param>=0){
+			//aux = pila.Load();
+			if(!memoria.write(param, value)){				//si no entra en la memoria
+				redimensionaMemoria(param);
+				memoria.write(param, value);
+			}
+		}
+
+	}
+		
+	
+	public void next(){
+		programCounter++;
+		
+	}
+	public boolean añadeInstruccion(ByteCode bc, int pos){
+		return false;
+		
+	}
+	public void setProgramCounter(int jump){  //jump
+		programCounter = jump;
+		
+	}
+	public int getProgramCounter(){
+		return programCounter;
+	}
 	public void on(){
-		CPU.end = false;
+		end = false;
 	}
 	
 	//vacia memoria y pila
 	public void finPrograma(){
 		this.pila.vaciarPila();
 		this.memoria.vaciarMemoria();
+		//end = true;
 	}
+	
 	
 	public boolean run(){
 		boolean error = false;
+		boolean parar = false;
 		int contador = this.bcProgram.getContador();
-		for(programCounter = 0; programCounter < contador && !error; programCounter++){
-			if(execute(bcProgram.devolverInstruccion(programCounter)) && !error){
+		for(programCounter = 0; programCounter < contador && !error && !parar; programCounter++){
+			ByteCode bc = bcProgram.getByteCode(this.programCounter);
+			if(bc.execute(this) && !error && !end){
 				System.out.println("El estado de la maquina tras ejecutar el bytecode " + bcProgram.devolverInstruccion(programCounter) + " es:");
 				System.out.println(" ");
 				System.out.println(toString());
 				System.out.println();
+			}
+			else if(end){
+				System.out.println("Maquina parada. ");
+				parar = true;
 			}
 			else
 				error = true;

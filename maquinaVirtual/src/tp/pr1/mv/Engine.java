@@ -2,12 +2,13 @@ package tp.pr1.mv;
 
 import java.util.Scanner;
 
+import cpu.ByteCodeProgram;
+import cpu.CPU;
 import tp.pr1.mv.bitecode.ByteCode;
 import tp.pr1.mv.bitecode.ByteCodeParser;
-import tp.pr1.mv.bitecode.ByteCodeProgram;
 import tp.pr1.mv.comandos.Command;
 import tp.pr1.mv.comandos.CommandParser;
-import tp.pr1.mv.comandos.ENUM_COMMAND;
+//import tp.pr1.mv.comandos.ENUM_COMMAND;
 
 public class Engine {
 
@@ -27,8 +28,7 @@ public class Engine {
 	public void start(){
 		end = false;
 		do{
-			System.out.print("> ");
-			String linea = capt.nextLine();
+			System.out.print("> ");			String linea = capt.nextLine();
 			linea = linea.toUpperCase();
 			command = CommandParser.parse(linea);
 			ejecutado = false;
@@ -36,8 +36,8 @@ public class Engine {
 				System.out.println("Error: Comando desconocido");
 			else if(!this.command.execute(this))
 				System.out.println("Error: Ejecucion incorrecta del comando");
-			else if (command.getType() == ENUM_COMMAND.QUIT)
-					end = true;
+			/*else if (command.getType() ==)//quitar
+					end = true;*/
 			
 		}while(command == null || !end);
 	}
@@ -92,7 +92,7 @@ public class Engine {
 		while (!lineaByte.equals("END")){
 			
 			byteCode = ByteCodeParser.parse(lineaByte);
-			
+		
 			if(byteCode != null){
 				ejecutado = añadirPrograma(byteCode);
 			}

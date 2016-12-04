@@ -5,7 +5,7 @@ import tp.pr1.mv.Engine;
 public class AddByteCodeProgram extends Command {
 
 	public AddByteCodeProgram() {
-		super(ENUM_COMMAND.BYTECODE);
+		super();
 	}
 
 	@Override
@@ -24,5 +24,9 @@ public class AddByteCodeProgram extends Command {
 	@Override
 	public String textHelp() {
 		return "BYTECODE: Introduce nuevas instrucciónes al programa, una por linea.";
+	}
+	
+	public String toString(){
+		return "Comienza la ejecución de BYTECODE."+ System.lineSeparator();
 	}
 }

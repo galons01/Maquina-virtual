@@ -6,12 +6,12 @@ public class Replace extends Command {
 	private int replace;
 
 	public Replace(int replace){
-		super(ENUM_COMMAND.REPLACE);
+		super();
 		this.replace = replace;
 	}
 	
 	public Replace(){
-		super(ENUM_COMMAND.REPLACE);
+		super();
 		this.replace = -1;
 	}
 
@@ -31,6 +31,9 @@ public class Replace extends Command {
 	@Override
 	public String textHelp() {
 		return "REPLACE N: Reemplaza la instruccion N por la solicitada al usuario.";
+	}
+	public String toString(){
+		return "Comienza la ejecución de replace " + System.lineSeparator();
 	}
 
 }

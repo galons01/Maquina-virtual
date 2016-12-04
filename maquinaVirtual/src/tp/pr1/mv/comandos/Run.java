@@ -5,7 +5,7 @@ import tp.pr1.mv.Engine;
 public class Run extends Command {
 
 	public Run() {
-		super(ENUM_COMMAND.RUN);
+		super();
 
 	}
 
@@ -26,6 +26,10 @@ public class Run extends Command {
 	@Override
 	public String textHelp() {
 		return "RUN: Ejecuta el programa.";
+	}
+	
+	public String toString(){
+		return "Comienza la ejecución de run. " + System.lineSeparator();
 	}
 
 }
