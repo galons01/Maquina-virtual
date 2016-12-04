@@ -1,7 +1,7 @@
 package tp.pr1.bitecode.jumps;
 
 //import tp.pr1.mv.bitecode.ByteCode;
-import cpu.CPU;
+import tp.pr1cpu.CPU;
 
 public abstract class ConditionalJumps extends Jump{
 	//private int n;

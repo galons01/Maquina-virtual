@@ -1,4 +1,4 @@
-package cpu;
+package tp.pr1cpu;
 
 public class Memory {
 	private Integer[] memory;

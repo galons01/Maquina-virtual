@@ -1,6 +1,6 @@
 package tp.pr1.bitecode;
 
-import cpu.CPU;
+import tp.pr1cpu.CPU;
 
 public abstract class ByteCode {
 	//private int param;

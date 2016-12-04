@@ -1,7 +1,7 @@
 package tp.pr1.bitecode.arithmetics;
 
 import tp.pr1.bitecode.ByteCode;
-import cpu.CPU;
+import tp.pr1cpu.CPU;
 
 public class Add extends Arithmetics{
 	public Add(){
