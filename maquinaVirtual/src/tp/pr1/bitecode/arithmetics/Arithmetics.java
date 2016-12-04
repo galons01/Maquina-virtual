@@ -1,7 +1,7 @@
 package tp.pr1.bitecode.arithmetics;
 
 import tp.pr1.bitecode.ByteCode;
-import tp.pr1cpu.CPU;
+import tp.pr1.cpu.CPU;
 
 public abstract class Arithmetics extends ByteCode{
 	private int c;

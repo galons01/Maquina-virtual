@@ -1,4 +1,4 @@
-package tp.pr1cpu;
+package tp.pr1.cpu;
 
 import tp.pr1.bitecode.ByteCode;
 import tp.pr1.bitecode.ByteCodeParser;

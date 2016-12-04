@@ -1,4 +1,4 @@
-package tp.pr1cpu;
+package tp.pr1.cpu;
 
 public class OperandStack {
 	private int n;					//tamaño array

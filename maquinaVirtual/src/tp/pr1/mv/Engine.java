@@ -6,8 +6,8 @@ import tp.pr1.bitecode.ByteCode;
 import tp.pr1.bitecode.ByteCodeParser;
 import tp.pr1.comandos.Command;
 import tp.pr1.comandos.CommandParser;
-import tp.pr1cpu.ByteCodeProgram;
-import tp.pr1cpu.CPU;
+import tp.pr1.cpu.ByteCodeProgram;
+import tp.pr1.cpu.CPU;
 
 public class Engine {
 

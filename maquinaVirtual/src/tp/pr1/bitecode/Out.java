@@ -1,6 +1,6 @@
 package tp.pr1.bitecode;
 
-import tp.pr1cpu.CPU;
+import tp.pr1.cpu.CPU;
 
 public class Out extends ByteCode{
 

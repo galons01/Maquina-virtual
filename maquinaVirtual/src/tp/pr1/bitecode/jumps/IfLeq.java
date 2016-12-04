@@ -1,7 +1,7 @@
 package tp.pr1.bitecode.jumps;
 
 import tp.pr1.bitecode.ByteCode;
-import tp.pr1cpu.CPU;
+import tp.pr1.cpu.CPU;
 
 public class IfLeq extends ConditionalJumps{
 	private int n;
