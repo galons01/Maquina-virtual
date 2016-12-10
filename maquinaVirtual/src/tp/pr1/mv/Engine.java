@@ -75,6 +75,7 @@ public class Engine {
 		System.out.print(command.toString());
 		mostrarPrograma();
 		ejecutado = true;
+		end = true;
 		return ejecutado;
 	}
 	
