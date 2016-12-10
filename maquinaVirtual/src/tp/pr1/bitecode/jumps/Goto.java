@@ -28,6 +28,7 @@ public class Goto extends Jump{
 		// TODO Auto-generated method stub
 		if(cpu.getProgramCounter() > n){
 			cpu.setProgramCounter(n);
+			cpu.setSalto();
 			return true;
 		}
 		else

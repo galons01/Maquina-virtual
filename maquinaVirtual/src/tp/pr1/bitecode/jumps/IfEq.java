@@ -16,14 +16,16 @@ public class IfEq extends ConditionalJumps{
 		if(c == sc){
 			if(!cpu.Termina()){
 				cpu.next();
+				cpu.setSalto();
 				return true;
 			}
 			else
 				return false;
 		}
 		else{
-			if(cpu.getProgramCounter() > n){
+			if(cpu.getContador() > n){
 				cpu.setProgramCounter(n);
+				cpu.setSalto();
 				return true;
 			}
 			else

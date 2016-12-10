@@ -7,7 +7,7 @@ public class OperandStack {
 	
 	
 	public OperandStack(){
-		n = 10;
+		n = 20;
 		contador=0;
 		stack = new int[n];
 	}

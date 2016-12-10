@@ -17,10 +17,11 @@ public abstract class ConditionalJumps extends Jump{
 		// TODO Auto-generated method stub
 		if(!cpu.emptyStack()){
 			c = cpu.pop();
-			cpu.meterPila(c);
+			//cpu.meterPila(c);
 			if(!cpu.emptyStack()){
 				sc = cpu.pop();
 				cpu.meterPila(sc);
+				cpu.meterPila(c);
 				if(compares(c, sc, cpu))
 					return true;
 				else

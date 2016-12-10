@@ -10,6 +10,7 @@ public class CPU {
 	private OperandStack pila;
 	//private int aux;
 	private static boolean end = false;
+	private boolean salto = false;
 	private String resp;
 	private int programCounter;
 	private ByteCodeProgram bcProgram = new ByteCodeProgram();
@@ -31,6 +32,7 @@ public class CPU {
 		memoria.vaciarMemoria();
 		this.memoria = memoriaAux;
 	}
+	
 	
 	/*public boolean execute(ByteCode instr){
 		boolean ejecucionCorrecta = true;
@@ -204,7 +206,9 @@ public class CPU {
 		}
 
 	}
-		
+	public void setSalto(){
+		salto = true;
+	}
 	
 	public void next(){
 		programCounter++;
@@ -231,19 +235,37 @@ public class CPU {
 		this.memoria.vaciarMemoria();
 		//end = true;
 	}
+	public int getContador(){
+		return this.bcProgram.getContador();
+	}
 	
 	
 	public boolean run(){
 		boolean error = false;
 		boolean parar = false;
+		//boolean salto = false;
 		int contador = this.bcProgram.getContador();
 		for(programCounter = 0; programCounter < contador && !error && !parar; programCounter++){
 			ByteCode bc = bcProgram.getByteCode(this.programCounter);
 			if(bc.execute(this) && !error && !end){
-				System.out.println("El estado de la maquina tras ejecutar el bytecode " + bcProgram.devolverInstruccion(programCounter) + " es:");
-				System.out.println(" ");
-				System.out.println(toString());
-				System.out.println();
+				if(salto == true){
+					ByteCode bcs = bcProgram.getByteCode(this.programCounter);
+					if(bcs.execute(this)){
+						System.out.println("El estado de la maquina tras ejecutar el bytecode " + bcProgram.devolverInstruccion(programCounter) + " es:");
+						System.out.println(" ");
+						System.out.println(toString());
+						System.out.println();
+						salto = false;
+					}
+					else
+						error = true;
+				}
+				else{
+					System.out.println("El estado de la maquina tras ejecutar el bytecode " + bcProgram.devolverInstruccion(programCounter) + " es:");
+					System.out.println(" ");
+					System.out.println(toString());
+					System.out.println();
+				}
 			}
 			else if(end){
 				System.out.println("Maquina parada. ");
