@@ -1,20 +1,37 @@
 package tp.pr1.cpu;
-
+/**
+ * Representa la memoria de la máquina. 
+ *
+ */
 public class Memory {
 	private Integer[] memory;
 	int n;							//tamaño array
 	
-	public Memory(){	//creacion de memoria por defecto sin parametros.
+	
+	
+	/**Creacion de memoria por defecto sin parametros.
+	 * 
+	 */
+	public Memory(){	
 		n=10;
 		memory = new Integer[n];	
 	}
 	
-	public Memory(int n){	//creacion de memoria asignando tamaño n. CAMBIO
+	/**Creacion de memoria asignando tamaño n.
+	 * 
+	 * @param n
+	 */
+	public Memory(int n){	
 		this.n=n;
 		memory = new Integer[n];	
 	}
 	
-	public Memory(int n, Memory memoriaAnt){	//ampliacion de memoria. REVISAR
+	/**Ampliacion de memoria asignando tamaño n
+	 * 
+	 * @param n
+	 * @param memoriaAnt
+	 */
+	public Memory(int n, Memory memoriaAnt){	
 		this.n=2*n;
 		this.memory = new Integer[this.n];
 		for(int i=0; i<memoriaAnt.getN(); i++){
@@ -30,7 +47,9 @@ public class Memory {
 		this.memory = memoriaAux;
 	}
 	
-	//destructor de memoria
+	/**destructor de memoria
+	 * 
+	 */
 	public void vaciarMemoria(){
 		for(int i = 0; i < n; i++){
 			this.memory[i] = null;
