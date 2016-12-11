@@ -21,7 +21,7 @@ public class CPU {
 		this.memoria = new Memory();
 		this.bcProgram = program;
 		this.programCounter = 0;
-		this.end = false;
+		CPU.end = false;
 		this.salto = false;
 	}
 	
