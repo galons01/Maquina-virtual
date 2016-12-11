@@ -3,6 +3,14 @@ package tp.pr1.cpu;
 import tp.pr1.bitecode.ByteCode;
 import tp.pr1.bitecode.ByteCodeParser;
 
+/**
+ *  Representa el programa actual. Al menos contiene métodos públicos para añadir un bytecode 
+ *  al programa, inicializar el programa, colocar una instrucción bytecode en una 
+ *  posición dada del programa o devolver la instrucción i-ésima del programa, 
+ *  etc..
+ * 
+ *
+ */
 public class ByteCodeProgram {
 	private ByteCode[] program;
 	private int contador;
@@ -20,7 +28,11 @@ public class ByteCodeProgram {
 		contador = 0;
 	}
 	
-	// Añade una instruccion.           //revisar, tal vez nunca se use
+	/** Añade una instruccion.
+	 * 
+	 * @param instruccion
+	 * @return
+	 */
 	public boolean addInstruccion(ByteCode instruccion){
 		boolean entraEnElPrograma = contador < this.tamaño;		//comprueba si entra en el array
 		if(entraEnElPrograma){
@@ -30,7 +42,11 @@ public class ByteCodeProgram {
 		return entraEnElPrograma;
 	}
 	
-	// Añade una instruccion y parseandola.
+	/** Añade una instruccion y parseandola.
+	 * 
+	 * @param linea
+	 * @return
+	 */
 	public boolean addInstruccion(String linea){
 		boolean entraEnElPrograma = contador < this.tamaño;		//comprueba si entra en el array
 		if(entraEnElPrograma){
@@ -41,7 +57,12 @@ public class ByteCodeProgram {
 		return entraEnElPrograma;
 	}
 	
-	// Añade una instruccion, parseandola y poniendola en una posicion determinada.
+	/** Añade una instruccion, parseandola y poniendola en una posicion determinada.
+	 * 
+	 * @param linea
+	 * @param pos
+	 * @return
+	 */
 	public boolean addInstruccion(String linea, int pos){
 		boolean entraEnElPrograma = pos < this.contador;		//comprueba si existe
 		if(entraEnElPrograma){
@@ -53,7 +74,12 @@ public class ByteCodeProgram {
 		}
 		return entraEnElPrograma;
 	}
-	
+	/**
+	 * devuelve una bitecode solicitado.
+	 * 
+	 * @param pos
+	 * @return
+	 */
 	public ByteCode devolverInstruccion(int pos){
 		ByteCode instruccion = null;
 		boolean entraEnElPrograma = pos < this.tamaño;		//comprueba si entra en el array
@@ -70,7 +96,9 @@ public class ByteCodeProgram {
 	System.out.println();
 }*/
 	
-	// Borra todas las instrucciones del programa.
+	/** Borra todas las instrucciones del programa.
+	 * 
+	 */
 	public void resetProgram(){
 		for (int i=0; i<contador; i++){
 			program[i] = null;
