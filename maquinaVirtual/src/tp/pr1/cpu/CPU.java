@@ -246,7 +246,6 @@ public class CPU {
 	public boolean run(){
 		boolean error = false;
 		boolean parar = false;
-		//boolean salto = false;
 		int contador = this.bcProgram.getContador();
 		for(programCounter = 0; programCounter < contador && !error && !parar; programCounter++){
 			ByteCode bc = bcProgram.getByteCode(this.programCounter);
@@ -254,20 +253,10 @@ public class CPU {
 				if(salto == true){
 					ByteCode bcs = bcProgram.getByteCode(this.programCounter);
 					if(bcs.execute(this)){
-						System.out.println("El estado de la maquina tras ejecutar el bytecode " + bcProgram.devolverInstruccion(programCounter) + " es:");
-						System.out.println(" ");
-						System.out.println(toString());
-						System.out.println();
 						salto = false;
 					}
 					else
 						error = true;
-				}
-				else{
-					System.out.println("El estado de la maquina tras ejecutar el bytecode " + bcProgram.devolverInstruccion(programCounter) + " es:");
-					System.out.println(" ");
-					System.out.println(toString());
-					System.out.println();
 				}
 			}
 			else if(end){
@@ -277,6 +266,9 @@ public class CPU {
 			else
 				error = true;
 		}
+		System.out.println("El estado de la maquina tras ejecutar el programa es:");
+		System.out.println(" ");
+		System.out.println(toString());
 		finPrograma();
 		return error;
 	}

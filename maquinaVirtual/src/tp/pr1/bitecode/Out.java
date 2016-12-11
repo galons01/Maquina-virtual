@@ -13,7 +13,7 @@ public class Out extends ByteCode{
 	public boolean execute(CPU cpu) {
 		// TODO Auto-generated method stub
 		if(!cpu.emptyStack()){
-			cpu.out();
+			System.out.println("La cima de la pila es: " + cpu.out());
 			return true;
 		}
 		else
