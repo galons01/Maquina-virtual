@@ -9,17 +9,20 @@ public class CPU {
 	private Integer variable;
 	private OperandStack pila;
 	//private int aux;
-	private static boolean end = false;
-	private boolean salto = false;
+	private static boolean end;
+	private boolean salto;
 	private String resp;
 	private int programCounter;
-	private ByteCodeProgram bcProgram = new ByteCodeProgram();
+	private ByteCodeProgram bcProgram;
+	
 	
 	public CPU(ByteCodeProgram program){
-		pila = new OperandStack();
-		memoria = new Memory();
+		this.pila = new OperandStack();
+		this.memoria = new Memory();
 		this.bcProgram = program;
-		programCounter = 0;
+		this.programCounter = 0;
+		this.end = false;
+		this.salto = false;
 	}
 	
 	private void redimensionaMemoria(int n){
@@ -142,7 +145,7 @@ public class CPU {
 	/*public boolean añadirInstruccion(ByteCode bc, int pos){
 		
 	}*/
-	public void halt(){// no esta
+	public void halt(){
 		end = true;
 	}
 	
