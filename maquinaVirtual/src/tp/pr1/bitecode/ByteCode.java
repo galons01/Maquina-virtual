@@ -8,9 +8,21 @@ public abstract class ByteCode {
 	
 	public ByteCode(){
 	}
-	
+	/**
+	 * Ejecuta la parte común de la ejecución de los bytecodes de salto, 
+	 * es decir, extrae la cima y la subcima de la pila de operandos. 
+	 * La operación concreta la lleva a cabo el método abstracto compares()
+	 * 
+	 * @param cpu
+	 * @return
+	 */
 	public abstract boolean execute(CPU cpu);
 	
+	/**
+	 * 
+	 * @param s
+	 * @return
+	 */
 	public abstract ByteCode parse(String[]s);
 	
 	/*public ByteCode(ENUM_BYTECODE name){

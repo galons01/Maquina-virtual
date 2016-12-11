@@ -7,12 +7,19 @@ public abstract class ConditionalJumps extends Jump{
 	//private int n;
 	private int c, sc;
 	
-	public ConditionalJumps(int n){
+	public ConditionalJumps(int n){ //¿porq no hereda de bytecode? lo pone en el pdf.
 		super(n);
 		//this.n=n;
 	}
 
 	@Override
+	/**
+	 * Ejecuta la parte común de la ejecución de los bytecodes de salto, es decir, 
+	 * extrae la cima y la subcima de la pila de operandos. La operación concreta 
+	 * la lleva a cabo el método abstracto compares()
+	 * 
+	 * @param cpu
+	 */
 	public boolean execute(CPU cpu) {
 		// TODO Auto-generated method stub
 		if(!cpu.emptyStack()){
