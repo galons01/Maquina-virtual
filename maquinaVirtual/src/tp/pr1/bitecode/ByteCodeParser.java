@@ -10,7 +10,14 @@ import tp.pr1.bitecode.jumps.IfLe;
 import tp.pr1.bitecode.jumps.IfLeq;
 import tp.pr1.bitecode.jumps.IfNeq;
 
-
+/**
+ * 
+ * Parsea Bytecodes, parsea un string que contiene un posible bytecode. 
+ * Concretamente dispone de un método public static ByteCode parse(String line) que 
+ * devuelve el bytecode almacenado en s o bien null, si s no representa ninguna 
+ * instrucción.
+ *
+ */
 public class ByteCodeParser {
 	//private static ByteCode byteCode;
 	 private final static ByteCode[] bytecodes= {new Add(), new Sub(),  
@@ -21,7 +28,11 @@ public class ByteCodeParser {
 		 				new IfEq(0), new IfNeq(0),    
 		 				new IfLe(0), new IfLeq(0)};
 	
-	
+	/**
+	 *  Devuelve el bytecode almacenado en s o bien null, si s no representa ninguna instrucción.
+	 * @param line
+	 * @return
+	 */
 	public static ByteCode parse(String line){
 		line  = line.trim();
 		String[] aux = line.split(" +");
