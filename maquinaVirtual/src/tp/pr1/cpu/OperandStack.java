@@ -75,6 +75,6 @@ public class OperandStack {
 		return resp;
 	}
 	public char intChar(int valor){
-		return Character.forDigit(valor, 10);
+		return (char) valor;
 	}
 }

@@ -27,8 +27,6 @@ public abstract class ConditionalJumps extends Jump{
 			//cpu.meterPila(c);
 			if(!cpu.emptyStack()){
 				sc = cpu.pop();
-				cpu.meterPila(sc);
-				cpu.meterPila(c);
 				if(compares(c, sc, cpu))
 					return true;
 				else
