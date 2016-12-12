@@ -32,6 +32,7 @@ public class Goto extends Jump{
 			return true;
 		}
 		else
+			cpu.setSalto();
 			return false;
 	}
 	public String toString(){

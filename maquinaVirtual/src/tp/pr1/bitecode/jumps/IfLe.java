@@ -20,8 +20,10 @@ public class IfLe extends ConditionalJumps{
 				cpu.setSalto();
 				return true;
 			}
-			else
+			else{
+				cpu.setSalto();
 				return false;
+			}
 		}
 		else{
 			if(cpu.getContador() > n){

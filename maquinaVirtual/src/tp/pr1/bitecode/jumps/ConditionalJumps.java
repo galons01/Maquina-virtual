@@ -7,7 +7,7 @@ public abstract class ConditionalJumps extends Jump{
 	//private int n;
 	private int c, sc;
 	
-	public ConditionalJumps(int n){ //¿porq no hereda de bytecode? lo pone en el pdf.
+	public ConditionalJumps(int n){
 		super(n);
 		//this.n=n;
 	}

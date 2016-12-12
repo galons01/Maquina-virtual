@@ -182,23 +182,31 @@ public class CPU {
 	public boolean run(){
 		boolean error = false;
 		boolean parar = false;
+		boolean ejecutar = false;
 		int contador = this.bcProgram.getContador();
 		for(programCounter = 0; programCounter < contador && !error && !parar; programCounter++){
 			ByteCode bc = bcProgram.getByteCode(this.programCounter);
-			if(bc.execute(this) && !error && !end){
+			ejecutar=bc.execute(this);
+			if(ejecutar && !error && !end){
 				if(salto == true){
 					ByteCode bcs = bcProgram.getByteCode(this.programCounter);
 					if(bcs.execute(this)){
 						salto = false;
 					}
-					else
-						error = true;
+					else{
+						salto = true;
+						programCounter--;
+					}
 				}
 			}
 			else if(end){
 				System.out.println("Maquina parada. ");
 				parar = true;
 			}
+			else if(salto == true && ejecutar){
+				parar = true;
+			}
+			
 			else
 				error = true;
 		}
