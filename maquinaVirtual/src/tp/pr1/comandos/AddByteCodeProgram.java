@@ -2,15 +2,15 @@ package tp.pr1.comandos;
 
 import tp.pr1.mv.Engine;
 
-public class AddByteCodeProgram extends Command {
+public class AddByteCodeProgram implements Command {
 
 	public AddByteCodeProgram() {
 		super();
 	}
 
 	@Override
-	public boolean execute(Engine engine) {
-		return engine.readByteCodeProgram();
+	public void execute(Engine engine) {
+		engine.readByteCodeProgram();
 	}
 
 	@Override

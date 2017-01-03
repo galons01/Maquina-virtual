@@ -2,7 +2,7 @@ package tp.pr1.comandos;
 
 import tp.pr1.mv.Engine;
 
-public class Run extends Command {
+public class Run implements Command {
 
 	public Run() {
 		super();
@@ -10,8 +10,8 @@ public class Run extends Command {
 	}
 
 	@Override
-	public boolean execute(Engine engine) {
-		return engine.executeRun();
+	public void execute(Engine engine) {
+		engine.executeRun();
 	}
 
 	@Override

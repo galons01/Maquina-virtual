@@ -2,7 +2,7 @@ package tp.pr1.comandos;
 
 import tp.pr1.mv.Engine;
 
-public class Replace extends Command {
+public class Replace implements Command {
 	private int replace;
 
 	public Replace(int replace){
@@ -16,8 +16,8 @@ public class Replace extends Command {
 	}
 
 	@Override
-	public boolean execute(Engine engine) {
-		return engine.executeReplace(replace);
+	public void execute(Engine engine) {
+		engine.executeReplace(replace);
 	}
 
 	@Override

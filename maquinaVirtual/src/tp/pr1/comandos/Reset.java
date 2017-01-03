@@ -2,15 +2,15 @@ package tp.pr1.comandos;
 
 import tp.pr1.mv.Engine;
 
-public class Reset extends Command {
+public class Reset implements Command {
 
 	public Reset() {
 		super();
 	}
 
 	@Override
-	public boolean execute(Engine engine) {
-		return engine.executeReset();
+	public void execute(Engine engine) {
+		engine.executeReset();
 	}
 
 	@Override

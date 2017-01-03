@@ -2,15 +2,15 @@ package tp.pr1.comandos;
 
 import tp.pr1.mv.Engine;
 
-public class Help extends Command{
+public class Help implements Command{
 
 	public Help() {
 		super();
 	}
 
 	@Override
-	public boolean execute(Engine engine) {
-		return engine.executeHelp();
+	public void execute(Engine engine) {
+		engine.executeHelp();
 	}
 
 	@Override

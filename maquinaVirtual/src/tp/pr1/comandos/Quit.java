@@ -2,15 +2,15 @@ package tp.pr1.comandos;
 
 import tp.pr1.mv.Engine;
 
-public class Quit extends Command {
+public class Quit implements Command {
 
 	public Quit() {
 		super();
 	}
 
 	@Override
-	public boolean execute(Engine engine) {
-		return engine.executeQuit();
+	public void execute(Engine engine) {
+		engine.executeQuit();
 	}
 
 	@Override
