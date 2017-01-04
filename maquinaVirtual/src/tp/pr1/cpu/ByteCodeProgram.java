@@ -17,7 +17,7 @@ public class ByteCodeProgram {
 	private int tamaño;
 	
 	public ByteCodeProgram (){
-		program = new ByteCode[60];				//por defecto el tamaño es 20
+		program = new ByteCode[60];				//por defecto el tamaño es 60
 		contador = 0;
 		this.tamaño = 60;
 	}

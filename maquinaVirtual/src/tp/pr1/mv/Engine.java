@@ -18,6 +18,10 @@ public class Engine {
 	Command command;
 	private CPU cpu;
 	private boolean ejecutado;
+	private SourceProgram sProgram;
+	private ParsedProgram parsedProgram;
+	private ByteCodeProgram bytecodeProgram;
+	
 	
 	private static Scanner capt = new Scanner(System.in);
 	
