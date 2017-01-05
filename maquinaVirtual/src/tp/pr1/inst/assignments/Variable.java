@@ -6,6 +6,10 @@ public class Variable implements Term{
 	
 	private String varName;
 	
+	public Variable(String varName) {
+		this.varName = varName;
+	}
+
 	@Override
 	public Term parse(String term) {
 		if (term.length()!=1) 
