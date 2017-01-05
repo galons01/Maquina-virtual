@@ -2,6 +2,7 @@ package tp.pr1.inst.conditionals;
 
 import tp.pr1.elements.LexicalParser;
 import tp.pr1.inst.assignments.Term;
+import tp.pr1.inst.assignments.TermParser;
 
 public abstract class Condition {
 	private Term term1, term2;

@@ -12,8 +12,8 @@ public class Number implements Term{
 	
 	@Override
 	public Term parse(String term) {
-		// TODO Auto-generated method stub
-		return null;
+		//posible chequeo string
+		return new Number(Integer.parseInt(term));
 	}
 
 	@Override

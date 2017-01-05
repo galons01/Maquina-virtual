@@ -8,6 +8,9 @@ public class SimpleAssignment implements Instruction{
 	private String varName;
 	private Term rhs;
 
+	public SimpleAssignment(){
+	}
+	
 	public SimpleAssignment(String varName, Term rhs){
 		this.varName = varName;
 		this.rhs = rhs;
@@ -21,7 +24,7 @@ public class SimpleAssignment implements Instruction{
 		Term rhs=TermParser.parse(words[2]);
 		if (rhs==null) return null;
 		
-		return new SimpleAssignment(varName, rhs);
+		return new SimpleAssignment(words[0], rhs);
 	}
 
 	@Override
