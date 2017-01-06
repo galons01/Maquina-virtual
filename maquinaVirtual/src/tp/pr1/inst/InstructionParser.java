@@ -16,6 +16,12 @@ public class InstructionParser{
 			 new IfThen()};
 
 	public static Instruction parse(String line, LexicalParser lexicalParser) {
+		String[] words = line.split(" ");
+		for(int i=0; i<instructions.length; i++){
+			if(instructions[i].lexParse(words, lexicalParser)!=null){
+				return instructions[i].lexParse(words, lexicalParser);
+			}
+		}
 		return null;
 	}		
 }
