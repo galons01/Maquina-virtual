@@ -2,6 +2,7 @@ package tp.pr1.inst.conditionals;
 
 import tp.pr1.elements.LexicalParser;
 import tp.pr1.exceptions.ArrayException;
+import tp.pr1.exceptions.LexicalAnalysisException;
 import tp.pr1.inst.Instruction;
 import tp.pr1.mv.ParsedProgram;
 
@@ -24,7 +25,11 @@ public class IfThen implements Instruction{
 			Condition cond = ConditionParser.parse(words[1],words[2],words[3], lexParser);
 			
 			ParsedProgram wb = new ParsedProgram();
+			try{
 			lexParser.lexicalParser(wb,"endif");
+			}catch(LexicalAnalysisException e){
+				e.printStackTrace();
+			};
 			lexParser.increaseProgramCounter();
 			return new IfThen(cond, wb);
 		}

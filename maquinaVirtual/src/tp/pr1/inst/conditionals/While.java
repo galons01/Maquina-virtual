@@ -2,6 +2,7 @@ package tp.pr1.inst.conditionals;
 
 import tp.pr1.elements.LexicalParser;
 import tp.pr1.exceptions.ArrayException;
+import tp.pr1.exceptions.LexicalAnalysisException;
 import tp.pr1.inst.Instruction;
 import tp.pr1.inst.assignments.Term;
 import tp.pr1.inst.assignments.TermParser;
@@ -31,7 +32,11 @@ public class While implements Instruction{
 			if (rhs==null) return null;*/
 			
 			ParsedProgram wb = new ParsedProgram();
-			lexParser.lexicalParser(wb,"ENDWHILE");
+			try {
+				lexParser.lexicalParser(wb,"ENDWHILE");
+			} catch (LexicalAnalysisException e) {
+				e.printStackTrace();
+			}
 			lexParser.increaseProgramCounter();
 			return new While(cond, wb);
 		}
