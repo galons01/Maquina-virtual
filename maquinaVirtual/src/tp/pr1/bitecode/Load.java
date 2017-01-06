@@ -1,6 +1,6 @@
 package tp.pr1.bitecode;
 
-import tp.pr1.cpu.CPU;
+import tp.pr1.elements.CPU;
 
 public class Load extends ByteCode {
 	

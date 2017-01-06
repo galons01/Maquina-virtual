@@ -1,7 +1,7 @@
 package tp.pr1.bitecode.jumps;
 
 import tp.pr1.bitecode.ByteCode;
-import tp.pr1.cpu.CPU;
+import tp.pr1.elements.CPU;
 
 public class Goto extends Jump{
 	private int n;

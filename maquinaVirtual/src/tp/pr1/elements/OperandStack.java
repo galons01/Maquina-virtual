@@ -1,4 +1,4 @@
-package tp.pr1.cpu;
+package tp.pr1.elements;
 
 /**
  * 

@@ -1,6 +1,7 @@
-package tp.pr1.cpu;
+package tp.pr1.elements;
 
 import tp.pr1.bitecode.ByteCode;
+import tp.pr1.mv.ByteCodeProgram;
 
 /**
  * 
