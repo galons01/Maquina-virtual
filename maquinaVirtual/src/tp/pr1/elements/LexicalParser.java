@@ -22,10 +22,14 @@ public class LexicalParser {
 				Instruction instruction = InstructionParser.parse(line,this);
 				//Si instruction no es null
 				
-				pProgram.addInstruction(instruction);
+				pProgram.addInstr(instruction);
 				//Aumentar programCounter
 			}
 		}
+	}
+	
+	public void initialize(SourceProgram sProgram){
+		this.sProgram = sProgram;
 	}
 
 	public void increaseProgramCounter() {

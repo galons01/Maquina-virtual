@@ -10,6 +10,9 @@ import tp.pr1.comandos.Command;
 import tp.pr1.comandos.CommandParser;
 import tp.pr1.cpu.ByteCodeProgram;
 import tp.pr1.cpu.CPU;
+import tp.pr1.elements.LexicalParser;
+import tp.pr1.exceptions.ArrayException;
+import tp.pr1.exceptions.LexicalAnalysisException;
 /**
  * Representa el bucle de control de la aplicación, contiene la cpu.
  */
@@ -52,6 +55,12 @@ public class Engine {
 		}while(command == null || !end);
 	}
 	
+	/**
+	 * Carga un programa de un fichero.
+	 * 
+	 * @param fichName
+	 * @throws java.io.FileNotFoundException
+	 */
 	public void load(String fichName) throws java.io.FileNotFoundException{
 		System.out.print(command.toString());
 		Scanner sc = new Scanner(new File(fichName));
@@ -66,6 +75,37 @@ public class Engine {
 		sProgram.mostrarPrograma();
 	}
 	
+	/**
+	 * Parsea y compila el programa
+	 * 
+	 * @throws LexicalAnalysisException
+	 * @throws ArrayException
+	 */
+	public void executeCompile() throws LexicalAnalysisException, ArrayException{
+		
+		try{
+			lexicalAnalysis();
+			generateByteCode();
+		}
+		catch (LexicalAnalysisException e){
+			new LexicalAnalysisException();
+		}
+	}
+	
+	/**
+	 * 	inicializa el parseador
+	 * @throws LexicalAnalysisException 
+	 */
+	private void lexicalAnalysis() throws LexicalAnalysisException{
+
+			LexicalParser parseador = new LexicalParser();
+			parseador.initialize(sProgram);
+			parseador.lexicalParser(parsedProgram, "end");
+	}
+	
+	private void generateByteCode(){
+		
+	}
 	
 	/**Añade un programa(Bytecode)
 	 * 

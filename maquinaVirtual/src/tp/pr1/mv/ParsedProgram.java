@@ -34,7 +34,10 @@ public class ParsedProgram {
 			pProgram[contador] = ins;
 			contador ++;
 		}
-		else redimensionar();
+		else {
+			redimensionar();
+			addInstr(ins);
+		}
 	}
 	
 	private void redimensionar(){
@@ -64,10 +67,5 @@ public class ParsedProgram {
 	
 	public String textHelp() {
 		return "Almacena el codigo fuente parseado en instrucciones.";
-	}
-
-	public void addInstruction(Instruction instruction) {
-		// TODO Auto-generated method stub
-		
 	}
 }
