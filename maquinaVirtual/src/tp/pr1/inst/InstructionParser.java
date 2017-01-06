@@ -3,6 +3,7 @@ package tp.pr1.inst;
 import tp.pr1.elements.LexicalParser;
 import tp.pr1.inst.assignments.CompoundAssignment;
 import tp.pr1.inst.assignments.SimpleAssignment;
+import tp.pr1.inst.conditionals.IfThen;
 import tp.pr1.inst.conditionals.While;
 
 public class InstructionParser{
