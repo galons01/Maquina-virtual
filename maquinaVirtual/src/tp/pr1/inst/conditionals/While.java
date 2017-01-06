@@ -21,18 +21,21 @@ public class While implements Instruction{
 
 	@Override
 	public Instruction lexParse(String[] words, LexicalParser lexParser) {
-		Condition cond = ConditionParser.parse(words[1],words[2],words[3], lexParser);
-		
-		/*if (words.length!=3) return null;
-		
-		if (words[1]!="=") return null;
-		Term rhs=TermParser.parse(words[2]);
-		if (rhs==null) return null;*/
-		
-		ParsedProgram wb = new ParsedProgram();
-		lexParser.lexicalParser(wb,"ENDWHILE");
-		lexParser.increaseProgramCounter();
-		return new While(cond, wb);
+		if(words[0].equals("while")){
+			Condition cond = ConditionParser.parse(words[1],words[2],words[3], lexParser);
+			
+			/*if (words.length!=3) return null;
+			
+			if (words[1]!="=") return null;
+			Term rhs=TermParser.parse(words[2]);
+			if (rhs==null) return null;*/
+			
+			ParsedProgram wb = new ParsedProgram();
+			lexParser.lexicalParser(wb,"ENDWHILE");
+			lexParser.increaseProgramCounter();
+			return new While(cond, wb);
+		}
+		return null;
 	}
 
 	@Override
