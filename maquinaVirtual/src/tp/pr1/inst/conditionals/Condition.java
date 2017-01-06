@@ -16,6 +16,5 @@ public abstract class Condition {
 	 return parseOp(term1, op, term2, parser);
 	}
 	
-	protected abstract Condition parseOp(Term t1, String op, Term t2,
-	LexicalParser lexParser);
+	protected abstract Condition parseOp(Term t1, String op, Term t2, LexicalParser lexParser);
 }
