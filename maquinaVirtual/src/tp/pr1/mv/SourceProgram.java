@@ -60,6 +60,12 @@ public class SourceProgram {
 		contador = 0;
 	}
 	
+	public void mostrarPrograma(){
+		for (int i=0; i<contador; i++){
+			System.out.println(i + ": " + sProgram[i].toString());
+		}
+	}
+	
 	public String textHelp() {
 		return "Almacena el codigo fuente.";
 	}

@@ -1,11 +1,17 @@
 package tp.pr1.comandos;
 
+import java.io.FileNotFoundException;
+
 import tp.pr1.mv.Engine;
 
 public class Load implements Command {
 
 	private String fich;
 
+	public Load(){
+		
+	}
+	
 	public Load(String fich){
 		super();
 		this.fich = fich;
@@ -13,19 +19,24 @@ public class Load implements Command {
 	
 	@Override
 	public void execute(Engine engine) {
-		// TODO Auto-generated method stub
+		try{
+			engine.load(fich);
+		}catch (FileNotFoundException e){
+			
+		}
 	}
 
 	@Override
 	public Command parse(String[] s) {
-		// TODO Auto-generated method stub
-		return null;
+		if(s.length == 2 && s[0].equalsIgnoreCase("LOAD"))
+			return new Load(s[1]);
+		else
+			return null;
 	}
 
 	@Override
 	public String textHelp() {
-		// TODO Auto-generated method stub
-		return null;
+		return "LOAD: load nombreDeFichero.txt";
 	}
 	
 	public String toString(){

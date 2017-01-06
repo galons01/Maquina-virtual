@@ -1,6 +1,8 @@
 package tp.pr1.mv;
 
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 import tp.pr1.bitecode.ByteCode;
 import tp.pr1.bitecode.ByteCodeParser;
@@ -20,12 +22,13 @@ public class Engine {
 	private boolean ejecutado;
 	private SourceProgram sProgram;
 	private ParsedProgram parsedProgram;
-	private ByteCodeProgram bytecodeProgram;
 	
 	
 	private static Scanner capt = new Scanner(System.in);
 	
 	public Engine (){
+		this.sProgram = new SourceProgram();
+		this.parsedProgram = new ParsedProgram();
 		this.program = new ByteCodeProgram();				//el tamaño del programa se puede ajustar aqui.
 		this.end = true;
 	}
@@ -48,6 +51,21 @@ public class Engine {
 			
 		}while(command == null || !end);
 	}
+	
+	public void load(String fichName) throws java.io.FileNotFoundException{
+		System.out.print(command.toString());
+		Scanner sc = new Scanner(new File(fichName));
+		
+		while(sc.hasNextLine()){
+			this.sProgram.addInstr(sc.nextLine());
+		}
+		sc.close();
+		
+		//esto no aqui es para pruebas
+		System.out.println("Programa fuente almacenado:");
+		sProgram.mostrarPrograma();
+	}
+	
 	
 	/**Añade un programa(Bytecode)
 	 * 
@@ -91,28 +109,6 @@ public class Engine {
 		
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	public boolean executeHelp() {
-		CommandParser.showHelp();
-		ejecutado = true;
-		return ejecutado;
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public boolean executeQuit() {
-		System.out.print(command.toString());
-		mostrarPrograma();
-		ejecutado = true;
-		end = true;
-		return ejecutado;
-	}
-	
 	/**Capta un BytecodeProgram por teclado y lo muestra.
 	 * 
 	 * @return
@@ -140,6 +136,28 @@ public class Engine {
 			lineaByte = lineaByte.toUpperCase();
 		}
 		mostrarPrograma();
+		return ejecutado;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean executeHelp() {
+		CommandParser.showHelp();
+		ejecutado = true;
+		return ejecutado;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean executeQuit() {
+		System.out.print(command.toString());
+		mostrarPrograma();
+		ejecutado = true;
+		end = true;
 		return ejecutado;
 	}
 	
