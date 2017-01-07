@@ -1,6 +1,7 @@
 package tp.pr1.inst.assignments;
 
 import tp.pr1.bitecode.ByteCode;
+import tp.pr1.elements.Compiler;
 
 public class Variable implements Term{
 	
@@ -27,5 +28,6 @@ public class Variable implements Term{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

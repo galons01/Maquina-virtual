@@ -1,5 +1,6 @@
 package tp.pr1.inst.conditionals;
 
+import tp.pr1.elements.Compiler;
 import tp.pr1.elements.LexicalParser;
 import tp.pr1.exceptions.ArrayException;
 import tp.pr1.exceptions.LexicalAnalysisException;
@@ -45,6 +46,7 @@ public class While implements Instruction{
 
 	@Override
 	public void compile(Compiler compiler) throws ArrayException {
+		// TODO Auto-generated method stub
 		
 	}
 

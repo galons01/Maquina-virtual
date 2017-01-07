@@ -4,5 +4,5 @@ import tp.pr1.bitecode.ByteCode;
 
 public interface Term {
 	Term parse(String term);
-	ByteCode compile(Compiler compiler);
+	ByteCode compile(tp.pr1.elements.Compiler compiler);
 }

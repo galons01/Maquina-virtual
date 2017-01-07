@@ -92,18 +92,26 @@ public class Engine {
 	}
 	
 	/**
-	 * 	inicializa el parseador
+	 * 	Inicializa el parseador y lo ejecuta.
+	 * 
 	 * @throws LexicalAnalysisException 
 	 */
 	private void lexicalAnalysis() throws LexicalAnalysisException{
-
-			LexicalParser parseador = new LexicalParser();
-			parseador.initialize(sProgram);
-			parseador.lexicalParser(parsedProgram, "end");
-	}
-	
-	private void generateByteCode(){
 		
+		LexicalParser parseador = new LexicalParser();
+		parseador.initialize(sProgram);
+		parseador.lexicalParser(parsedProgram, "end");
+	}
+	/**
+	 * Inicializa el compilador y lo ejecuta.
+	 * 
+	 * @throws ArrayException
+	 */
+	private void generateByteCode() throws ArrayException{
+		
+		tp.pr1.elements.Compiler compilador = new tp.pr1.elements.Compiler();
+		compilador.initialize(program);
+		compilador.compile(parsedProgram);
 	}
 	
 	/**Añade un programa(Bytecode)

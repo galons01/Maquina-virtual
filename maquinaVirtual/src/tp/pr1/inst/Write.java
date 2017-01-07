@@ -1,5 +1,6 @@
 package tp.pr1.inst;
 
+import tp.pr1.elements.Compiler;
 import tp.pr1.elements.LexicalParser;
 import tp.pr1.exceptions.ArrayException;
 

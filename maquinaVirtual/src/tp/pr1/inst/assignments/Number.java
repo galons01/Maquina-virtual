@@ -1,6 +1,8 @@
 package tp.pr1.inst.assignments;
 
 import tp.pr1.bitecode.ByteCode;
+import tp.pr1.bitecode.Push;
+import tp.pr1.elements.Compiler;
 
 public class Number implements Term{
 	
@@ -18,8 +20,8 @@ public class Number implements Term{
 
 	@Override
 	public ByteCode compile(Compiler compiler) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Push(number);
 	}
+
 
 }

@@ -34,12 +34,15 @@ public class CompoundAssignment implements Instruction{
 	}
 
 	@Override
-	public void compile(Compiler compiler) throws ArrayException {
+	public void compile(tp.pr1.elements.Compiler compiler) throws ArrayException {
+		
 		
 	}
 	
 	public String toString(){
 		return null;
 	}
+
+	
 
 }

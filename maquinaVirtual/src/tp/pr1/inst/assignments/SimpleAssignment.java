@@ -28,7 +28,7 @@ public class SimpleAssignment implements Instruction{
 	}
 
 	@Override
-	public void compile(Compiler compiler) throws ArrayException {
+	public void compile(tp.pr1.elements.Compiler compiler) throws ArrayException {
 		// TODO Auto-generated method stub
 		
 	}
