@@ -12,7 +12,8 @@ public class Compiler {
 	private int numVariables;
 	
 	public Compiler(){
-		
+		this.numVariables = 0;
+		this.varTable = new String[30];
 	}
 	
 	public void compile(ParsedProgram pProgram) throws ArrayException{
@@ -25,7 +26,7 @@ public class Compiler {
 				i++;
 			}
 		}
-		catch(ArrayException e) { //esta excepcion puede q no sea
+		catch(ArrayException e) { //esta excepcion seguramente no sea, mirar javadoc
 			
 		}
 	}
@@ -41,23 +42,32 @@ public class Compiler {
 	 * @return
 	 */
 	public int indexOf(java.lang.String varName){
-		return null;
+		int i = 0;
+		while(i < this.numVariables){
+			if(varName.equals(this.varTable[i])) return i;
+		}
+		return addVariable(varName);
 	}
-	
-	public void addByteCode(ByteCode bc) throws ArrayException{
-		
-	}
+
 	
 	public int addVariable(java.lang.String varName){
-		
+		this.varTable[this.numVariables] = varName;
+		int indice = this.numVariables;
+		this.numVariables++;
+		return indice;
+	}
+	
+	
+	public void addByteCode(ByteCode bc) throws ArrayException{
+		this.bcProgram.addInstruccion(bc);
+	}
+	
+	public int getSizeBcProgram(){
+		return this.bcProgram.getContador();
 	}
 	
 	@Override
 	public java.lang.String toString(){
 		return "";
-	}
-	
-	public int getSizeBcProgram(){
-		
 	}
 }
