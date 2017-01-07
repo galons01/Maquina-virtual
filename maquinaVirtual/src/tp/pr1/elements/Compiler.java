@@ -51,6 +51,7 @@ public class Compiler {
 
 	
 	public int addVariable(java.lang.String varName){
+		
 		this.varTable[this.numVariables] = varName;
 		int indice = this.numVariables;
 		this.numVariables++;

@@ -9,13 +9,11 @@ public class Push extends ByteCode {
 	public Push(int param) {
 		super();
 		this.param = param;
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public boolean execute(CPU cpu) {
 		return cpu.push(param);
-		// TODO Auto-generated method stub
 	}
 
 	@Override
@@ -30,7 +28,6 @@ public class Push extends ByteCode {
 		}
 		else
 			return null;
-		// TODO Auto-generated method stub
 	}
 	public String toString(){
 		return "PUSH " + param;

@@ -1,11 +1,13 @@
 package tp.pr1.inst.assignments;
 
 import tp.pr1.bitecode.ByteCode;
+import tp.pr1.bitecode.Load;
 import tp.pr1.elements.Compiler;
 
 public class Variable implements Term{
 	
 	private String varName;
+	private int indice;
 	
 	public Variable(String varName) {
 		this.varName = varName;
@@ -25,8 +27,8 @@ public class Variable implements Term{
 
 	@Override
 	public ByteCode compile(Compiler compiler) {
-		// TODO Auto-generated method stub
-		return null;
+		this.indice = compiler.indexOf(varName);
+		return new Load(indice);
 	}
 
 
