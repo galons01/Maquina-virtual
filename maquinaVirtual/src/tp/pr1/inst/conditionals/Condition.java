@@ -1,6 +1,7 @@
 package tp.pr1.inst.conditionals;
 
 import tp.pr1.bitecode.jumps.ConditionalJumps;
+import tp.pr1.elements.Compiler;
 import tp.pr1.elements.LexicalParser;
 import tp.pr1.inst.assignments.Term;
 import tp.pr1.inst.assignments.TermParser;
@@ -18,4 +19,13 @@ public abstract class Condition {
 	}
 	
 	protected abstract Condition parseOp(Term t1, String op, Term t2, LexicalParser lexParser);
+	
+	
+	protected abstract ConditionalJumps compileOp();
+
+	public void compile(Compiler compiler) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

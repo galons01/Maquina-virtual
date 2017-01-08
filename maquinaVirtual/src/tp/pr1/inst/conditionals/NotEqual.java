@@ -1,5 +1,6 @@
 package tp.pr1.inst.conditionals;
 
+import tp.pr1.bitecode.jumps.ConditionalJumps;
 import tp.pr1.elements.LexicalParser;
 import tp.pr1.inst.assignments.Term;
 
@@ -19,6 +20,12 @@ private Term term1, term2;
 			return new NotEqual(t1, t2);
 		}
 		//¿para que necesito lexicalParse?
+		return null;
+	}
+
+	@Override
+	protected ConditionalJumps compileOp() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

@@ -1,5 +1,9 @@
 package tp.pr1.inst.assignments;
 
+import tp.pr1.bitecode.arithmetics.Add;
+import tp.pr1.bitecode.arithmetics.Div;
+import tp.pr1.bitecode.arithmetics.Mul;
+import tp.pr1.bitecode.arithmetics.Sub;
 import tp.pr1.elements.LexicalParser;
 import tp.pr1.exceptions.ArrayException;
 import tp.pr1.inst.Instruction;
@@ -35,8 +39,16 @@ public class CompoundAssignment implements Instruction{
 
 	@Override
 	public void compile(tp.pr1.elements.Compiler compiler) throws ArrayException {
-		
-		
+		compiler.addByteCode(term1.compile(compiler));
+		compiler.addByteCode(term2.compile(compiler));
+		if(this.operator.equals("+"))
+			compiler.addByteCode(new Add());
+		else if(this.operator.equals("-"))
+			compiler.addByteCode(new Sub());
+		else if(this.operator.equals("*"))
+			compiler.addByteCode(new Mul());
+		else
+			compiler.addByteCode(new Div());
 	}
 	
 	public String toString(){

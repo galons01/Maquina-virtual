@@ -1,5 +1,6 @@
 package tp.pr1.inst.conditionals;
 
+import tp.pr1.bitecode.jumps.ConditionalJumps;
 import tp.pr1.elements.Compiler;
 import tp.pr1.elements.LexicalParser;
 import tp.pr1.exceptions.ArrayException;
@@ -39,7 +40,11 @@ public class IfThen implements Instruction{
 
 	@Override
 	public void compile(Compiler compiler) throws ArrayException {
-		// TODO Auto-generated method stub
+		this.condition.compile(compiler);
+		compiler.compile(this.body);
+		ConditionalJumps cj = this.condition.cj;
+		int n = compiler.getSizeBcProgram();
+		cj.setN(n);
 		
 	}
 

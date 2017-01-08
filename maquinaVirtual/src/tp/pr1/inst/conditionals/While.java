@@ -1,12 +1,13 @@
 package tp.pr1.inst.conditionals;
 
+import tp.pr1.bitecode.jumps.ConditionalJumps;
+import tp.pr1.bitecode.jumps.Goto;
 import tp.pr1.elements.Compiler;
 import tp.pr1.elements.LexicalParser;
 import tp.pr1.exceptions.ArrayException;
 import tp.pr1.exceptions.LexicalAnalysisException;
 import tp.pr1.inst.Instruction;
-import tp.pr1.inst.assignments.Term;
-import tp.pr1.inst.assignments.TermParser;
+import tp.pr1.mv.ByteCodeProgram;
 import tp.pr1.mv.ParsedProgram;
 
 public class While implements Instruction{
@@ -46,7 +47,13 @@ public class While implements Instruction{
 
 	@Override
 	public void compile(Compiler compiler) throws ArrayException {
-		// TODO Auto-generated method stub
+		this.condition.compile(compiler);
+		compiler.compile(this.body);
+		ConditionalJumps cj = this.condition.cj;
+		int n = compiler.getSizeBcProgram();
+		cj.setN(n);
+		ByteCodeProgram bcProgram = new ByteCodeProgram();//revisar
+		compiler.addByteCode(new Goto(bcProgram.getContador()));
 		
 	}
 
