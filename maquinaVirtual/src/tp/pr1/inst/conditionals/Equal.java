@@ -18,7 +18,7 @@ public class Equal extends Condition{
 	@Override
 	protected Condition parseOp(Term t1, String op, Term t2, LexicalParser lexParser) {
 		if(op.equals("=")){
-			lexParser.increaseProgramCounter();//duda
+			lexParser.increaseProgramCounter();
 			return new Equal(t1, t2);
 		}
 		
@@ -27,6 +27,6 @@ public class Equal extends Condition{
 
 	@Override
 	protected ConditionalJumps compileOp() {
-		return new IfEq();
+		return new IfEq(0);
 	}
 }

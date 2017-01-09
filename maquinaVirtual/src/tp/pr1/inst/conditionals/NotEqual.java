@@ -1,6 +1,8 @@
 package tp.pr1.inst.conditionals;
 
 import tp.pr1.bitecode.jumps.ConditionalJumps;
+import tp.pr1.bitecode.jumps.IfEq;
+import tp.pr1.bitecode.jumps.IfNeq;
 import tp.pr1.elements.LexicalParser;
 import tp.pr1.inst.assignments.Term;
 
@@ -25,7 +27,6 @@ private Term term1, term2;
 
 	@Override
 	protected ConditionalJumps compileOp() {
-		// TODO Auto-generated method stub
-		return null;
+		return new IfNeq(0);
 	}
 }

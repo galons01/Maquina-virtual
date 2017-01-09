@@ -34,8 +34,7 @@ public abstract class Condition {
 	protected abstract ConditionalJumps compileOp();
 
 	public void compile(Compiler compiler) {
-		//aqui se crea cj segun op
-		this.cj = new ConditionalJumps();
+		this.cj = compileOp();
 	}
 
 }

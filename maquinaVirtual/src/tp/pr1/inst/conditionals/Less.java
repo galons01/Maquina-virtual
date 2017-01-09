@@ -1,6 +1,7 @@
 package tp.pr1.inst.conditionals;
 
 import tp.pr1.bitecode.jumps.ConditionalJumps;
+import tp.pr1.bitecode.jumps.IfLe;
 import tp.pr1.elements.LexicalParser;
 import tp.pr1.inst.assignments.Term;
 
@@ -25,8 +26,7 @@ public class Less extends Condition{
 
 	@Override
 	protected ConditionalJumps compileOp() {
-		// TODO Auto-generated method stub
-		return null;
+		return new IfLe(0);
 	}
 
 }
