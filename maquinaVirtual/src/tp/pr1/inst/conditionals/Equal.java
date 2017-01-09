@@ -1,6 +1,7 @@
 package tp.pr1.inst.conditionals;
 
 import tp.pr1.bitecode.jumps.ConditionalJumps;
+import tp.pr1.bitecode.jumps.IfEq;
 import tp.pr1.elements.LexicalParser;
 import tp.pr1.inst.assignments.Term;
 
@@ -17,15 +18,15 @@ public class Equal extends Condition{
 	@Override
 	protected Condition parseOp(Term t1, String op, Term t2, LexicalParser lexParser) {
 		if(op.equals("=")){
+			lexParser.increaseProgramCounter();//duda
 			return new Equal(t1, t2);
 		}
-		//¿para que necesito lexicalParse?
+		
 		return null;
 	}
 
 	@Override
 	protected ConditionalJumps compileOp() {
-		// TODO Auto-generated method stub
-		return null;
+		return new IfEq();
 	}
 }

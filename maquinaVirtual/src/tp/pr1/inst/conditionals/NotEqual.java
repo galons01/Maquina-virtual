@@ -17,9 +17,9 @@ private Term term1, term2;
 	@Override
 	protected Condition parseOp(Term t1, String op, Term t2, LexicalParser lexParser) {
 		if(op.equals("!=")){
+			lexParser.increaseProgramCounter();
 			return new NotEqual(t1, t2);
 		}
-		//¿para que necesito lexicalParse?
 		return null;
 	}
 

@@ -4,7 +4,6 @@ import tp.pr1.elements.CPU;
 
 public abstract class ConditionalJumps extends Jump{
 	private int c, sc;
-	
 	public ConditionalJumps(int n){
 		super(n);
 	}
@@ -40,6 +39,6 @@ public abstract class ConditionalJumps extends Jump{
 	protected abstract boolean compares(int c, int sc, CPU cpu);
 
 	public void setN(int n){
-		//Cambiar el tamaño de la n
+		this.n=n;
 	}
 }

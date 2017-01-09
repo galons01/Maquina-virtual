@@ -10,12 +10,22 @@ public abstract class Condition {
 	private Term term1, term2;
 	protected ConditionalJumps cj; //para la compilación
 	
+	public Condition(){
+		
+	}
+	
+	public Condition(Term t1, Term t2){
+		this.term1 = t1;
+		this.term2 = t2;
+	}
 	
 	public Condition parse(String t1, String op, String t2, LexicalParser parser) {
-	 this.term1=TermParser.parse(t1);
-	 this.term2=TermParser.parse(t2);
-	 
-	 return parseOp(term1, op, term2, parser);
+		this.term1=TermParser.parse(t1);
+		this.term2=TermParser.parse(t2);
+		 
+		if(term1==null || term2==null) return null;
+		 
+		return parseOp(term1, op, term2, parser);
 	}
 	
 	protected abstract Condition parseOp(Term t1, String op, Term t2, LexicalParser lexParser);
@@ -24,8 +34,8 @@ public abstract class Condition {
 	protected abstract ConditionalJumps compileOp();
 
 	public void compile(Compiler compiler) {
-		// TODO Auto-generated method stub
-		
+		//aqui se crea cj segun op
+		this.cj = new ConditionalJumps();
 	}
 
 }

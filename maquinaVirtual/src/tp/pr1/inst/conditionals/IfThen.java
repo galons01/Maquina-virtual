@@ -6,6 +6,8 @@ import tp.pr1.elements.LexicalParser;
 import tp.pr1.exceptions.ArrayException;
 import tp.pr1.exceptions.LexicalAnalysisException;
 import tp.pr1.inst.Instruction;
+import tp.pr1.inst.assignments.Term;
+import tp.pr1.inst.assignments.TermParser;
 import tp.pr1.mv.ParsedProgram;
 
 public class IfThen implements Instruction{
@@ -25,6 +27,8 @@ public class IfThen implements Instruction{
 	public Instruction lexParse(String[] words, LexicalParser lexParser) {
 		if(words[0].equals("if")){
 			Condition cond = ConditionParser.parse(words[1],words[2],words[3], lexParser);
+			
+			if(cond == null) return null;
 			
 			ParsedProgram wb = new ParsedProgram();
 			try{

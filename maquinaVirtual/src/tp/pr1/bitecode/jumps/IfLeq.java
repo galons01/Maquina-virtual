@@ -4,10 +4,10 @@ import tp.pr1.bitecode.ByteCode;
 import tp.pr1.elements.CPU;
 
 public class IfLeq extends ConditionalJumps{
-	private int n;
+	//private int n;
 	public IfLeq(int n) {
 		super(n);
-		this.n = n;
+		//this.n = n;
 		// TODO Auto-generated constructor stub
 	}
 

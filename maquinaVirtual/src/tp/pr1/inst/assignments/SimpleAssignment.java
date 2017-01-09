@@ -1,5 +1,6 @@
 package tp.pr1.inst.assignments;
 
+import tp.pr1.bitecode.Store;
 import tp.pr1.elements.LexicalParser;
 import tp.pr1.exceptions.ArrayException;
 import tp.pr1.inst.Instruction;
@@ -7,7 +8,6 @@ import tp.pr1.inst.Instruction;
 public class SimpleAssignment implements Instruction{
 	private String varName;
 	private Term rhs;
-	private Term var;
 
 	public SimpleAssignment(){
 	}
@@ -15,7 +15,6 @@ public class SimpleAssignment implements Instruction{
 	public SimpleAssignment(String varName, Term rhs){
 		this.varName = varName;
 		this.rhs = rhs;
-		this.var = new Variable(this.varName);
 	}
 	
 	/**
@@ -34,7 +33,7 @@ public class SimpleAssignment implements Instruction{
 		rhs=TermParser.parse(words[2]);
 		if (rhs==null) return null;
 		
-		var=TermParser.parse(words[0]);
+		Term var=TermParser.parse(words[0]);
 		if (var==null) return null;
 		
 		return new SimpleAssignment(words[0], rhs);
@@ -49,7 +48,7 @@ public class SimpleAssignment implements Instruction{
 	@Override
 	public void compile(tp.pr1.elements.Compiler compiler) throws ArrayException {
 		compiler.addByteCode(rhs.compile(compiler));
-		compiler.addByteCode(var.compile(compiler));
+		compiler.addByteCode(new Store(compiler.indexOf(varName)));
 	}
 
 }

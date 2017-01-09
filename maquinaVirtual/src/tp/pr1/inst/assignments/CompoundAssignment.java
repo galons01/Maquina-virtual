@@ -1,5 +1,6 @@
 package tp.pr1.inst.assignments;
 
+import tp.pr1.bitecode.Store;
 import tp.pr1.bitecode.arithmetics.Add;
 import tp.pr1.bitecode.arithmetics.Div;
 import tp.pr1.bitecode.arithmetics.Mul;
@@ -10,7 +11,6 @@ import tp.pr1.inst.Instruction;
 
 public class CompoundAssignment implements Instruction{
 
-	private Term var;
 	private String varName;
 	private String operator;
 	private Term term1, term2;
@@ -24,7 +24,6 @@ public class CompoundAssignment implements Instruction{
 		this.operator = operator;
 		this.term1 = t1;
 		this.term2 = t2;
-		this.var = new Variable(this.varName);
 	}
 	
 	@Override
@@ -54,7 +53,7 @@ public class CompoundAssignment implements Instruction{
 			compiler.addByteCode(new Mul());
 		else
 			compiler.addByteCode(new Div());
-		compiler.addByteCode(var.compile(compiler));
+		compiler.addByteCode(new Store(compiler.indexOf(varName)));
 	}
 	
 	public String toString(){

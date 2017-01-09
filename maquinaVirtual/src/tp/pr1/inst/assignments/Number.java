@@ -11,11 +11,20 @@ public class Number implements Term{
 	public Number(int num){
 		this.number = num;
 	}
+
+	private static boolean isNumeric(String cadena){
+		try {
+			Integer.parseInt(cadena);
+			return true;
+		} catch (NumberFormatException nfe){
+			return false;
+		}
+	}
 	
 	@Override
 	public Term parse(String term) {
-		//posible chequeo string
-		return new Number(Integer.parseInt(term));
+		if (isNumeric(term)) return new Number(Integer.parseInt(term));
+		return null;
 	}
 
 	@Override

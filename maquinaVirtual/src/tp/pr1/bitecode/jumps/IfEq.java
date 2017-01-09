@@ -4,10 +4,10 @@ import tp.pr1.bitecode.ByteCode;
 import tp.pr1.elements.CPU;
 
 public class IfEq extends ConditionalJumps{
-	private int n;
+//	private int n;
 	public IfEq(int n) {
 		super(n);
-		this.n = n;
+//		this.n = n;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -37,7 +37,6 @@ public class IfEq extends ConditionalJumps{
 
 	@Override
 	protected ByteCode parseJump(String s, int n) {
-		// TODO Auto-generated method stub
 		if(s.equalsIgnoreCase("IFEQ")){
 			return new IfEq(n);
 		}

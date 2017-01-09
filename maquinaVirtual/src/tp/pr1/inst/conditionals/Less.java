@@ -17,9 +17,9 @@ public class Less extends Condition{
 	@Override
 	protected Condition parseOp(Term t1, String op, Term t2, LexicalParser lexParser) {
 		if(op.equals("<")){
+			lexParser.increaseProgramCounter();
 			return new Less(t1, t2);
 		}
-		//¿para que necesito lexicalParse?
 		return null;
 	}
 

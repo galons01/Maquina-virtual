@@ -3,10 +3,10 @@ package tp.pr1.bitecode.jumps;
 import tp.pr1.bitecode.ByteCode;
 
 public abstract class Jump extends ByteCode{
-	//private int n;
+	protected int n;
 	public Jump(int n){
 		super();
-		//this.n = n;
+		this.n = n;
 	}
 	
 	/**
@@ -28,5 +28,6 @@ public abstract class Jump extends ByteCode{
 		else
 			return null;
 	}
+	
 	protected abstract ByteCode parseJump(String s, int n);
 }
