@@ -81,6 +81,7 @@ public class Engine {
 	 * @throws ArrayException
 	 */
 	public void executeCompile() throws LexicalAnalysisException, ArrayException{
+		System.out.print(command.toString());
 		
 		try{
 			lexicalAnalysis();
@@ -89,6 +90,8 @@ public class Engine {
 		catch (LexicalAnalysisException e){
 			new LexicalAnalysisException();
 		}
+		
+		mostrarPrograma();
 	}
 	
 	/**

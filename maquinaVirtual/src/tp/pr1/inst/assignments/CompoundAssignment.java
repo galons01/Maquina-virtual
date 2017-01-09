@@ -28,9 +28,9 @@ public class CompoundAssignment implements Instruction{
 	
 	@Override
 	public Instruction lexParse(String[] words, LexicalParser lexParser) {
-		if (words.length!=4) return null;
+		if (words.length!=5) return null;
 		
-		if (words[1]!="=") return null;
+		if (!words[1].equals("=")) return null;
 		Term rhs1=TermParser.parse(words[2]);
 		Term rhs2=TermParser.parse(words[4]);
 		if (rhs1==null || rhs2==null) return null;

@@ -28,7 +28,7 @@ public class SimpleAssignment implements Instruction{
 	public Instruction lexParse(String[] words, LexicalParser lexParser) {
 		if (words.length!=3) return null;
 		
-		if (words[1]!="=") return null;
+		if (!words[1].equals("=")) return null;
 		
 		rhs=TermParser.parse(words[2]);
 		if (rhs==null) return null;

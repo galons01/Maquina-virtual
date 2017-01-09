@@ -20,10 +20,13 @@ public class LexicalParser {
 			if (line.equalsIgnoreCase(stopKey)) stop = true;
 			else {
 				Instruction instruction = InstructionParser.parse(line,this);
+				if(instruction == null) stop = true; //esto es un error
+				else {
 				//Si instruction no es null
 				
-				pProgram.addInstr(instruction);
-				//Aumentar programCounter
+					pProgram.addInstr(instruction);
+					programCounter++;
+				}
 			}
 		}
 	}
