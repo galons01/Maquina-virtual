@@ -3,6 +3,7 @@ package tp.pr1.inst.conditionals;
 import tp.pr1.bitecode.jumps.ConditionalJumps;
 import tp.pr1.elements.Compiler;
 import tp.pr1.elements.LexicalParser;
+import tp.pr1.exceptions.ArrayException;
 import tp.pr1.inst.assignments.Term;
 import tp.pr1.inst.assignments.TermParser;
 
@@ -33,8 +34,11 @@ public abstract class Condition {
 	
 	protected abstract ConditionalJumps compileOp();
 
-	public void compile(Compiler compiler) {
+	public void compile(Compiler compiler) throws ArrayException {
 		this.cj = compileOp();
+		compiler.addByteCode(this.term1.compile(compiler));
+		compiler.addByteCode(this.term2.compile(compiler));
+		compiler.addByteCode(cj);
 	}
 
 }
