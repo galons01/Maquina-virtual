@@ -9,8 +9,9 @@ public class ConditionParser {
 	public static Condition parse(String string, String string2, String string3, LexicalParser lexParser) {
 		
 		for(int i=0; i<conditions.length; i++){
-			if(conditions[i].parse(string, string2, string3, lexParser)!=null){
-				return conditions[i].parse(string, string2, string3, lexParser);
+			Condition condicion = conditions[i].parse(string, string2, string3, lexParser);
+			if(condicion!=null){
+				return condicion;
 			}
 		}
 		
