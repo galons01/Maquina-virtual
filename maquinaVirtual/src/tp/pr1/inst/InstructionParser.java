@@ -18,9 +18,9 @@ public class InstructionParser{
 	public static Instruction parse(String line, LexicalParser lexicalParser) {
 		String[] words = line.split(" ");
 		for(int i=0; i<instructions.length; i++){
-			Instruction isntruccion = instructions[i].lexParse(words, lexicalParser);
-			if(isntruccion!=null){
-				return isntruccion;
+			Instruction instruccion = instructions[i].lexParse(words, lexicalParser);
+			if(instruccion!=null){
+				return instruccion;
 			}
 		}
 		return null;

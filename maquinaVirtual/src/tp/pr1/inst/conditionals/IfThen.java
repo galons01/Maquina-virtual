@@ -36,7 +36,7 @@ public class IfThen implements Instruction{
 			}catch(LexicalAnalysisException e){
 				e.printStackTrace();
 			};
-			lexParser.increaseProgramCounter();
+//			lexParser.increaseProgramCounter();
 			return new IfThen(cond, wb);
 		}
 		return null;
