@@ -47,13 +47,14 @@ public class While implements Instruction{
 
 	@Override
 	public void compile(Compiler compiler) throws ArrayException {
+		int origen = compiler.getSizeBcProgram();
 		this.condition.compile(compiler);
 		compiler.compile(this.body);
 		ConditionalJumps cj = this.condition.cj;
 		int n = compiler.getSizeBcProgram();
-		cj.setN(n);
-		ByteCodeProgram bcProgram = new ByteCodeProgram();//revisar
-		compiler.addByteCode(new Goto(bcProgram.getContador()));
+		cj.setN(n+1);
+//		ByteCodeProgram bcProgram = new ByteCodeProgram();//revisar
+		compiler.addByteCode(new Goto(origen));
 		
 	}
 
