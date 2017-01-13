@@ -13,7 +13,7 @@ public class Compiler {
 	
 	public Compiler(){
 		this.numVariables = 0;
-		this.varTable = new String[30];
+		this.varTable = new String[10];
 	}
 	
 	public void compile(ParsedProgram pProgram) throws ArrayException{
@@ -45,6 +45,7 @@ public class Compiler {
 		int i = 0;
 		while(i < this.numVariables){
 			if(varName.equals(this.varTable[i])) return i;
+			i++;
 		}
 		return addVariable(varName);
 	}

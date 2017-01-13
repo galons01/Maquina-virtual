@@ -39,7 +39,7 @@ public class While implements Instruction{
 			} catch (LexicalAnalysisException e) {
 				e.printStackTrace();
 			}
-			lexParser.increaseProgramCounter();
+//			lexParser.increaseProgramCounter();
 			return new While(cond, wb);
 		}
 		return null;
