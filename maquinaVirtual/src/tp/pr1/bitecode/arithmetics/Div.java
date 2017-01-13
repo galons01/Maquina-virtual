@@ -2,6 +2,8 @@ package tp.pr1.bitecode.arithmetics;
 
 import tp.pr1.bitecode.ByteCode;
 import tp.pr1.elements.CPU;
+import tp.pr1.exceptions.DivByZeroException;
+import tp.pr1.exceptions.StackException;
 
 public class Div extends Arithmetics{
 	
@@ -10,7 +12,7 @@ public class Div extends Arithmetics{
 	}
 
 	@Override
-	protected boolean operates(int c, int sc, CPU cpu) {
+	protected boolean operates(int c, int sc, CPU cpu) throws DivByZeroException, StackException {
 		// TODO Auto-generated method stub
 		if(c != 0){
 			int res = sc / c;

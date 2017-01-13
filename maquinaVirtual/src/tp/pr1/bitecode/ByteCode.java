@@ -1,6 +1,8 @@
 package tp.pr1.bitecode;
 
 import tp.pr1.elements.CPU;
+import tp.pr1.exceptions.DivByZeroException;
+import tp.pr1.exceptions.StackException;
 
 public abstract class ByteCode {
 	//private int param;
@@ -15,8 +17,10 @@ public abstract class ByteCode {
 	 * 
 	 * @param cpu
 	 * @return
+	 * @throws StackException 
+	 * @throws DivByZeroException 
 	 */
-	public abstract boolean execute(CPU cpu);
+	public abstract boolean execute(CPU cpu) throws DivByZeroException, StackException;
 	
 	/**
 	 * 

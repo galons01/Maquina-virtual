@@ -2,6 +2,8 @@ package tp.pr1.bitecode.arithmetics;
 
 import tp.pr1.bitecode.ByteCode;
 import tp.pr1.elements.CPU;
+import tp.pr1.exceptions.DivByZeroException;
+import tp.pr1.exceptions.StackException;
 
 public abstract class Arithmetics extends ByteCode{
 	private int c;
@@ -12,7 +14,7 @@ public abstract class Arithmetics extends ByteCode{
 	}
 
 	@Override
-	public boolean execute(CPU cpu) {
+	public boolean execute(CPU cpu) throws DivByZeroException, StackException {
 		//operates(c, sc, cpu);
 		if(!cpu.emptyStack()){
 			c = cpu.pop();
@@ -31,7 +33,7 @@ public abstract class Arithmetics extends ByteCode{
 		}
 	}
 	
-	protected abstract boolean operates(int c, int sc, CPU cpu);
+	protected abstract boolean operates(int c, int sc, CPU cpu) throws DivByZeroException, StackException;
 
 	@Override
 	public ByteCode parse(String[] s) {

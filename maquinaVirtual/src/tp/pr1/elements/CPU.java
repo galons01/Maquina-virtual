@@ -1,6 +1,8 @@
 package tp.pr1.elements;
 
 import tp.pr1.bitecode.ByteCode;
+import tp.pr1.exceptions.DivByZeroException;
+import tp.pr1.exceptions.StackException;
 import tp.pr1.mv.ByteCodeProgram;
 
 /**
@@ -187,16 +189,24 @@ public class CPU {
 		int contador = this.bcProgram.getContador();
 		for(programCounter = 0; programCounter < contador && !error && !parar; programCounter++){
 			ByteCode bc = bcProgram.getByteCode(this.programCounter);
-			ejecutar=bc.execute(this);
+			try {
+				ejecutar=bc.execute(this);
+			} catch (DivByZeroException | StackException e) {
+				e.printStackTrace();
+			}
 			if(ejecutar && !error && !end){
 				if(salto == true){
 					ByteCode bcs = bcProgram.getByteCode(this.programCounter);
-					if(bcs.execute(this)){
-						salto = false;
-					}
-					else{
-						salto = true;
-						programCounter--;
+					try {
+						if(bcs.execute(this)){
+							salto = false;
+						}
+						else{
+							salto = true;
+							programCounter--;
+						}
+					} catch (DivByZeroException | StackException e) {
+						e.printStackTrace();
 					}
 				}
 			}
