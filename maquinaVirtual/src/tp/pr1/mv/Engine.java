@@ -48,6 +48,7 @@ public class Engine {
 			if(command == null)
 				System.out.println("Error: Comando desconocido");
 			else {this.command.execute(this);}				//aqui va la captura de excepcion
+			System.out.println("");
 //				System.out.println("Error: Ejecucion incorrecta del comando");
 
 			

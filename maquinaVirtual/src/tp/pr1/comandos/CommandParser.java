@@ -3,7 +3,7 @@ package tp.pr1.comandos;
 public class CommandParser {
 	private final static Command[] commands = {
 		new Help(), new Quit(), new Reset(),
-		new Replace(), new Run(), new AddByteCodeProgram(), new Load(), new Compile() };
+		new Replace(), new Run(), new Load(), new Compile() };
 	
 	/**
 	 * Parsea la linea y si se corresponde con algun comando 
