@@ -7,7 +7,6 @@ import tp.pr1.elements.LexicalParser;
 import tp.pr1.exceptions.ArrayException;
 import tp.pr1.exceptions.LexicalAnalysisException;
 import tp.pr1.inst.Instruction;
-import tp.pr1.mv.ByteCodeProgram;
 import tp.pr1.mv.ParsedProgram;
 
 public class While implements Instruction{
