@@ -48,6 +48,10 @@ public class Engine {
 			if(command == null)
 				System.out.println("Error: Comando desconocido");
 			else {this.command.execute(this);}				//aqui va la captura de excepcion
+			if(this.sProgram.getSize() != 0) 
+				this.mostrarProgramaSource();
+			if(this.program.getContador() != 0)
+				this.mostrarPrograma();
 //				System.out.println("Error: Ejecucion incorrecta del comando");
 
 			
@@ -68,7 +72,6 @@ public class Engine {
 			this.sProgram.addInstr(sc.nextLine());
 		}
 		sc.close();
-		this.mostrarProgramaSource();
 	}
 	
 	/**
@@ -87,9 +90,6 @@ public class Engine {
 		catch (LexicalAnalysisException e){
 			new LexicalAnalysisException();
 		}
-		
-		this.mostrarProgramaSource();
-		mostrarPrograma();
 	}
 	
 	/**
@@ -191,7 +191,6 @@ public class Engine {
 			lineaByte = capt.nextLine();
 			lineaByte = lineaByte.toUpperCase();
 		}
-		mostrarPrograma();
 		return ejecutado;
 	}
 	
@@ -211,7 +210,6 @@ public class Engine {
 	 */
 	public boolean executeQuit() {
 		System.out.print(command.toString());
-		mostrarPrograma();
 		ejecutado = true;
 		end = true;
 		return ejecutado;
@@ -226,7 +224,6 @@ public class Engine {
 		System.out.print(command.toString());
 		if(remplazarInstruccion(pos))
 			ejecutado = true;
-		mostrarPrograma();
 		return ejecutado;
 	}
 	
@@ -251,7 +248,6 @@ public class Engine {
 		if(cpu.run())
 			System.out.println("Error: Ejecucion incorrecta del comando");
 		ejecutado = true;
-		mostrarPrograma();
 		return ejecutado;
 	}
 }
