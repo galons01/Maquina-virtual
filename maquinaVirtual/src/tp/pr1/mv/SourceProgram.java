@@ -64,6 +64,7 @@ public class SourceProgram {
 		for (int i=0; i<contador; i++){
 			System.out.println(i + ": " + sProgram[i].toString());
 		}
+		System.out.println("");
 	}
 	
 	public String textHelp() {

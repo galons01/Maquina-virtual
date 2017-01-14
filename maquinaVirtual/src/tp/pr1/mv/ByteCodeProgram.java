@@ -110,6 +110,7 @@ public class ByteCodeProgram {
 		for (int i=0; i<contador; i++){
 			System.out.println(i + ": " + program[i].toString());
 		}
+		System.out.println("");
 	}
 	
 	public int getContador(){

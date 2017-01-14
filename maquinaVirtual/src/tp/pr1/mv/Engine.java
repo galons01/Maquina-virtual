@@ -48,7 +48,6 @@ public class Engine {
 			if(command == null)
 				System.out.println("Error: Comando desconocido");
 			else {this.command.execute(this);}				//aqui va la captura de excepcion
-			System.out.println("");
 //				System.out.println("Error: Ejecucion incorrecta del comando");
 
 			
@@ -69,10 +68,7 @@ public class Engine {
 			this.sProgram.addInstr(sc.nextLine());
 		}
 		sc.close();
-		
-		//esto no aqui es para pruebas
-		System.out.println("Programa fuente almacenado:");
-		sProgram.mostrarPrograma();
+		this.mostrarProgramaSource();
 	}
 	
 	/**
@@ -92,6 +88,7 @@ public class Engine {
 			new LexicalAnalysisException();
 		}
 		
+		this.mostrarProgramaSource();
 		mostrarPrograma();
 	}
 	
@@ -125,6 +122,14 @@ public class Engine {
 	 */
 	public boolean añadirPrograma(ByteCode programa){
 		return program.addInstruccion(programa);
+	}
+	
+	/**
+	 * Muestra el programa leido del txt por consola.
+	 */
+	public void mostrarProgramaSource(){
+		System.out.println("Programa fuente almacenado:");
+		sProgram.mostrarPrograma();
 	}
 	
 	/**
