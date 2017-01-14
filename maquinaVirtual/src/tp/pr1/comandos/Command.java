@@ -1,5 +1,9 @@
 package tp.pr1.comandos;
 
+import java.io.FileNotFoundException;
+
+import tp.pr1.exceptions.BadFormatByteCodeException;
+import tp.pr1.exceptions.ExecutionErrorException;
 import tp.pr1.mv.Engine;
 
 
@@ -12,8 +16,11 @@ public interface Command {
 	 * En otro caso devuelve true.
 	 * @param engine
 	 * @return
+	 * @throws FileNotFoundException 
+	 * @throws BadFormatByteCodeException 
+	 * @throws ExecutionErrorException 
 	 */
-	public abstract void execute(Engine engine);
+	public abstract void execute(Engine engine) throws FileNotFoundException, BadFormatByteCodeException, ExecutionErrorException;
 	
 	/**
 	 * Recibe un array de String’s, lo parsea,

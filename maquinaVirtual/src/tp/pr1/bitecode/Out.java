@@ -1,6 +1,7 @@
 package tp.pr1.bitecode;
 
 import tp.pr1.elements.CPU;
+import tp.pr1.exceptions.StackException;
 
 public class Out extends ByteCode{
 
@@ -10,14 +11,14 @@ public class Out extends ByteCode{
 	}
 
 	@Override
-	public boolean execute(CPU cpu) {
+	public boolean execute(CPU cpu)throws StackException {
 		// TODO Auto-generated method stub
 		if(!cpu.emptyStack()){
 			System.out.println("La cima de la pila es: " + cpu.out());
 			return true;
 		}
 		else
-			return false;
+			throw new StackException();
 	}
 
 	@Override

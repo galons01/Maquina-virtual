@@ -1,5 +1,6 @@
 package tp.pr1.comandos;
 
+import tp.pr1.exceptions.BadFormatByteCodeException;
 import tp.pr1.mv.Engine;
 
 public class Replace implements Command {
@@ -16,14 +17,20 @@ public class Replace implements Command {
 	}
 
 	@Override
-	public void execute(Engine engine) {
+	public void execute(Engine engine)throws BadFormatByteCodeException{
 		engine.executeReplace(replace);
 	}
 
 	@Override
-	public Command parse(String[] s) {
+	public Command parse(String[] s) throws NumberFormatException{
 		if(s.length == 2 && s[0].equalsIgnoreCase("REPLACE"))
+			try{
 			return new Replace(Integer.parseInt(s[1]));
+			}
+		catch(NumberFormatException e){
+			System.out.print("Error: no es un numero");
+			return null;
+		}
 		else
 			return null;
 	}

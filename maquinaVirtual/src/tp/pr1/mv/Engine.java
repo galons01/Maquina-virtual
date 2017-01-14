@@ -11,6 +11,8 @@ import tp.pr1.comandos.CommandParser;
 import tp.pr1.elements.CPU;
 import tp.pr1.elements.LexicalParser;
 import tp.pr1.exceptions.ArrayException;
+import tp.pr1.exceptions.BadFormatByteCodeException;
+import tp.pr1.exceptions.ExecutionErrorException;
 import tp.pr1.exceptions.LexicalAnalysisException;
 /**
  * Representa el bucle de control de la aplicación, contiene la cpu.
@@ -37,8 +39,11 @@ public class Engine {
 	
 	/**
 	 * Comienza el programa, se encarga de captar los comandos y ejecutarlos.
+	 * @throws FileNotFoundException 
+	 * @throws BadFormatByteCodeException 
+	 * @throws ExecutionErrorException 
 	 */
-	public void start(){
+	public void start() throws FileNotFoundException, BadFormatByteCodeException, ExecutionErrorException{
 		end = false;
 		do{
 			System.out.print("> ");			String linea = capt.nextLine();
@@ -47,31 +52,39 @@ public class Engine {
 			ejecutado = false;
 			if(command == null)
 				System.out.println("Error: Comando desconocido");
-			else {this.command.execute(this);}				//aqui va la captura de excepcion
+			else 
+				try{
+				this.command.execute(this);	
+				}catch(FileNotFoundException e){
+					System.out.println("Error al abrir el archivo");
+				}
 			if(this.sProgram.getSize() != 0) 
 				this.mostrarProgramaSource();
 			if(this.program.getContador() != 0)
 				this.mostrarPrograma();
 //				System.out.println("Error: Ejecucion incorrecta del comando");
-
-			
 		}while(command == null || !end);
+	
 	}
 	
 	/**
 	 * Carga un programa de un fichero.
 	 * 
 	 * @param fichName
-	 * @throws java.io.FileNotFoundException
+	 * @throws FileNotFoundException
 	 */
-	public void load(String fichName) throws java.io.FileNotFoundException{
+	public void load(String fichName) throws FileNotFoundException{
 		System.out.print(command.toString());
+		try{
 		Scanner sc = new Scanner(new File(fichName));
 		
 		while(sc.hasNextLine()){
 			this.sProgram.addInstr(sc.nextLine());
 		}
 		sc.close();
+		}catch(FileNotFoundException e){
+			throw new FileNotFoundException();
+		}
 	}
 	
 	/**
@@ -241,8 +254,9 @@ public class Engine {
 	/**Ejecuta el programa.
 	 * 
 	 * @return
+	 * @throws ExecutionErrorException 
 	 */
-	public boolean executeRun() {
+	public boolean executeRun() throws ExecutionErrorException {
 		cpu = new CPU(program);
 		System.out.print(command.toString());
 		if(cpu.run())

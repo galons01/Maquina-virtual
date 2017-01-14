@@ -1,6 +1,7 @@
 package tp.pr1.bitecode;
 
 import tp.pr1.elements.CPU;
+import tp.pr1.exceptions.StackException;
 
 public class Store extends ByteCode {
 	private int param;
@@ -11,14 +12,15 @@ public class Store extends ByteCode {
 	}
 
 	@Override
-	public boolean execute(CPU cpu) {
+	public boolean execute(CPU cpu)throws StackException {
 		// TODO Auto-generated method stub
 		if(!cpu.emptyStack()){
 			cpu.write(param, cpu.pop());
 			return true;
 		}
-		else
-			return false;
+		else{
+			throw new StackException();
+		}
 	}
 	
 

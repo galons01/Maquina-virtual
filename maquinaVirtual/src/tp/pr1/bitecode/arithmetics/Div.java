@@ -21,8 +21,9 @@ public class Div extends Arithmetics{
 			else 
 				return false;
 		}
-		else
-			return false;
+		else{
+			throw new DivByZeroException();
+		}
 	}
 
 	@Override

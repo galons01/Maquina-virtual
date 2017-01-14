@@ -2,6 +2,7 @@ package tp.pr1.elements;
 
 import tp.pr1.bitecode.ByteCode;
 import tp.pr1.exceptions.DivByZeroException;
+import tp.pr1.exceptions.ExecutionErrorException;
 import tp.pr1.exceptions.StackException;
 import tp.pr1.mv.ByteCodeProgram;
 
@@ -182,7 +183,7 @@ public class CPU {
 	 * @return
 	 */
 	
-	public boolean run(){
+	public boolean run() throws ExecutionErrorException{
 		boolean error = false;
 		boolean parar = false;
 		boolean ejecutar = false;
@@ -226,5 +227,6 @@ public class CPU {
 		System.out.println(toString());
 		finPrograma();
 		return error;
+
 	}
 }

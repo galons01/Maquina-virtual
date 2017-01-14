@@ -1,6 +1,7 @@
 package tp.pr1.bitecode;
 
 import tp.pr1.elements.CPU;
+import tp.pr1.exceptions.StackException;
 
 public class Load extends ByteCode {
 	
@@ -12,8 +13,12 @@ public class Load extends ByteCode {
 	}
 
 	@Override
-	public boolean execute(CPU cpu) {
-		return cpu.read(param);
+	public boolean execute(CPU cpu)throws StackException{
+		if( cpu.read(param))
+			return true;
+		else
+			throw new StackException();
+	
 	}
 
 	@Override

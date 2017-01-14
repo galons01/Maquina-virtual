@@ -18,12 +18,9 @@ public class Load implements Command {
 	}
 	
 	@Override
-	public void execute(Engine engine) {
-		try{
+	public void execute(Engine engine) throws FileNotFoundException{
 			engine.load(fich);
-		}catch (FileNotFoundException e){
 			
-		}
 	}
 
 	@Override

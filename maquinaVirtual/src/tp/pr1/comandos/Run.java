@@ -1,5 +1,6 @@
 package tp.pr1.comandos;
 
+import tp.pr1.exceptions.ExecutionErrorException;
 import tp.pr1.mv.Engine;
 
 public class Run implements Command {
@@ -10,7 +11,7 @@ public class Run implements Command {
 	}
 
 	@Override
-	public void execute(Engine engine) {
+	public void execute(Engine engine) throws ExecutionErrorException {
 		engine.executeRun();
 	}
 

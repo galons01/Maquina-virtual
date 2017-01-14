@@ -12,21 +12,23 @@ public class Number implements Term{
 		this.number = num;
 	}
 
-	private static boolean isNumeric(String cadena){
+	/*private static boolean isNumeric(String cadena){
 		try {
 			Integer.parseInt(cadena);
-			return true;
-		} catch (NumberFormatException nfe){
-			return false;
-		}
-	}
+			return true;*/
 	
 	@Override
-	public Term parse(String term) {
-		if (isNumeric(term)) return new Number(Integer.parseInt(term));
-		return null;
+	public Term parse(String term)throws NumberFormatException {
+		try{ 
+		 return new Number(Integer.parseInt(term));
+		}
+		catch(NumberFormatException e){
+			System.out.println("Error: no es un numero");
+			return null;
+		}
+	
 	}
-
+	
 	@Override
 	public ByteCode compile(Compiler compiler) {
 		return new Push(number);
