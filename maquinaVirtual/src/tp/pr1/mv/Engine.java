@@ -78,6 +78,7 @@ public class Engine {
 		try{
 		Scanner sc = new Scanner(new File(fichName));
 		
+		this.sProgram.reset();
 		while(sc.hasNextLine()){
 			this.sProgram.addInstr(sc.nextLine());
 		}
@@ -95,7 +96,8 @@ public class Engine {
 	 */
 	public void executeCompile() throws LexicalAnalysisException, ArrayException{
 		System.out.print(command.toString());
-		
+		this.parsedProgram.reset();
+		this.program.resetProgram();
 		try{
 			lexicalAnalysis();
 			generateByteCode();
