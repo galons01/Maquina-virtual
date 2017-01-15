@@ -9,14 +9,18 @@ public class ExecutionErrorException extends Exception{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private String mensaje;
+	
 	public ExecutionErrorException(){
-		super("Excepción ExecutionErrorException detectada");
+		super("Excepcion: error al dividir por cero o por pila llena o vacia");
+		this.mensaje = "Excepcion: error al dividir por cero o por pila llena o vacia";
 	}
 	
 	public ExecutionErrorException(String mensaje){
 		super(mensaje);
+		this.mensaje = mensaje;
 	}
 	public String toString() {
-		return "Excepcion: error al dividir por cero o por pila llena o vacia" + System.lineSeparator();
+		return mensaje + System.lineSeparator();
 	}
 }

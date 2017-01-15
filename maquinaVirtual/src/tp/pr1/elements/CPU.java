@@ -195,7 +195,6 @@ public class CPU {
 			try{
 				ejecutar=bc.execute(this);}
 			catch(DivByZeroException e) {
-				System.out.println("Error: division por cero"); 
 				System.out.println("El error esta en el bytecode: " + programCounter); 
 				throw new ExecutionErrorException("Error: division por cero");
 			}
