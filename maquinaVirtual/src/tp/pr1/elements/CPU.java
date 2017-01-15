@@ -2,6 +2,7 @@ package tp.pr1.elements;
 
 import tp.pr1.bitecode.ByteCode;
 import tp.pr1.exceptions.ArrayException;
+import tp.pr1.exceptions.DivByZeroException;
 //import tp.pr1.exceptions.DivByZeroException;
 import tp.pr1.exceptions.ExecutionErrorException;
 //import tp.pr1.exceptions.StackException;
@@ -191,11 +192,12 @@ public class CPU {
 		int contador = this.bcProgram.getContador();
 		for(programCounter = 0; programCounter < contador && !error && !parar; programCounter++){
 			ByteCode bc = bcProgram.getByteCode(this.programCounter);
-			if(bc.execute(this))
-				ejecutar=true;
-			else {
+			try{
+				ejecutar=bc.execute(this);}
+			catch(DivByZeroException e) {
+				System.out.println("Error: division por cero"); 
 				System.out.println("El error esta en el bytecode: " + programCounter); 
-				throw new ExecutionErrorException();
+				throw new ExecutionErrorException("Error: division por cero");
 			}
 			if(ejecutar && !error && !end){
 				if(salto == true){

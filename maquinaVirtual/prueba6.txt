@@ -1,0 +1,6 @@
+x = 5
+r = 0
+r = x / 0
+write r
+return
+end
