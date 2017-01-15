@@ -5,6 +5,7 @@ import tp.pr1.exceptions.ArrayException;
 import tp.pr1.exceptions.DivByZeroException;
 //import tp.pr1.exceptions.DivByZeroException;
 import tp.pr1.exceptions.ExecutionErrorException;
+import tp.pr1.exceptions.StackException;
 //import tp.pr1.exceptions.StackException;
 import tp.pr1.mv.ByteCodeProgram;
 
@@ -197,6 +198,9 @@ public class CPU {
 			catch(DivByZeroException e) {
 				System.out.println("El error esta en el bytecode: " + programCounter); 
 				throw new ExecutionErrorException("Error: division por cero");
+			}catch(StackException e){
+				System.out.println("El error esta en el bytecode: " + programCounter); 
+				throw new ExecutionErrorException("Excepción StackException: anomalia en el tratamiento de la pila");
 			}
 			if(ejecutar && !error && !end){
 				if(salto == true){
