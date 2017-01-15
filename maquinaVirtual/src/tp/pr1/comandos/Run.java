@@ -1,5 +1,6 @@
 package tp.pr1.comandos;
 
+import tp.pr1.exceptions.ArrayException;
 import tp.pr1.exceptions.ExecutionErrorException;
 import tp.pr1.mv.Engine;
 
@@ -11,7 +12,7 @@ public class Run implements Command {
 	}
 
 	@Override
-	public void execute(Engine engine) throws ExecutionErrorException {
+	public void execute(Engine engine) throws ExecutionErrorException, ArrayException {
 		engine.executeRun();
 	}
 

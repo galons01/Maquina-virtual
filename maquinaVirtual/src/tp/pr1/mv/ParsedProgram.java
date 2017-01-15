@@ -1,5 +1,6 @@
 package tp.pr1.mv;
 
+import tp.pr1.exceptions.ArrayException;
 import tp.pr1.inst.Instruction;
 
 public class ParsedProgram {
@@ -28,19 +29,20 @@ public class ParsedProgram {
 	 * 
 	 * @param ins
 	 */
-	public void addInstr(Instruction ins){
+	public void addInstr(Instruction ins)throws ArrayException{
 		boolean entraEnElPrograma = contador < this.tamaño;		//comprueba si entra en el array
 		if(entraEnElPrograma){
 			pProgram[contador] = ins;
 			contador ++;
 		}
 		else {
-			redimensionar();
-			addInstr(ins);
+			//redimensionar();
+			//addInstr(ins);
+			throw new ArrayException();
 		}
 	}
 	
-	private void redimensionar(){
+	/*private void redimensionar(){
 		this.tamaño += this.tamaño;
 		Instruction[] sProgramAux = new Instruction[this.tamaño];
 		for(int i=0; i<tamaño/2;i++){
@@ -48,7 +50,7 @@ public class ParsedProgram {
 		}
 		pProgram = sProgramAux;
 //			sProgramAux = Arrays.copyOf(sProgram, newLength) Alternativa chuli
-	}
+	}*/
 	
 	public Instruction getInstr(int k){
 		return pProgram[k];

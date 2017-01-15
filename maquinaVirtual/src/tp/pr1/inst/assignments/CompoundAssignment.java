@@ -43,17 +43,21 @@ public class CompoundAssignment implements Instruction{
 
 	@Override
 	public void compile(tp.pr1.elements.Compiler compiler) throws ArrayException {
-		compiler.addByteCode(term1.compile(compiler));
-		compiler.addByteCode(term2.compile(compiler));
-		if(this.operator.equals("+"))
-			compiler.addByteCode(new Add());
-		else if(this.operator.equals("-"))
-			compiler.addByteCode(new Sub());
-		else if(this.operator.equals("*"))
-			compiler.addByteCode(new Mul());
-		else
-			compiler.addByteCode(new Div());
-		compiler.addByteCode(new Store(compiler.indexOf(varName)));
+		try{
+			compiler.addByteCode(term1.compile(compiler));
+			compiler.addByteCode(term2.compile(compiler));
+			if(this.operator.equals("+"))
+				compiler.addByteCode(new Add());
+			else if(this.operator.equals("-"))
+				compiler.addByteCode(new Sub());
+			else if(this.operator.equals("*"))
+				compiler.addByteCode(new Mul());
+			else
+				compiler.addByteCode(new Div());
+			compiler.addByteCode(new Store(compiler.indexOf(varName)));
+		}catch(ArrayException e){
+			throw new ArrayException();
+		}
 	}
 	
 	public String toString(){

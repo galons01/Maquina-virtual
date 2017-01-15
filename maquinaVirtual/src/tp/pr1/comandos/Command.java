@@ -2,8 +2,10 @@ package tp.pr1.comandos;
 
 import java.io.FileNotFoundException;
 
+import tp.pr1.exceptions.ArrayException;
 import tp.pr1.exceptions.BadFormatByteCodeException;
 import tp.pr1.exceptions.ExecutionErrorException;
+import tp.pr1.exceptions.LexicalAnalysisException;
 import tp.pr1.mv.Engine;
 
 
@@ -19,8 +21,9 @@ public interface Command {
 	 * @throws FileNotFoundException 
 	 * @throws BadFormatByteCodeException 
 	 * @throws ExecutionErrorException 
+	 * @throws ArrayException 
 	 */
-	public abstract void execute(Engine engine) throws FileNotFoundException, BadFormatByteCodeException, ExecutionErrorException;
+	public abstract void execute(Engine engine) throws BadFormatByteCodeException, ExecutionErrorException, ArrayException, FileNotFoundException, LexicalAnalysisException;
 	
 	/**
 	 * Recibe un array de String’s, lo parsea,

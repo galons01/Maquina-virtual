@@ -14,4 +14,8 @@ public class BadFormatByteCodeException extends Exception{
 	public BadFormatByteCodeException(String mensaje){
 		super(mensaje);
 	}
+	
+	public String toString(){
+		return "Execepcion: Bytecode incorrecto";
+	}
 }

@@ -18,12 +18,15 @@ public class Number implements Term{
 			return true;*/
 	
 	@Override
-	public Term parse(String term)throws NumberFormatException {
+	public Term parse(String term){
 		try{ 
 		 return new Number(Integer.parseInt(term));
 		}
 		catch(NumberFormatException e){
+
+			System.out.println("Excepcion: se esperaba un numero");
 			System.out.println("Error: asignacion incorrecta");
+
 			return null;
 		}
 	

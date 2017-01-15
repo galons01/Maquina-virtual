@@ -4,6 +4,6 @@ import tp.pr1.elements.LexicalParser;
 import tp.pr1.exceptions.ArrayException;
 
 public interface Instruction {
-	Instruction lexParse(String[] words, LexicalParser lexParser);
+	Instruction lexParse(String[] words, LexicalParser lexParser) throws ArrayException;
 	void compile(tp.pr1.elements.Compiler compiler) throws ArrayException;
 }

@@ -22,7 +22,7 @@ public class While implements Instruction{
 	}
 
 	@Override
-	public Instruction lexParse(String[] words, LexicalParser lexParser) {
+	public Instruction lexParse(String[] words, LexicalParser lexParser) throws ArrayException {
 		if(words[0].equals("while")){
 			Condition cond = ConditionParser.parse(words[1],words[2],words[3], lexParser);
 			
@@ -35,25 +35,30 @@ public class While implements Instruction{
 			ParsedProgram wb = new ParsedProgram();
 			try {
 				lexParser.lexicalParser(wb,"ENDWHILE");
+				return new While(cond, wb);
 			} catch (LexicalAnalysisException e) {
-				e.printStackTrace();
+				System.out.println("Excepcion: programa fuente incorrecto");
 			}
 //			lexParser.increaseProgramCounter();
-			return new While(cond, wb);
+			//return new While(cond, wb);
 		}
 		return null;
 	}
 
 	@Override
 	public void compile(Compiler compiler) throws ArrayException {
-		int origen = compiler.getSizeBcProgram();
-		this.condition.compile(compiler);
-		compiler.compile(this.body);
-		ConditionalJumps cj = this.condition.cj;
-		int n = compiler.getSizeBcProgram();
-		cj.setN(n+1);
-//		ByteCodeProgram bcProgram = new ByteCodeProgram();//revisar
-		compiler.addByteCode(new Goto(origen));
+		try{
+			int origen = compiler.getSizeBcProgram();
+			this.condition.compile(compiler);
+			compiler.compile(this.body);
+			ConditionalJumps cj = this.condition.cj;
+			int n = compiler.getSizeBcProgram();
+			cj.setN(n+1);
+	//		ByteCodeProgram bcProgram = new ByteCodeProgram();//revisar
+			compiler.addByteCode(new Goto(origen));
+		}catch(ArrayException e){
+			throw new ArrayException();
+		}
 		
 	}
 

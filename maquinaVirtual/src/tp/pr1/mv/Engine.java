@@ -42,9 +42,12 @@ public class Engine {
 	 * @throws FileNotFoundException 
 	 * @throws BadFormatByteCodeException 
 	 * @throws ExecutionErrorException 
+	 * @throws ArrayException 
+	 * @throws LexicalAnalysisException 
 	 */
-	public void start() throws FileNotFoundException, BadFormatByteCodeException, ExecutionErrorException{
+	public void start() throws FileNotFoundException, BadFormatByteCodeException, ExecutionErrorException, ArrayException, LexicalAnalysisException{
 		end = false;
+		boolean exc = false;
 		do{
 			System.out.print("> ");			String linea = capt.nextLine();
 			linea = linea.toUpperCase();
@@ -54,14 +57,37 @@ public class Engine {
 				System.out.println("Error: Comando desconocido");
 			else 
 				try{
-				this.command.execute(this);	
+					this.command.execute(this);	
+					/*if(this.sProgram.getSize() != 0) 
+						this.mostrarProgramaSource();
+					if(this.program.getContador() != 0)
+						this.mostrarPrograma();*/
 				}catch(FileNotFoundException e){
-					System.out.println("Error al abrir el archivo");
+					System.out.println("Excepcion: archivo no encontrado");
+					exc = true;
 				}
-			if(this.sProgram.getSize() != 0) 
+				catch(BadFormatByteCodeException w){
+					System.out.println(w.toString());
+					exc = true;
+				}
+				catch(LexicalAnalysisException e){
+					System.out.println(e.toString());
+					exc = true;
+				}
+				catch(ExecutionErrorException e){
+					System.out.print(e.toString());
+					exc = true;
+				}
+				catch(ArrayException e){
+					System.out.print(e.toString());
+					exc = true;
+				}
+			if(!exc){
+				if(this.sProgram.getSize() != 0) 
 				this.mostrarProgramaSource();
-			if(this.program.getContador() != 0)
+				if(this.program.getContador() != 0)
 				this.mostrarPrograma();
+			}
 //				System.out.println("Error: Ejecucion incorrecta del comando");
 		}while(command == null || !end);
 	
@@ -72,8 +98,9 @@ public class Engine {
 	 * 
 	 * @param fichName
 	 * @throws FileNotFoundException
+	 * @throws ArrayException 
 	 */
-	public void load(String fichName) throws FileNotFoundException{
+	public void load(String fichName) throws FileNotFoundException, ArrayException{
 		System.out.print(command.toString());
 		try{
 		Scanner sc = new Scanner(new File(fichName));
@@ -85,6 +112,9 @@ public class Engine {
 		sc.close();
 		}catch(FileNotFoundException e){
 			throw new FileNotFoundException();
+		}
+		catch(ArrayException e){
+			throw new ArrayException();
 		}
 	}
 	
@@ -103,7 +133,10 @@ public class Engine {
 			generateByteCode();
 		}
 		catch (LexicalAnalysisException e){
-			new LexicalAnalysisException();
+			throw new LexicalAnalysisException();
+		}
+		catch(ArrayException e){
+			throw new ArrayException();
 		}
 	}
 	
@@ -111,8 +144,9 @@ public class Engine {
 	 * 	Inicializa el parseador y lo ejecuta.
 	 * 
 	 * @throws LexicalAnalysisException 
+	 * @throws ArrayException 
 	 */
-	private void lexicalAnalysis() throws LexicalAnalysisException{
+	private void lexicalAnalysis() throws LexicalAnalysisException, ArrayException{
 		
 		LexicalParser parseador = new LexicalParser();
 		parseador.initialize(sProgram);
@@ -134,8 +168,9 @@ public class Engine {
 	 * 
 	 * @param programa
 	 * @return
+	 * @throws ArrayException 
 	 */
-	public boolean añadirPrograma(ByteCode programa){
+	public boolean añadirPrograma(ByteCode programa) throws ArrayException{
 		return program.addInstruccion(programa);
 	}
 	
@@ -160,16 +195,19 @@ public class Engine {
 	 * @param pos
 	 * @return
 	 */
-	public boolean remplazarInstruccion(int pos){
+	public boolean remplazarInstruccion(int pos)throws BadFormatByteCodeException{
 		if(pos < program.getContador()){
 			System.out.print("Nueva instruccion: ");
 			String linea = capt.nextLine();
 			linea = linea.toUpperCase();
-			return program.addInstruccion(linea, pos);
+			if( program.addInstruccion(linea, pos))
+				return true;
+			else
+				throw new BadFormatByteCodeException();
 		}
 		else 
-			System.out.print("Error: Ejecucion incorrecta del comando " + System.lineSeparator());
-			return true;
+			//System.out.print("Error: Ejecucion incorrecta del comando " + System.lineSeparator());
+			return false;
 	}
 	
 	/**
@@ -183,8 +221,9 @@ public class Engine {
 	/**Capta un BytecodeProgram por teclado y lo muestra.
 	 * 
 	 * @return
+	 * @throws ArrayException 
 	 */
-	public boolean readByteCodeProgram(){
+	public boolean readByteCodeProgram() throws ArrayException{
 		
 		System.out.print(command.toString());
 		System.out.println("Introduce el bytecode. Una instruccion por línea:");
@@ -235,10 +274,13 @@ public class Engine {
 	 * @param pos
 	 * @return
 	 */
-	public boolean executeReplace(int pos) {
+	public boolean executeReplace(int pos)throws BadFormatByteCodeException, ArrayException {
 		System.out.print(command.toString());
 		if(remplazarInstruccion(pos))
 			ejecutado = true;
+		else{
+			throw new ArrayException();
+		}
 		return ejecutado;
 	}
 	
@@ -258,11 +300,12 @@ public class Engine {
 	 * @return
 	 * @throws ExecutionErrorException 
 	 */
-	public boolean executeRun() throws ExecutionErrorException {
+	public boolean executeRun() throws ExecutionErrorException,ArrayException {
 		cpu = new CPU(program);
 		System.out.print(command.toString());
-		if(cpu.run())
-			System.out.println("Error: Ejecucion incorrecta del comando");
+		if(cpu.run()){
+			throw new ExecutionErrorException();
+		}
 		ejecutado = true;
 		return ejecutado;
 	}

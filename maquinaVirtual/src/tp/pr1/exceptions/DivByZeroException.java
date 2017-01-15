@@ -16,4 +16,7 @@ public class DivByZeroException extends ExecutionErrorException{
 	public DivByZeroException(String mensaje){
 		super(mensaje);
 	}
+	public String toString(){
+		return "Excepcion: dividir por 0";
+	}
 }

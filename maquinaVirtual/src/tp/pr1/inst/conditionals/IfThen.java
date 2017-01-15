@@ -22,7 +22,7 @@ public class IfThen implements Instruction{
 	}
 	
 	@Override
-	public Instruction lexParse(String[] words, LexicalParser lexParser) {
+	public Instruction lexParse(String[] words, LexicalParser lexParser) throws ArrayException {
 		if(words[0].equals("if")){
 			Condition cond = ConditionParser.parse(words[1],words[2],words[3], lexParser);
 			
@@ -31,22 +31,27 @@ public class IfThen implements Instruction{
 			ParsedProgram wb = new ParsedProgram();
 			try{
 			lexParser.lexicalParser(wb,"endif");
+			return new IfThen(cond, wb);
 			}catch(LexicalAnalysisException e){
-				e.printStackTrace();
+				System.out.println("Excepcion: programa fuente incorrecto");
 			};
 //			lexParser.increaseProgramCounter();
-			return new IfThen(cond, wb);
+			//return new IfThen(cond, wb);
 		}
 		return null;
 	}
 
 	@Override
 	public void compile(Compiler compiler) throws ArrayException {
-		this.condition.compile(compiler);
-		compiler.compile(this.body);
-		ConditionalJumps cj = this.condition.cj;
-		int n = compiler.getSizeBcProgram();
-		cj.setN(n);
+		try{
+			this.condition.compile(compiler);
+			compiler.compile(this.body);
+			ConditionalJumps cj = this.condition.cj;
+			int n = compiler.getSizeBcProgram();
+			cj.setN(n);
+		}catch(ArrayException e){
+			throw new ArrayException();
+		}
 		
 	}
 

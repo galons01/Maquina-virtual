@@ -1,5 +1,6 @@
 package tp.pr1.elements;
 
+import tp.pr1.exceptions.ArrayException;
 import tp.pr1.exceptions.LexicalAnalysisException;
 import tp.pr1.inst.Instruction;
 import tp.pr1.inst.InstructionParser;
@@ -10,7 +11,7 @@ public class LexicalParser {
 	private SourceProgram sProgram;
 	private int programCounter;
 	
-	public void lexicalParser(ParsedProgram pProgram, String stopKey) throws LexicalAnalysisException{
+	public void lexicalParser(ParsedProgram pProgram, String stopKey) throws LexicalAnalysisException, ArrayException{
 		boolean stop = false;
 		
 		while (programCounter < sProgram.getSize() && !stop) {
@@ -20,7 +21,10 @@ public class LexicalParser {
 			if (line.equalsIgnoreCase(stopKey)) stop = true;
 			else {
 				Instruction instruction = InstructionParser.parse(line,this);
-				if(instruction == null) stop = true; //esto es un error
+				if(instruction == null){
+					stop = true;//esto es un error
+					throw new LexicalAnalysisException();
+				}
 				else {
 				//Si instruction no es null
 				

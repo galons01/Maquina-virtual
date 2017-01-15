@@ -2,6 +2,7 @@ package tp.pr1.mv;
 
 import tp.pr1.bitecode.ByteCode;
 import tp.pr1.bitecode.ByteCodeParser;
+import tp.pr1.exceptions.ArrayException;
 
 /**
  *  Representa el programa actual. Al menos contiene métodos públicos para añadir un bytecode 
@@ -33,11 +34,14 @@ public class ByteCodeProgram {
 	 * @param instruccion
 	 * @return
 	 */
-	public boolean addInstruccion(ByteCode instruccion){
+	public boolean addInstruccion(ByteCode instruccion)throws ArrayException{
 		boolean entraEnElPrograma = contador < this.tamaño;		//comprueba si entra en el array
 		if(entraEnElPrograma){
 			program[contador] = instruccion;
 			contador ++;
+		}
+		else{
+			throw new ArrayException();
 		}
 		return entraEnElPrograma;
 	}

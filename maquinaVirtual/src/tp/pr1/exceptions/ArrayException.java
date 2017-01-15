@@ -16,4 +16,7 @@ public class ArrayException extends Exception {
 	public ArrayException(String mensaje){
 		super(mensaje);
 	}
+	public String toString(){
+		return "Excepcion: no hay mas espacio en el array" + System.lineSeparator();
+	}
 }

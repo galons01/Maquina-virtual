@@ -30,8 +30,12 @@ public class Write implements Instruction{
 
 	@Override
 	public void compile(Compiler compiler) throws ArrayException {
-		compiler.addByteCode(var.compile(compiler));
-		compiler.addByteCode(new Out());
+		try{
+			compiler.addByteCode(var.compile(compiler));
+			compiler.addByteCode(new Out());
+		}catch(ArrayException e){
+			throw new ArrayException();
+		}
 		
 	}
 

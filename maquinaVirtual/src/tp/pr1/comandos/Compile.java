@@ -11,14 +11,8 @@ public class Compile implements Command{
 	}
 	
 	@Override
-	public void execute(Engine engine) {
-		try {
+	public void execute(Engine engine) throws LexicalAnalysisException, ArrayException {
 			engine.executeCompile();
-		} catch (LexicalAnalysisException e) {
-			e.printStackTrace();
-		} catch (ArrayException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override

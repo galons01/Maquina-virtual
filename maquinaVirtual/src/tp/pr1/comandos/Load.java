@@ -2,6 +2,7 @@ package tp.pr1.comandos;
 
 import java.io.FileNotFoundException;
 
+import tp.pr1.exceptions.ArrayException;
 import tp.pr1.mv.Engine;
 
 public class Load implements Command {
@@ -18,7 +19,7 @@ public class Load implements Command {
 	}
 	
 	@Override
-	public void execute(Engine engine) throws FileNotFoundException{
+	public void execute(Engine engine) throws FileNotFoundException, ArrayException{
 			engine.load(fich);
 			
 	}

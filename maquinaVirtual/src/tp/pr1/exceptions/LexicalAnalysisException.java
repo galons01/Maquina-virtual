@@ -16,4 +16,7 @@ public class LexicalAnalysisException extends Exception{
 	public LexicalAnalysisException(String mensaje){
 		super(mensaje);
 	}
+	public String toString(){
+		return "Excepcion: programa incorrecto en el bytecode ";
+	}
 }

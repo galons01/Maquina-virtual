@@ -22,7 +22,11 @@ public class Return implements Instruction{
 
 	@Override
 	public void compile(Compiler compiler) throws ArrayException {
-		compiler.addByteCode(new Halt());
+		try{
+			compiler.addByteCode(new Halt());
+		}catch(ArrayException e){
+			throw new ArrayException();
+		}
 		
 	}
 

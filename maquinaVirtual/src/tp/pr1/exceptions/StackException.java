@@ -17,4 +17,7 @@ public class StackException extends ExecutionErrorException{
 	public StackException(String mensaje){
 		super(mensaje);
 	}
+	public String toString(){
+		return "Excepcion: tamaño insuficiente de la pila";
+	}
 }

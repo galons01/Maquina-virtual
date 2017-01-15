@@ -1,5 +1,7 @@
 package tp.pr1.mv;
 
+import tp.pr1.exceptions.ArrayException;
+
 /**
  * Representa el string original captado del fichero origen, aun no esta compilado. 
  *
@@ -26,16 +28,17 @@ public class SourceProgram {
 	 * 
 	 * @param ins
 	 */
-	public void addInstr(String ins){
+	public void addInstr(String ins) throws ArrayException{
 		boolean entraEnElPrograma = contador < this.tamaño;		//comprueba si entra en el array
 		if(entraEnElPrograma){
 			sProgram[contador] = ins;
 			contador ++;
 		}
-		else redimensionar();
+		else //redimensionar();
+			throw new ArrayException();
 	}
 	
-	private void redimensionar(){
+	/*private void redimensionar(){
 		this.tamaño += this.tamaño;
 		String[] sProgramAux = new String[this.tamaño];
 		for(int i=0; i<tamaño/2;i++){
@@ -43,7 +46,7 @@ public class SourceProgram {
 		}
 		sProgram = sProgramAux;
 //		sProgramAux = Arrays.copyOf(sProgram, newLength) Alternativa chuli
-	}
+	}*/
 	
 	public String getInstr(int k){
 		return sProgram[k];

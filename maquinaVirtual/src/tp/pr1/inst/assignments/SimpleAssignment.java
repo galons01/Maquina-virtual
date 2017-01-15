@@ -47,8 +47,13 @@ public class SimpleAssignment implements Instruction{
 	 */
 	@Override
 	public void compile(tp.pr1.elements.Compiler compiler) throws ArrayException {
-		compiler.addByteCode(rhs.compile(compiler));
-		compiler.addByteCode(new Store(compiler.indexOf(varName)));
+		try{
+			compiler.addByteCode(rhs.compile(compiler));
+			compiler.addByteCode(new Store(compiler.indexOf(varName)));
+		}
+		catch(ArrayException e){
+			throw new ArrayException(); 
+		}
 	}
 
 }

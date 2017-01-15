@@ -1,9 +1,10 @@
 package tp.pr1.elements;
 
 import tp.pr1.bitecode.ByteCode;
-import tp.pr1.exceptions.DivByZeroException;
+import tp.pr1.exceptions.ArrayException;
+//import tp.pr1.exceptions.DivByZeroException;
 import tp.pr1.exceptions.ExecutionErrorException;
-import tp.pr1.exceptions.StackException;
+//import tp.pr1.exceptions.StackException;
 import tp.pr1.mv.ByteCodeProgram;
 
 /**
@@ -183,17 +184,18 @@ public class CPU {
 	 * @return
 	 */
 	
-	public boolean run() throws ExecutionErrorException{
+	public boolean run() throws ExecutionErrorException, ArrayException{
 		boolean error = false;
 		boolean parar = false;
 		boolean ejecutar = false;
 		int contador = this.bcProgram.getContador();
 		for(programCounter = 0; programCounter < contador && !error && !parar; programCounter++){
 			ByteCode bc = bcProgram.getByteCode(this.programCounter);
-			try {
-				ejecutar=bc.execute(this);
-			} catch (DivByZeroException | StackException e) {
-				e.printStackTrace();
+			if(bc.execute(this))
+				ejecutar=true;
+			else {
+				System.out.println("El error esta en el bytecode: " + programCounter); 
+				throw new ExecutionErrorException();
 			}
 			if(ejecutar && !error && !end){
 				if(salto == true){
@@ -206,8 +208,9 @@ public class CPU {
 							salto = true;
 							programCounter--;
 						}
-					} catch (DivByZeroException | StackException e) {
-						e.printStackTrace();
+					} catch (ExecutionErrorException w) {
+						System.out.println("El error esta en el bytecode: " + programCounter); 
+						throw new ExecutionErrorException();
 					}
 				}
 			}
