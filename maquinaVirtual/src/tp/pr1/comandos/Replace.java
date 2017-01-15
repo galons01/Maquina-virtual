@@ -23,7 +23,7 @@ public class Replace implements Command {
 
 	@Override
 	public Command parse(String[] s) throws NumberFormatException{
-		if(s.length == 2 && s[0].equalsIgnoreCase("REPLACE"))
+		if(s.length == 2 && s[0].equalsIgnoreCase("REPLACEBC"))
 			try{
 			return new Replace(Integer.parseInt(s[1]));
 			}
@@ -37,10 +37,10 @@ public class Replace implements Command {
 
 	@Override
 	public String textHelp() {
-		return "REPLACE N: Reemplaza la instruccion N por la solicitada al usuario.";
+		return "REPLACEBC N: Reemplaza la instruccion N por la solicitada al usuario.";
 	}
 	public String toString(){
-		return "Comienza la ejecución de replace " + System.lineSeparator();
+		return "Comienza la ejecución de replacebc " + System.lineSeparator();
 	}
 
 }
