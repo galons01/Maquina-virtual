@@ -106,6 +106,8 @@ public class Engine {
 		Scanner sc = new Scanner(new File(fichName));
 		
 		this.sProgram.reset();
+		this.parsedProgram.reset();
+		this.program.resetProgram();
 		while(sc.hasNextLine()){
 			this.sProgram.addInstr(sc.nextLine());
 		}
