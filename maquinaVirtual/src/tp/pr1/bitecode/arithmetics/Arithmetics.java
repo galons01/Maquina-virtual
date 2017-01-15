@@ -26,10 +26,11 @@ public abstract class Arithmetics extends ByteCode{
 					return false;
 			}
 			else
-				return false;
+				throw new StackException();
 		}
 		else{
-			return false;
+			throw new StackException();
+			//return false;
 		}
 	}
 	
