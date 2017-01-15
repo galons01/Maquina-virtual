@@ -5,5 +5,4 @@ r = r * x
 x = x - 1
 endwhile
 write r
-return
-end
+return

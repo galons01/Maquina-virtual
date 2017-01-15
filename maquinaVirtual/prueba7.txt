@@ -1,0 +1,11 @@
+x = 5
+r = 5
+while 0 < x
+while 0 < r
+r = r - 1
+endwhile
+x = x - 1
+endwhile
+write r
+return
+end

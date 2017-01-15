@@ -33,6 +33,7 @@ public class LexicalParser {
 				}
 			}
 		}
+		if (stop == false) throw new LexicalAnalysisException();
 	}
 	
 	public void initialize(SourceProgram sProgram){
