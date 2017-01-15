@@ -53,6 +53,7 @@ public class Engine {
 			linea = linea.toUpperCase();
 			command = CommandParser.parse(linea);
 			ejecutado = false;
+			exc = false;
 			if(command == null)
 				System.out.println("Error: Comando desconocido");
 			else 

@@ -197,10 +197,10 @@ public class CPU {
 				ejecutar=bc.execute(this);}
 			catch(DivByZeroException e) {
 				System.out.println("El error esta en el bytecode: " + programCounter); 
-				throw new ExecutionErrorException("Error: division por cero");
+				throw new ExecutionErrorException("Excepcion: division por cero");
 			}catch(StackException e){
 				System.out.println("El error esta en el bytecode: " + programCounter); 
-				throw new ExecutionErrorException("Excepción StackException: anomalia en el tratamiento de la pila");
+				throw new ExecutionErrorException("Excepción de " + bc + ": anomalia en el tratamiento de la pila");
 			}
 			if(ejecutar && !error && !end){
 				if(salto == true){
@@ -213,10 +213,14 @@ public class CPU {
 							salto = true;
 							programCounter--;
 						}
-					} catch (ExecutionErrorException w) {
-						System.out.println("El error esta en el bytecode: " + programCounter); 
-						throw new ExecutionErrorException();
 					}
+						catch(DivByZeroException e) {
+							System.out.println("El error esta en el bytecode: " + programCounter); 
+							throw new ExecutionErrorException("Excepcion: division por cero");
+						}catch(StackException e){
+							System.out.println("El error esta en el bytecode: " + programCounter); 
+							throw new ExecutionErrorException("Excepción de " + bc + ": anomalia en el tratamiento de la pila");
+						}
 				}
 			}
 			else if(end){
