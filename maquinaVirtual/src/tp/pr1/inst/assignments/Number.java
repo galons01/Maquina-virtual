@@ -23,7 +23,7 @@ public class Number implements Term{
 		 return new Number(Integer.parseInt(term));
 		}
 		catch(NumberFormatException e){
-			System.out.println("Error: no es un numero");
+			System.out.println("Error: asignacion incorrecta");
 			return null;
 		}
 	
