@@ -17,7 +17,8 @@ public class InstructionParser{
 			 new IfThen()};
 
 	public static Instruction parse(String line, LexicalParser lexicalParser) throws ArrayException {
-		String[] words = line.split(" ");
+		line  = line.trim();
+		String[] words = line.split(" +");
 		for(int i=0; i<instructions.length; i++){
 			Instruction instruccion = instructions[i].lexParse(words, lexicalParser);
 			if(instruccion!=null){

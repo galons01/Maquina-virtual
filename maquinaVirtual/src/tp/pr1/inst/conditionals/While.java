@@ -37,7 +37,7 @@ public class While implements Instruction{
 				lexParser.lexicalParser(wb,"ENDWHILE");
 				return new While(cond, wb);
 			} catch (LexicalAnalysisException e) {
-				System.out.println("Excepcion: programa fuente incorrecto");
+				System.out.println("Excepcion: error en el while");
 			}
 //			lexParser.increaseProgramCounter();
 			//return new While(cond, wb);
